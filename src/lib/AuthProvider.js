@@ -1,7 +1,5 @@
-//	lib/AuthProvider.js
-
 import React from 'react';
-import authService from './auth-service'; // IMPORT functions for axios requests to API
+import authService from './auth-service'; // IMPORT functions that do axios requests to API
 const { Consumer, Provider } = React.createContext();
 
 // HOC to create Consumer
@@ -47,19 +45,19 @@ class AuthProvider extends React.Component {
   }
 
   signup = user => {
-    const { username, password } = user;
+    const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = user;
 
     authService
-      .signup({ username, password })
+      .signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin })
       .then(user => this.setState({ isLoggedin: true, user }))
       .catch(err => console.log(err));
   };
 
   login = user => {
-    const { username, password } = user;
+    const { email, password } = user;
 
     authService
-      .login({ username, password })
+      .login({ email, password })
       .then(user => this.setState({ isLoggedin: true, user }))
       .catch(err => console.log(err));
   };

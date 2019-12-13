@@ -10,7 +10,7 @@ class Navbar extends Component {
         style={{ borderRadius: '5px', padding: '20px', background: '#686de0' }}>
         {isLoggedin ? (
           <div>
-            <p>username: {user.username}</p>
+            <p>Name: {user.firstName} {user.lastName}</p>
             <button onClick={logout}>Logout</button>
           </div>
         ) : (
