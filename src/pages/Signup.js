@@ -8,9 +8,9 @@ class Signup extends Component {
     lastName: '',
     email: '', 
     password: '' ,
-    bootcamp: '',
-    campus: '', 
-    cohort: '',
+    bootcamp: 'Web Development',
+    campus: 'Barcelona', 
+    cohort: 'oct-19',
     isAdmin: 'false' 
   };
 
@@ -23,14 +23,6 @@ class Signup extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-
-    // var options = e.target.options;
-    // for (var i = 0; i < options.length; i++) {
-    //   if (options[i].selected) {
-    //     const multiselectValue = [].push(options[i].value);
-    //   }
-    // }
-
     this.setState({ [name]: value });
   };
 
@@ -73,35 +65,36 @@ class Signup extends Component {
           />
 
           <label>Bootcamp:</label>
-          <input
-            type="text"
-            name="bootcamp"
-            value={bootcamp}
-            onChange={this.handleChange}
-          />
-
-          {/* <label>Bootcamp:</label>
           <select name="bootcamp" value={bootcamp} onChange={this.handleChange}>
-            <option value={1}>Web Development</option>
-            <option value={2}>UX Design</option>
-            <option value={3}>Data Analytics</option>
-          </select> */}
+            <option value="Web Development">Web Development</option>
+            <option value="UX Design">UX Design</option>
+            <option value="Data Analytics">Data Analytics</option>
+          </select>
 
           <label>Campus:</label>
-          <input
-            type="text"
-            name="campus"
-            value={campus}
-            onChange={this.handleChange}
-          />
+          <select name="campus" value={campus} onChange={this.handleChange}>
+            <option value="Barcelona">Barcelona</option>
+            <option value="Madrid">Madrid</option>
+            <option value="Paris">Paris</option>
+            <option value="Barcelona">Lisbon</option>
+            <option value="Madrid">Amsterdam</option>
+            <option value="Paris">Berlin</option>
+            <option value="Barcelona">Miami</option>
+            <option value="Madrid">Mexico City</option>
+            <option value="Paris">Sao Paulo</option>
+          </select>
 
           <label>Cohort:</label>
-          <input
-            type="text"
-            name="cohort"
-            value={cohort}
-            onChange={this.handleChange}
-          />
+          <select name="cohort" value={cohort} onChange={this.handleChange}>
+            <option value="oct-19">Oct-19</option>
+            <option value="jul-19">Jul-19</option>
+            <option value="apr-19">Apr-19</option>
+            <option value="jan-19">Jan-19</option>
+            <option value="oct-18">Oct-18</option>
+            <option value="jul-18">Jul-18</option>
+            <option value="apr-18">Apr-18</option>
+            <option value="jan-18">Jan-18</option>
+          </select>
 
           <div style={{display: 'none'}}>
             <label>Is admin:</label>
