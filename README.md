@@ -52,21 +52,20 @@ Other features:
 | `/signup`            | SignupPage           | anon only   | Signup form, link to login, navigate to edit alumni profile after signup |
 | `/login`             | LoginPage            | anon only   | Login form, link to signup, navigate to home directory after login  |
 | `/logout`            | n/a                  | anon only   | Navigate to public homepage after logout, expire session            |
-| `/alumni`                 | ListAlumni           | user only   | Show all alumni in a list                                           |
-| `/alumni/:id`             | ShowAlumni           | user only   | Show details of an alumni                                           |
-| `/alumni/edit/:id`             | EditAlumni           | user only   | Edit details of an alumni                                           |
-| `/alumni/:id`             | n/a                  | user only   | Delete alumni from the app                                          |
-| `/jobs`                   | ListJobs             | user only   | Shows all jobs in a list                                            |
-| `/jobs/:id`               | ShowJob              | user only   | Show details of a job offer                                         |
+| `/alumni`                 | ListAlumni           | user and admin   | Show all alumni in a list                                           |
+| `/alumni/:id`             | ShowAlumni           | user and admin   | Show details of an alumni                                           |
+| `/alumni/edit/:id`             | EditAlumni           | user and admin   | Edit details of an alumni                                           |
+| `/jobs`                   | ListJobs             | user and admin  | Shows all jobs in a list                                            |
+| `/jobs/:id`               | ShowJob              | user and admin  | Show details of a job offer                                         |
 | `/jobs/edit/:id`               | EditJob              | admin only   | Edit details of a job offer                                         |
 | `/jobs/:id`               | n/a                  | admin only   | Delete job offer                                                    |
 | `/jobs/add`               | CreateJob            | admin only   | Add new job offer                                                   |
-| `/events`                 | ListEvents           | user only   | Shows all events in a list                                          |
-| `/events/:id`             | ShowEvent            | user only   | Show details of an event                                            |
+| `/events`                 | ListEvents           | user and admin  | Shows all events in a list                                          |
+| `/events/:id`             | ShowEvent            | user and admin  | Show details of an event                                            |
 | `/events/edit/:id`             | EditEvent            | admin only   | Edit details of an event                                            |
 | `/events/:id`             | n/a                  | admin only   | Delete event from the app                                           |
 | `/events/add`             | CreateEvent          | admin only   | Add new event                                                       |  
-| `/dashboard`          | DashboardPage        | user only   | Show dashboard with saved jobs and events                           |  
+| `/dashboard`          | DashboardPage        | user and admin  | Show dashboard with saved jobs and events                           |  
 
 <br>
 
@@ -163,7 +162,7 @@ User model
   mediumUrl: {type: String},
   savedEvents: [{  type: mongoose.Schema.Types.ObjectId, ref: "Event"}],
   savedJobs: [{  type: mongoose.Schema.Types.ObjectId, ref: "JobOffer"}],
-  isAdmin: boolean,
+  isAdmin: { type: Boolean, default: false },
   publishedEvents: [{  type: mongoose.Schema.Types.ObjectId, ref: "Event"}],
   publishedJobOffers: [{  type: mongoose.Schema.Types.ObjectId, ref: "JobOffer"}]
 }
@@ -173,7 +172,7 @@ Event model
 
 ```javascript
  {
-  author: [{  type: mongoose.Schema.Types.ObjectId, ref: "User "}, required: true],
+  author: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
   title: {type: String, required: true},  
   description: {type: String, required: true},
   date: {type: Date, required: true},
@@ -181,7 +180,8 @@ Event model
   bootcamp: {type: String, enum: [ "Web Development", "UX Design", "Data Analytics" ], required: true},
   streetAddress: {type: String, required: true},
   city: {type: String, enum: [ "Madrid", "Barcelona", "Lisbon", "Amsterdam", "Paris", "Berlin", "Mexico City", "Sao Paulo", "Miami" ], required: true},
-  eventURL: {type: String, required: true},
+  attendingAlumni: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+  eventURL: {type: String, required: true}
  }
 ``` 
 
@@ -189,7 +189,7 @@ JobOffer model
 
 ```javascript
 {
-  author: [{  type: mongoose.Schema.Types.ObjectId, ref: "User "}, required: true],
+  author: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
   dateOfPublication: {type: String, required: true},
   title: {type: String, required: true},
   description: {type: String, required: true},
@@ -197,7 +197,13 @@ JobOffer model
   companyLogo: {type: String},
   bootcamp: {type: String, enum: [ "Web Development", "UX Design", "Data Analytics" ], required: true},
   city: {type: String, enum: [ "Madrid", "Barcelona", "Lisbon", "Amsterdam", "Paris", "Berlin", "Mexico City", "Sao Paulo", "Miami" ], required: true},
-  jobOfferUrl: str{type: String, required: true},ing
+  jobOfferUrl: {type: String, required: true}
+}, 
+{
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  },
 }
 ```
 
@@ -207,27 +213,27 @@ JobOffer model
 
 | HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
 | ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
-| GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
+| GET         | `/auth/me    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
 | POST        | `/auth/signup`                | {firstName,lastName,email,password,bootcamp,campus,cohort}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
 | POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
 | POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
-| GET         | `/alumni`                     |                              |                | 400          | Show all alumni                                         |
-| GET         | `/alumni/:id`                 | {id}                         |                |              | Show specific alumni                                     |
-| PUT         | `/alumni/edit/:id`            | {firstName,lastName,phone,profilePicture,currentCity,currentRole,linkedinUrl,githubUrl,mediumUrl}           | 200            | 400          | edit alumni                                              |
-| DELETE      | `/alumni/delete/:id`     | {id}                         | 201            | 400          | delete specific alumni                                            |
-| PUT        | `/alumni/:id/save-job/:jobId`             | {id} |                |              | save job offer in alumni profile                                                    |
-| PUT        | `/alumni/:id/save-event/:eventId`             | {id} |                |              | save event in alumni profile                                                    |
-| GET         | `/jobs`                    |                              |                | 400          | show jobs offers                                                 |
-| GET         | `/jobs/:id`                | {id}                         |                |              | show specific job offer                                         |
-| POST        | `/jobs/create`         | {author,title,description,dateOfPublication,companyName,companyLogo,bootcamp,city,jobOfferUrl}      | 200            | 404          | add job offer                                                   |
-| PUT         | `/jobs/edit/:id`           | {author,title,description,dateOfPublication,companyName,companyLogo,bootcamp,city,jobOfferUrl}                   | 201            | 400          | edit job offer                                                        |
-| DELETE      | `/jobs/delete/:id`         | {id}                         | 200            | 400          | delete specific job offer                                                      |
-| GET         | `/events`                      | {}                           | 201            | 400          | show events                                                   |
-| GET         | `/events/:id`                  | {id}            |                |              | show specific event                                           |
+| GET         | `/user`                     |                              | 200              | 400          | Show all alumni                                         |
+| GET         | `/user/:id`                 | {id}                         | 200                | 400             | Show specific alumni                                     |
+| PUT         | `/user/edit/:id`            | {id,firstName,lastName,phone,profilePicture,currentCity,currentRole,linkedinUrl,githubUrl,mediumUrl}           | 200            | 400          | edit alumni                                              |
+| PUT        | `/user/:id/save-job/:jobId`             | {id, jobId} |                |              | save job offer in user dashboard                                                    |
+| PUT        | `/user/:id/remove-job/:jobId`             | {id, jobId} |                |              | remove job offer from user dashboard                                              || PUT        | `/user/:id/save-event/:eventId`             | {id, jobId} |                |              | save event in alumni profile                                                    |
+| PUT        | `/user/:id/remove-event/:jobId`             | {id, jobId} |                |              | remove event offer from user dashboard                                        |
+| GET         | `/job`                    |                              |                | 404          | show jobs offers                                                 |
+| GET         | `/job/:id`                | {id}                         |                |              | show specific job offer                                         |
+| POST        | `/job/create`         | {author,title,description,dateOfPublication,companyName,companyLogo,bootcamp,city,jobOfferUrl}      | 200            | 404          | add job offer                                                   |
+| PUT         | `/job/edit/:id`           | {id,author,title,description,dateOfPublication,companyName,companyLogo,bootcamp,city,jobOfferUrl}                   | 201            | 400          | edit job offer                                                        |
+| DELETE      | `/job/delete/:id`         | {id}                         | 200            | 400          | delete specific job offer                                                      |
+| GET         | `/event`                      | {}                           | 201            | 400          | show events                                                   |
+| GET         | `/event/:id`                  | {id}            |                |              | show specific event                                           |
 | POST        | `/events/save`             | {id} |                |              | save event                                                     |
-| POST        | `/events/create`             | {author,title,description,date,hour,image,bootcamp,streetAdress,city,eventUrl} |                |              | add event                                                     |
-| PUT         | `/events/edit/:id`             | {title,description...}           |                |              | edit event                                                    |
-| DELETE      | `/jobs/delete/:id`         | {id}                         | 200            | 400          | delete specific event                                             |
+| POST        | `/event/create`             | {author,title,description,date,hour,image,bootcamp,streetAdress,city,eventUrl} |                |              | add event                                                     |
+| PUT         | `/event/edit/:id`             | {title,description...}           |                |              | edit event                                                    |
+| DELETE      | `/event/delete/:id`         | {id}                         | 200            | 400          | delete specific event                                             |
 
 <br>
 
@@ -241,8 +247,8 @@ JobOffer model
 
 The url to your repository and to your deployed project
 
-[Client repository Link](http://github.com)
-[Server repository Link](http://github.com)
+[Client repository Link](https://github.com/caprosset/alumni-network_client)
+[Server repository Link](https://github.com/caprosset/alumni-network_server)
 
 [Deploy Link](http://heroku.com)
 

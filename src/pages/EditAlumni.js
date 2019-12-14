@@ -1,6 +1,17 @@
 import React, { Component } from 'react'
 
-export default class EditAlumni extends Component {
+class EditAlumni extends Component {
+  state= {
+    firstName: '', 
+    lastName: '',
+    email: '', 
+    password: '' ,
+    bootcamp: 'Web Development',
+    campus: 'Barcelona', 
+    cohort: 'oct-19',
+    isAdmin: 'false' 
+  }
+
   render() {
     return (
       <div>
@@ -9,3 +20,6 @@ export default class EditAlumni extends Component {
     )
   }
 }
+
+
+export default EditAlumni;
