@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ListAlumni from './pages/ListAlumni';
 import ShowAlumni from './pages/ShowAlumni';
+import EditAlumni from './pages/EditAlumni';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -18,7 +19,6 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <h1>Alumni Network</h1>
 
         <Switch>
           <AnonRoute exact path="/" component={Splash} />
@@ -26,6 +26,7 @@ class App extends Component {
           <AnonRoute exact path="/login" component={Login} />
           <PrivateRoute exact path="/alumni" component={ListAlumni} />
           <PrivateRoute exact path="/alumni/:id" component={ShowAlumni} /> 
+          <PrivateRoute exact path="/alumni/edit/:id" component={EditAlumni} /> 
         </Switch>
       </div>
     );

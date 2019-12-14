@@ -5,6 +5,7 @@ class Splash extends Component {
   render() {
     return (
       <div>
+        <h1>Alumni Network</h1>
         <h2>Keep in touch!</h2>
         <Link to={'/signup'}>
           <button>Signup</button>

@@ -14,7 +14,7 @@ class User {
       .then(({ data }) => data);
   }
 
-  getOneById(id) {
+  getOne(id) {
     return this.user
       .get(`/${id}`)
       .then(({ data }) => data);

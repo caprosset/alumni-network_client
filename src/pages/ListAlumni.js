@@ -3,7 +3,6 @@ import userService from '../lib/user-service';
 
 import AlumniCard from '../components/AlumniCard';
 
-
 class ListAlumni extends Component {
   state = {
     listOfAlumni: []

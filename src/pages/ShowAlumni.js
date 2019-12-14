@@ -1,25 +1,36 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import authService from '../lib/auth-service';
 import userService from '../lib/user-service';
+import { Link } from 'react-router-dom';
 
 class ShowAlumni extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      user: {}
+      user: {},
+      currentUser: {}
     };		
   }
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    userService.getOneById(id)
+    userService.getOne(id)
       .then((user)=>{
         this.setState({ user })
       })
       .catch((err) => console.log(err));
+    
+    authService.me()
+    .then((currentUser)=>{
+      this.setState({ currentUser })
+    })
+    .catch((err) => console.log(err));
   }
 
   render() {
+    console.log('USER ID', this.props.match.params.id);
+    console.log('CURRENT USER ID', this.state.currentUser._id)
     return (
       <div>
         <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
@@ -37,6 +48,14 @@ class ShowAlumni extends Component {
           <p>Current city:{this.state.user.currentCity}</p>
           <p>Current role:{this.state.user.currentRole}</p>
         </div>
+        {
+          this.props.match.params.id === this.state.currentUser._id
+          ? 
+            <Link to={`/alumni/edit/${this.state.currentUser._id}`}>
+              <button>Edit profile</button>
+            </Link>
+          : null
+        }
       </div>
     )
   }
