@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import Splash from './pages/Splash';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
@@ -20,6 +21,7 @@ class App extends Component {
         <h1>Alumni Network</h1>
 
         <Switch>
+          <AnonRoute exact path="/" component={Splash} />
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />
           <PrivateRoute exact path="/alumni" component={ListAlumni} />
