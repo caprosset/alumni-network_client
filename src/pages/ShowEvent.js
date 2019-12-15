@@ -10,7 +10,8 @@ class ShowEvent extends Component {
     super(props);
 
     this.state = {
-      event: {}
+      event: {},
+      eventIsSaved: false
     };		
   }
 
@@ -25,14 +26,29 @@ class ShowEvent extends Component {
       .catch((err) => console.log(err));
   }
 
-  // save = () => {
-  //   const id = this.props.user._id;
-  //   const eventId =  this.props.match.params.id;
+  save = () => {
+    const id = this.props.user._id;
+    const eventId = this.props.match.params.id;
+    console.log('USER ID', id, 'EVENT ID', eventId);
 
-  //   userService.save(id, eventId)
-  //   .then( (data) => console.log(data))
-  //   .catch( (err) => console.log(err));
-  // }
+    userService.saveEvent(id, eventId)
+      .then( () => {
+        this.setState({ eventIsSaved: true})
+      })
+      .catch((err) => console.log(err));
+  }
+
+  unsave = () => {
+    const id = this.props.user._id;
+    const eventId = this.props.match.params.id;
+    console.log('USER ID', id, 'EVENT ID', eventId);
+
+    userService.removeSavedEvent(id, eventId)
+    .then( () => {
+      this.setState({ eventIsSaved: false})
+    })
+    .catch((err) => console.log(err));
+  }
 
   delete = () => {
     const id = this.props.match.params.id;
@@ -62,24 +78,29 @@ class ShowEvent extends Component {
         </div>
         <div>
           <a href={this.state.event.eventOfferUrl} target="_blank">Register to the event</a>
-          {/* <button onClick={() => this.save()}>Save this event</button> */}
         </div>
         {
-          // if user is admin, display 'Edit' and 'Delete' button
+          // if user is admin, display 'Edit' and 'Delete' button; if not, display the 'Save' button
           user.isAdmin
           ? 
             <div>
               <Link to={`/event/edit/${this.state.event._id}`}>
                 <button>Edit event</button>
-              </Link> 
-              <button onClick={() => this.delete(this.state.event._id)}>Delete event</button>
+              </Link>
+              <button onClick={() => this.delete()}>Delete event</button>
             </div>
-          : null
+          :
+            this.state.eventIsSaved 
+            ?
+            <div>
+              <button onClick={() => this.unsave()}>Unsave event</button>
+            </div>
+            : 
+            <div>
+              <button onClick={() => this.save()}>Save event</button>
+            </div>
         }
 
-        { 
-          <button onClick={ () => this.props.history.goBack()}>Go back</button>
-        }
       </div>
     )
   }
