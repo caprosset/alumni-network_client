@@ -19,6 +19,12 @@ class User {
       .get(`/${id}`)
       .then(({ data }) => data);
   }
+
+  updateOne(id, userUpdated) {
+    return this.user
+      .put(`/edit/${id}`, userUpdated)
+      .then(({ data }) => data);
+  }
 }
 
 const userService = new User();

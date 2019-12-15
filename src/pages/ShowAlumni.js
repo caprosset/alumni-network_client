@@ -9,7 +9,7 @@ class ShowAlumni extends Component {
 
     this.state = {
       user: {},
-      currentUser: {}
+      currentUser: false
     };		
   }
 
@@ -23,14 +23,18 @@ class ShowAlumni extends Component {
     
     authService.me()
     .then((currentUser)=>{
-      this.setState({ currentUser })
+      // if user is the logged in/current user
+      if(id === currentUser._id) {
+        this.setState({ currentUser: true })
+      }
     })
     .catch((err) => console.log(err));
   }
 
+
   render() {
-    console.log('USER ID', this.props.match.params.id);
-    console.log('CURRENT USER ID', this.state.currentUser._id)
+    // console.log('USER ID', this.props.match.params.id);
+    // console.log('CURRENT USER ID', this.state.currentUser._id)
     return (
       <div>
         <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
@@ -49,12 +53,17 @@ class ShowAlumni extends Component {
           <p>Current role:{this.state.user.currentRole}</p>
         </div>
         {
-          this.props.match.params.id === this.state.currentUser._id
+          // if user is on his profile, display 'Edit' button
+          this.state.currentUser
           ? 
             <Link to={`/alumni/edit/${this.state.currentUser._id}`}>
               <button>Edit profile</button>
             </Link>
           : null
+        }
+      
+        { 
+          <button onClick={ () => this.props.history.goBack()}>Go back</button>
         }
       </div>
     )

@@ -22,6 +22,9 @@ class ListAlumni extends Component {
       <div>
         <h1>All alumni</h1>
         <AlumniCard allAlumni={this.state.listOfAlumni} />
+        { 
+          <button onClick={ () => this.props.history.goBack()}>Go back</button>
+        }
       </div>
     );
   }
