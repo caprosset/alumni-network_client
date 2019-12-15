@@ -56,7 +56,7 @@ class ShowAlumni extends Component {
           // if user is on his profile, display 'Edit' button
           this.state.currentUser
           ? 
-            <Link to={`/alumni/edit/${this.state.currentUser._id}`}>
+            <Link to={`/alumni/edit/${this.state.user._id}`}>
               <button>Edit profile</button>
             </Link>
           : null
@@ -69,6 +69,5 @@ class ShowAlumni extends Component {
     )
   }
 }
-
 
 export default ShowAlumni;
