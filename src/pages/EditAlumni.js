@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+
 import authService from '../lib/auth-service';
 import userService from '../lib/user-service';
 
@@ -16,36 +18,13 @@ class EditAlumni extends Component {
     linkedinUrl: '',
     githubUrl: '',
     mediumUrl: '',
-    isAdmin: ''
+    isAdmin: '',
+    redirect: false
   }
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    
-    const id = this.props.match.params.id;
-    const updatedUser = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      phone: this.state.phone,
-      profilePicture: this.state.profilePicture,
-      currentCity: this.state.currentCity,
-      currentRole: this.state.currentRole,
-      currentCompany: this.state.currentCompany,
-      linkedinUrl: this.state.linkedinUrl,
-      githubUrl: this.state.githubUrl,
-      mediumUrl: this.state.mediumUrl,
-      isAdmin: this.state.isAdmin
-    }
-    userService.updateOne(id, updatedUser);
-  };
-
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const { id } = this.props.match.params;
+
     userService.getOne(id)
       .then((user)=>{
         console.log('USEEEER', user);
@@ -64,6 +43,39 @@ class EditAlumni extends Component {
     })
     .catch((err) => console.log(err));
   }
+
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    
+    const { id } = this.props.match.params;
+    const updatedUser = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      phone: this.state.phone,
+      profilePicture: this.state.profilePicture,
+      currentCity: this.state.currentCity,
+      currentRole: this.state.currentRole,
+      currentCompany: this.state.currentCompany,
+      linkedinUrl: this.state.linkedinUrl,
+      githubUrl: this.state.githubUrl,
+      mediumUrl: this.state.mediumUrl,
+      isAdmin: this.state.isAdmin
+    }
+    userService.updateOne(id, updatedUser)
+    .then(() => {
+        this.setState({ redirect: true });
+      })
+    .catch(err => console.log(err));
+  };
+
+
 
   render() {
     return (
@@ -164,6 +176,7 @@ class EditAlumni extends Component {
         </form>)
       : <p>You don't have access to this page</p>
       }
+      {this.state.redirect ? <Redirect to="`/alumni/${this.props.match.params.id}`"/> : null}
       </div>
     )
   }
