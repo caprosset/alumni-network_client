@@ -10,6 +10,8 @@ import TopNav from './components/TopNav';
 import ListAlumni from './pages/ListAlumni';
 import ShowAlumni from './pages/ShowAlumni';
 import EditAlumni from './pages/EditAlumni';
+import ListJobs from './pages/ListJobs';
+import ShowJob from './pages/ShowJob';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -34,6 +36,8 @@ class App extends Component {
           <PrivateRoute exact path="/alumni" component={ListAlumni} />
           <PrivateRoute exact path="/alumni/:id" component={ShowAlumni} /> 
           <PrivateRoute exact path="/alumni/edit/:id" component={EditAlumni} /> 
+          <PrivateRoute exact path="/job" component={ListJobs} />
+          <PrivateRoute exact path="/job/:id" component={ShowJob} /> 
         </Switch>
       </div>
     );
