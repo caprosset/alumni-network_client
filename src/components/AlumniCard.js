@@ -22,8 +22,6 @@ function AlumniCard(props) {
                 <Link to={`/alumni/${oneAlumni._id}`}>
                   <button>See alumni</button>
                 </Link>
-                <p>{oneAlumni.campus}</p>
-                <p>{oneAlumni.cohort}</p>
               </div>
             </div>
           )

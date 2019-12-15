@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { withAuth } from '../lib/AuthProvider';
-
-// import authService from '../lib/auth-service';
 import userService from '../lib/user-service';
+
 
 class EditAlumni extends Component {
   state= {
@@ -17,8 +15,7 @@ class EditAlumni extends Component {
     linkedinUrl: '',
     githubUrl: '',
     mediumUrl: '',
-    isAdmin: '',
-    myProfile: false
+    isAdmin: ''
   }
 
   componentDidMount() {
@@ -26,21 +23,12 @@ class EditAlumni extends Component {
 
     userService.getOne(id)
       .then((user)=>{
-        console.log('USEEEER', user);
+        // console.log('USEEEER', user);
         const { firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = user;
 
         this.setState({ firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin })
       })
       .catch((err) => console.log(err));
-    
-    // authService.me()
-    // .then((currentUser)=>{
-    //   // if user is the logged in/current user
-    //   if(id === currentUser._id) {
-    //     this.setState({ currentUser: true })
-    //   }
-    // })
-    // .catch((err) => console.log(err));
   }
 
 
@@ -72,17 +60,15 @@ class EditAlumni extends Component {
   render() {
     const { firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
 
-    const { user } = this.props;
+    // const { user } = this.props;
     // console.log('USER ID', user._id)
-    const { id } = this.props.match.params;
+    // const { id } = this.props.match.params;
     // console.log('PROFILE ID', id)
 
     return (
       <div>
         <h1>Edit profile</h1>
-        { // if current user is on his profile, give access to edit form
-        user._id === id ?
-        (<form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit}>
           <label>First name:</label>
           <input
             type="text"
@@ -163,23 +149,22 @@ class EditAlumni extends Component {
             onChange={this.handleChange}
           />
 
-          <label>Is admin</label>
-          <input disabled
-            type="text"
-            name="isAdmin"
-            value={isAdmin}
-            onChange={this.handleChange}
-          />
+          <div style={{display: 'none'}}>
+            <label>Is admin</label>
+            <input disabled
+              type="text"
+              name="isAdmin"
+              value={isAdmin}
+              onChange={this.handleChange}
+            />
+          </div>
 
           <input type="submit" value="Save changes" />
-        </form>)
-      : <p>You don't have access to this page</p>
-      }
-    
+        </form>
       </div>
     )
   }
 }
 
 
-export default withAuth(EditAlumni);
+export default EditAlumni;

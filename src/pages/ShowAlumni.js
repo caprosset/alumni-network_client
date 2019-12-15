@@ -62,8 +62,9 @@ class ShowAlumni extends Component {
           <p>Bootcamp: {this.state.user.bootcamp}</p>
           <p>Campus: {this.state.user.campus}</p>
           <p>Cohort: {this.state.user.cohort}</p>
-          <p>Current city:{this.state.user.currentCity}</p>
-          <p>Current role:{this.state.user.currentRole}</p>
+          <p>Current city: {this.state.user.currentCity}</p>
+          <p>Current role: {this.state.user.currentRole}</p>
+          <p>Current company: {this.state.user.currentCompany}</p>
         </div>
         {
           // if user is on his profile, display 'Edit' button
@@ -78,7 +79,9 @@ class ShowAlumni extends Component {
           : null
         }
         { 
-          <button onClick={ () => this.props.history.goBack()}>Go back</button>
+          <Link to={'/alumni'}>
+            <button>Go back</button>
+          </Link>
         }
       </div>
     )
