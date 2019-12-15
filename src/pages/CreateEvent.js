@@ -32,7 +32,7 @@ class CreateEvent extends Component {
     eventService
       .create(newEvent)
       .then(event => {
-        // this.props.history.push(`/event/${event._id}`);
+        this.props.history.push(`/event/${event._id}`);
         console.log('EVENT CREATED', event);
       })
       .catch(err => {

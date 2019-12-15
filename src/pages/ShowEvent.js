@@ -34,6 +34,13 @@ class ShowEvent extends Component {
   //   .catch( (err) => console.log(err));
   // }
 
+  delete = () => {
+    const id = this.props.match.params.id;
+    eventService.delete(id)
+    .then( () => this.props.history.push('/event'))
+    .catch( (err) => console.log(err));
+  }
+
   render() {
     const { user } = this.props; 
     console.log('EVENTTTT', this.state.event);
@@ -65,9 +72,7 @@ class ShowEvent extends Component {
               <Link to={`/event/edit/${this.state.event._id}`}>
                 <button>Edit event</button>
               </Link> 
-              {/*<button onClick={userService.delete(this.state.event._id)}> 
-                Delete project
-              </button>*/}
+              <button onClick={() => this.delete(this.state.event._id)}>Delete event</button>
             </div>
           : null
         }

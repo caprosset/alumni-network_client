@@ -18,6 +18,7 @@ import ListEvents from './pages/ListEvents';
 import ShowEvent from './pages/ShowEvent';
 import CreateEvent from './pages/CreateEvent';
 import EditEvent from './pages/EditEvent';
+import Dashboard from './pages/Dashboard';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -52,6 +53,7 @@ class App extends Component {
           <PrivateRoute exact path="/event/create" component={CreateEvent} /> 
           <PrivateRoute exact path="/event/:id" component={ShowEvent} /> 
           <PrivateRoute exact path="/event/edit/:id" component={EditEvent} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
       </div>
     );

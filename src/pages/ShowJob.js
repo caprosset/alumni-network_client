@@ -24,6 +24,12 @@ class ShowJob extends Component {
       .catch((err) => console.log(err));
   }
 
+  delete = () => {
+    const id = this.props.match.params.id;
+    jobService.delete(id)
+    .then( () => this.props.history.push('/job'))
+    .catch( (err) => console.log(err));
+  }
 
   render() {
     const { user } = this.props; 
@@ -32,6 +38,7 @@ class ShowJob extends Component {
       <div>
         <h2>{this.state.job.title}</h2>
         <h3>{this.state.job.companyName}</h3>
+        <img src={this.state.job.companyLogo} alt="Company logo"/>
         <div>
           <p>Location: {this.state.job.city}</p>
           <p>Date of publication</p>
@@ -49,15 +56,9 @@ class ShowJob extends Component {
               <Link to={`/job/edit/${this.state.job._id}`}>
                 <button>Edit job</button>
               </Link>
-              <Link to={`/job/delete/${this.state.job._id}`}>
-                <button>Delete job</button>
-              </Link>
+              <button onClick={() => this.delete(this.state.job._id)}>Delete job</button>
             </div>
           : null
-        }
-      
-        { 
-          <button onClick={ () => this.props.history.goBack()}>Go back</button>
         }
       </div>
     )

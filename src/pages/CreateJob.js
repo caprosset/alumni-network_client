@@ -30,7 +30,7 @@ class CreateJob extends Component {
     jobService
       .create(newJob)
       .then(job => {
-        // this.props.history.push(`/job/${job._id}`);
+        this.props.history.push(`/job/${job._id}`);
         // console.log('JOB CREATED', job);
       })
       .catch(err => {
