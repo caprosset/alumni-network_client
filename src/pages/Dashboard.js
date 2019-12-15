@@ -26,11 +26,11 @@ class Dashboard extends Component {
           : (<div>
               <div>
                 <h2>Events you're interested in</h2>
-                <SavedEventCard />
+                <SavedEventCard userId={user._id} />
               </div>
               <div>
                 <h2>Jobs saved</h2>
-                <SavedJobCard />
+                <SavedJobCard userId={user._id} />
               </div>
             </div>)
         }
