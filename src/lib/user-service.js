@@ -42,8 +42,8 @@ class User {
 
   getAllSavedJobs(id) {
     return this.user
-    .put(`/${id}/saved-jobs`)
-    .then(({ data }) => data);
+    .put(`/${id}`)
+    .then(({ data }) => data.savedJobs);
   }
 
   // user.saveEvent(id, eventId)
@@ -61,8 +61,8 @@ class User {
 
   getAllSavedEvents(id) {
     return this.user
-    .put(`/${id}/saved-events`)
-    .then(({ data }) => data);
+    .put(`/${id}`)
+    .then(({ data }) => data.savedEvents);
   }
 }
 
