@@ -72,12 +72,12 @@ class CreateJob extends Component {
             <option value="Barcelona">Barcelona</option>
             <option value="Madrid">Madrid</option>
             <option value="Paris">Paris</option>
-            <option value="Barcelona">Lisbon</option>
-            <option value="Madrid">Amsterdam</option>
-            <option value="Paris">Berlin</option>
-            <option value="Barcelona">Miami</option>
-            <option value="Madrid">Mexico City</option>
-            <option value="Paris">Sao Paulo</option>
+            <option value="Lisbon">Lisbon</option>
+            <option value="Amsterdam">Amsterdam</option>
+            <option value="Berlin">Berlin</option>
+            <option value="Miami">Miami</option>
+            <option value="Mexico City">Mexico City</option>
+            <option value="Sao Paulo">Sao Paulo</option>
           </select>
 
           <label>Recommended for:</label>
