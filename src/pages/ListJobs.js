@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import jobService from '../lib/job-service';
 
 import JobCard from '../components/JobCard';
+import Navbar from '../components/Navbar';
 
 class ListJobs extends Component {
   state = {
@@ -20,6 +21,7 @@ class ListJobs extends Component {
     console.log(this.state.listOfJobs);
     return (
       <div>
+        <Navbar />
         <h1>All jobs</h1>
         <JobCard allJobs={this.state.listOfJobs} />
         { 

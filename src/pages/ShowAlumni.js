@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import authService from '../lib/auth-service';
 import userService from '../lib/user-service';
 import { Link } from 'react-router-dom';
+import { withAuth } from '../lib/AuthProvider';
 
 class ShowAlumni extends Component {
   constructor(props){
@@ -29,12 +30,24 @@ class ShowAlumni extends Component {
       }
     })
     .catch((err) => console.log(err));
+
+    authService.logout()
+    .then((currentUser)=>{
+      // if user is the logged in/current user
+      if(id === currentUser._id) {
+        this.setState({ currentUser: true })
+      }
+    })
+    .catch((err) => console.log(err));
   }
 
 
   render() {
-    // console.log('USER ID', this.props.match.params.id);
-    // console.log('CURRENT USER ID', this.state.currentUser._id)
+    console.log('USER ID', this.props.match.params.id);
+
+    const {logout} = this.props;
+    console.log('LOGOUT', logout);
+
     return (
       <div>
         <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
@@ -56,12 +69,14 @@ class ShowAlumni extends Component {
           // if user is on his profile, display 'Edit' button
           this.state.currentUser
           ? 
-            <Link to={`/alumni/edit/${this.state.user._id}`}>
-              <button>Edit profile</button>
-            </Link>
+            <div>
+              <Link to={`/alumni/edit/${this.state.user._id}`}>
+                <button>Edit profile</button>
+              </Link>
+              <Link to='/' onClick={logout}>Log out</Link>
+            </div>
           : null
         }
-      
         { 
           <button onClick={ () => this.props.history.goBack()}>Go back</button>
         }
@@ -70,4 +85,4 @@ class ShowAlumni extends Component {
   }
 }
 
-export default ShowAlumni;
+export default withAuth(ShowAlumni);

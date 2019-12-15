@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import userService from '../lib/user-service';
 
 import AlumniCard from '../components/AlumniCard';
+import Navbar from '../components/Navbar';
 
 class ListAlumni extends Component {
   state = {
@@ -20,6 +21,7 @@ class ListAlumni extends Component {
     console.log(this.state.listOfAlumni);
     return (
       <div>
+        <Navbar />
         <h1>All alumni</h1>
         <AlumniCard allAlumni={this.state.listOfAlumni} />
         { 

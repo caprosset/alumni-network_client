@@ -82,7 +82,7 @@ class EditAlumni extends Component {
       <div>
         <h1>Edit profile</h1>
         { // if current user is on his profile, give access to edit form
-        this.state.currentUser ?
+        //this.state.currentUser ?
         (<form onSubmit={this.handleFormSubmit}>
           <label>First name:</label>
           <input
@@ -174,9 +174,9 @@ class EditAlumni extends Component {
 
           <input type="submit" value="Save changes" />
         </form>)
-      : <p>You don't have access to this page</p>
+      //: <p>You don't have access to this page</p>
       }
-      {this.state.redirect ? <Redirect to="`/alumni/${this.props.match.params.id}`"/> : null}
+    
       </div>
     )
   }
