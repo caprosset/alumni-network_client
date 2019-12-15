@@ -21,6 +21,14 @@ class ShowJob extends Component {
     const id = this.props.match.params.id;
     // console.log('JOB ID', id);
 
+    const { user } = this.props;
+    // console.log('USER SAVED JOBS', user.savedJob)
+    // console.log(user.savedJobs.includes(id));
+    
+    if(user.savedJobs.includes(id)) {
+      this.setState({jobIsSaved: true});
+    } 
+
     jobService.getOne(id)
       .then((job)=>{
         this.setState({ job })

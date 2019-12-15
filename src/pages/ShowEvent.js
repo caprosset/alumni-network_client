@@ -19,7 +19,15 @@ class ShowEvent extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log('EVENT ID', id);
+    // console.log('EVENT ID', id);
+
+    const { user } = this.props;
+    // console.log('USER SAVED EVENTS', user.savedEvents)
+    // console.log(user.savedEvents.includes(id));
+    
+    if(user.savedEvents.includes(id)) {
+      this.setState({eventIsSaved: true});
+    } 
 
     eventService.getOne(id)
       .then((event)=>{
@@ -92,7 +100,7 @@ class ShowEvent extends Component {
               <button onClick={() => this.delete()}>Delete event</button>
             </div>
           :
-            this.state.eventIsSaved 
+            this.state.eventIsSaved
             ?
             <div>
               <button onClick={() => this.unsave()}>Unsave event</button>
