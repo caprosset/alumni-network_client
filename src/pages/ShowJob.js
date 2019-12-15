@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import authService from '../lib/auth-service';
+import { withAuth } from '../lib/AuthProvider';
 import jobService from '../lib/job-service';
 import { Link } from 'react-router-dom';
 
@@ -9,8 +9,7 @@ class ShowJob extends Component {
     super(props);
 
     this.state = {
-      job: {},
-      isAdmin: false
+      job: {}
     };		
   }
 
@@ -23,19 +22,11 @@ class ShowJob extends Component {
         this.setState({ job })
       })
       .catch((err) => console.log(err));
-    
-    authService.me()
-    .then((currentUser)=>{
-      // if user is admin
-      if(currentUser.isAdmin) {
-        this.setState({ isAdmin: true })
-      }
-    })
-    .catch((err) => console.log(err));
   }
 
 
   render() {
+    const { user } = this.props; 
     console.log('JOOOOB', this.state.job);
     return (
       <div>
@@ -52,7 +43,7 @@ class ShowJob extends Component {
         </div>
         {
           // if user is admin, display 'Edit' and 'Delete' button
-          this.state.isAdmin
+          user.isAdmin
           ? 
             <div>
               <Link to={`/job/edit/${this.state.job._id}`}>
@@ -73,4 +64,4 @@ class ShowJob extends Component {
   }
 }
 
-export default ShowJob;
+export default withAuth(ShowJob);

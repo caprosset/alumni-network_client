@@ -13,6 +13,11 @@ import EditAlumni from './pages/EditAlumni';
 import ListJobs from './pages/ListJobs';
 import ShowJob from './pages/ShowJob';
 import CreateJob from './pages/CreateJob';
+import EditJob from './pages/EditJob';
+import ListEvents from './pages/ListEvents';
+import ShowEvent from './pages/ShowEvent';
+import CreateEvent from './pages/CreateEvent';
+import EditEvent from './pages/EditEvent';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -41,7 +46,12 @@ class App extends Component {
           <PrivateRoute exact path="/alumni/:id" component={ShowAlumni} /> 
           <PrivateRoute exact path="/job" component={ListJobs} />
           <PrivateRoute exact path="/job/create" component={CreateJob} /> 
+          <PrivateRoute exact path="/job/edit/:id" component={EditJob} /> 
           <PrivateRoute exact path="/job/:id" component={ShowJob} /> 
+          <PrivateRoute exact path="/event" component={ListEvents} />
+          <PrivateRoute exact path="/event/create" component={CreateEvent} /> 
+          <PrivateRoute exact path="/event/:id" component={ShowEvent} /> 
+          <PrivateRoute exact path="/event/edit/:id" component={EditEvent} />
         </Switch>
       </div>
     );
