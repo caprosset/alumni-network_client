@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
 
 class TopNav extends Component {
+
   render() {
     const { user, logout, isLoggedin } = this.props;
     return (
@@ -12,7 +13,7 @@ class TopNav extends Component {
           isLoggedin ? (
           <div>
             <p><a href={`/alumni/${user._id}`}>Name: {user.firstName} {user.lastName}</a></p>
-            <button onClick={ () => this.props.history.goBack()}>Go back</button>
+            {/* <button onClick={ () => this.props.history.goBack()}>Go back</button> */}
             <button onClick={logout}>Logout</button>
           </div>) 
           :

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { withAuth } from '../lib/AuthProvider';
 
-import authService from '../lib/auth-service';
+// import authService from '../lib/auth-service';
 import userService from '../lib/user-service';
-
 
 class EditAlumni extends Component {
   state= {
-    currentUser: false,
+    // currentUser: false,
     firstName: '', 
     lastName: '',
     phone: '',
@@ -19,7 +18,7 @@ class EditAlumni extends Component {
     githubUrl: '',
     mediumUrl: '',
     isAdmin: '',
-    redirect: false
+    myProfile: false
   }
 
   componentDidMount() {
@@ -34,14 +33,14 @@ class EditAlumni extends Component {
       })
       .catch((err) => console.log(err));
     
-    authService.me()
-    .then((currentUser)=>{
-      // if user is the logged in/current user
-      if(id === currentUser._id) {
-        this.setState({ currentUser: true })
-      }
-    })
-    .catch((err) => console.log(err));
+    // authService.me()
+    // .then((currentUser)=>{
+    //   // if user is the logged in/current user
+    //   if(id === currentUser._id) {
+    //     this.setState({ currentUser: true })
+    //   }
+    // })
+    // .catch((err) => console.log(err));
   }
 
 
@@ -53,24 +52,17 @@ class EditAlumni extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+
+    // get all the values from the state
+    const { firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
     
+    // define user id and updatedUser (body) to pass to the update function
     const { id } = this.props.match.params;
-    const updatedUser = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      phone: this.state.phone,
-      profilePicture: this.state.profilePicture,
-      currentCity: this.state.currentCity,
-      currentRole: this.state.currentRole,
-      currentCompany: this.state.currentCompany,
-      linkedinUrl: this.state.linkedinUrl,
-      githubUrl: this.state.githubUrl,
-      mediumUrl: this.state.mediumUrl,
-      isAdmin: this.state.isAdmin
-    }
+    const updatedUser = {  firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
+
     userService.updateOne(id, updatedUser)
     .then(() => {
-        this.setState({ redirect: true });
+        this.props.history.push(`/alumni/${id}`);
       })
     .catch(err => console.log(err));
   };
@@ -78,17 +70,24 @@ class EditAlumni extends Component {
 
 
   render() {
+    const { firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
+
+    const { user } = this.props;
+    // console.log('USER ID', user._id)
+    const { id } = this.props.match.params;
+    // console.log('PROFILE ID', id)
+
     return (
       <div>
         <h1>Edit profile</h1>
         { // if current user is on his profile, give access to edit form
-        //this.state.currentUser ?
+        user._id === id ?
         (<form onSubmit={this.handleFormSubmit}>
           <label>First name:</label>
           <input
             type="text"
             name="firstName"
-            value={this.state.firstName}
+            value={firstName}
             onChange={this.handleChange}
           />
 
@@ -96,7 +95,7 @@ class EditAlumni extends Component {
           <input
             type="text"
             name="lastName"
-            value={this.state.lastName}
+            value={lastName}
             onChange={this.handleChange}
           />
 
@@ -104,7 +103,7 @@ class EditAlumni extends Component {
           <input 
             type="text"
             name="phone"
-            value={this.state.phone}
+            value={phone}
             onChange={this.handleChange}
           />
 
@@ -112,7 +111,7 @@ class EditAlumni extends Component {
           <input 
             type="text"
             name="profilePicture"
-            value={this.state.profilePicture}
+            value={profilePicture}
             onChange={this.handleChange}
           />
 
@@ -120,7 +119,7 @@ class EditAlumni extends Component {
           <input 
             type="text"
             name="currentCity"
-            value={this.state.currentCity}
+            value={currentCity}
             onChange={this.handleChange}
           />
 
@@ -128,7 +127,7 @@ class EditAlumni extends Component {
           <input 
             type="text"
             name="currentRole"
-            value={this.state.currentRole}
+            value={currentRole}
             onChange={this.handleChange}
           />
 
@@ -136,7 +135,7 @@ class EditAlumni extends Component {
           <input 
             type="text"
             name="currentCompany"
-            value={this.state.currentCompany}
+            value={currentCompany}
             onChange={this.handleChange}
           />
 
@@ -144,7 +143,7 @@ class EditAlumni extends Component {
           <input 
             type="text"
             name="linkedinUrl"
-            value={this.state.linkedinUrl}
+            value={linkedinUrl}
             onChange={this.handleChange}
           />
           
@@ -152,7 +151,7 @@ class EditAlumni extends Component {
           <input 
             type="text"
             name="githubUrl"
-            value={this.state.githubUrl}
+            value={githubUrl}
             onChange={this.handleChange}
           />
 
@@ -160,7 +159,7 @@ class EditAlumni extends Component {
           <input 
             type="text"
             name="mediumUrl"
-            value={this.state.mediumUrl}
+            value={mediumUrl}
             onChange={this.handleChange}
           />
 
@@ -168,13 +167,13 @@ class EditAlumni extends Component {
           <input disabled
             type="text"
             name="isAdmin"
-            value={this.state.isAdmin}
+            value={isAdmin}
             onChange={this.handleChange}
           />
 
           <input type="submit" value="Save changes" />
         </form>)
-      //: <p>You don't have access to this page</p>
+      : <p>You don't have access to this page</p>
       }
     
       </div>
@@ -183,4 +182,4 @@ class EditAlumni extends Component {
 }
 
 
-export default EditAlumni;
+export default withAuth(EditAlumni);
