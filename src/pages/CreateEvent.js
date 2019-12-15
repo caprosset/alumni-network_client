@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import eventService from '../lib/event-service';
 
+import BottomNav from '../components/BottomNav';
+
+
 class CreateEvent extends Component {
   state = {
     title: '',
@@ -115,6 +118,7 @@ class CreateEvent extends Component {
 
           <input type="submit" value="Create event" />
         </form>
+        <BottomNav />
       </div>
     )
   }

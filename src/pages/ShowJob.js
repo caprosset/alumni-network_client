@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import userService from '../lib/user-service';
 import jobService from '../lib/job-service';
+import BottomNav from '../components/BottomNav';
 
 
 class ShowJob extends Component {
@@ -97,6 +98,7 @@ class ShowJob extends Component {
               <button onClick={() => this.save()}>Save job</button>
             </div>
         }
+        <BottomNav />
       </div>
     )
   }

@@ -4,6 +4,8 @@ import { withAuth } from '../lib/AuthProvider';
 
 import SavedEventCard from '../components/SavedEventCard';
 import SavedJobCard from '../components/SavedJobCard';
+import BottomNav from '../components/BottomNav';
+
 
 class Dashboard extends Component {
   render() {
@@ -32,7 +34,7 @@ class Dashboard extends Component {
               </div>
             </div>)
         }
-        
+        <BottomNav />
       </div>
     )
   }

@@ -4,6 +4,8 @@ import eventService from '../lib/event-service';
 import userService from '../lib/user-service';
 import { Link } from 'react-router-dom';
 
+import BottomNav from '../components/BottomNav';
+
 
 class ShowEvent extends Component {
   constructor(props){
@@ -100,7 +102,7 @@ class ShowEvent extends Component {
               <button onClick={() => this.save()}>Save event</button>
             </div>
         }
-
+        <BottomNav />
       </div>
     )
   }

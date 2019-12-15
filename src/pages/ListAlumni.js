@@ -3,6 +3,7 @@ import userService from '../lib/user-service';
 
 import AlumniCard from '../components/AlumniCard';
 import Navbar from '../components/Navbar';
+import BottomNav from '../components/BottomNav';
 
 class ListAlumni extends Component {
   state = {
@@ -24,9 +25,7 @@ class ListAlumni extends Component {
         <Navbar />
         <h1>All alumni</h1>
         <AlumniCard allAlumni={this.state.listOfAlumni} />
-        { 
-          <button onClick={ () => this.props.history.goBack()}>Go back</button>
-        }
+        <BottomNav />
       </div>
     );
   }

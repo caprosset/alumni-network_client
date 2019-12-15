@@ -12,7 +12,7 @@ class TopNav extends Component {
         {
           isLoggedin ? (
           <div>
-            <p><a href={`/alumni/${user._id}`}>Name: {user.firstName} {user.lastName}</a></p>
+            <Link to={`/alumni/${user._id}`}>{user.firstName} {user.lastName}</Link>
             {/* <button onClick={ () => this.props.history.goBack()}>Go back</button> */}
             <button onClick={logout}>Logout</button>
           </div>) 

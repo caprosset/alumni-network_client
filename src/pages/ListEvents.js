@@ -3,6 +3,7 @@ import eventService from '../lib/event-service';
 
 import EventCard from '../components/EventCard';
 import Navbar from '../components/Navbar';
+import BottomNav from '../components/BottomNav';
 
 class ListEvents extends Component {
   state = {
@@ -24,9 +25,7 @@ class ListEvents extends Component {
         <Navbar />
         <h1>All events</h1>
         <EventCard allEvents={this.state.listOfEvents} />
-        { 
-          <button onClick={ () => this.props.history.goBack()}>Go back</button>
-        }
+        <BottomNav  />
       </div>
     );
   }

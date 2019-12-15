@@ -46,7 +46,7 @@ class ShowAlumni extends Component {
     console.log('USER ID', this.props.match.params.id);
 
     const {logout} = this.props;
-    console.log('LOGOUT', logout);
+    // console.log('LOGOUT', logout);
 
     return (
       <div>

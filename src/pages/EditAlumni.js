@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import userService from '../lib/user-service';
 
+import BottomNav from '../components/BottomNav';
+
 
 class EditAlumni extends Component {
-  state= {
+  state = {
     // currentUser: false,
     firstName: '', 
     lastName: '',
@@ -23,7 +25,7 @@ class EditAlumni extends Component {
 
     userService.getOne(id)
       .then((user)=>{
-        // console.log('USEEEER', user);
+        console.log('USEEEER', user);
         const { firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = user;
 
         this.setState({ firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin })
@@ -161,6 +163,7 @@ class EditAlumni extends Component {
 
           <input type="submit" value="Save changes" />
         </form>
+        <BottomNav />
       </div>
     )
   }

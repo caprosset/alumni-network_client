@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import eventService from '../lib/event-service';
 
+import BottomNav from '../components/BottomNav';
+
 
 class EditEvent extends Component {
   state= {
@@ -132,6 +134,7 @@ class EditEvent extends Component {
 
           <input type="submit" value="Save changes" />
         </form>
+        <BottomNav />
       </div>
     )
   }

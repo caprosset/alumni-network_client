@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import jobService from '../lib/job-service';
 
+import BottomNav from '../components/BottomNav';
+
+
 class CreateJob extends Component {
   state = {
     title: '',
@@ -105,6 +108,7 @@ class CreateJob extends Component {
 
           <input type="submit" value="Create job" />
         </form>
+        <BottomNav />
       </div>
     )
   }
