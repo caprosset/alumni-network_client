@@ -3,6 +3,8 @@ import authService from '../lib/auth-service';
 import userService from '../lib/user-service';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
+import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 
 class ShowAlumni extends Component {
   constructor(props){
@@ -14,7 +16,7 @@ class ShowAlumni extends Component {
     };		
   }
 
-  componentDidMount() {
+  findUser = () => {
     const id = this.props.match.params.id;
     userService.getOne(id)
       .then((user)=>{
@@ -26,30 +28,39 @@ class ShowAlumni extends Component {
     .then((currentUser)=>{
       // if user is the logged in/current user
       if(id === currentUser._id) {
-        this.setState({ currentUser: true })
-      }
-    })
-    .catch((err) => console.log(err));
-
-    authService.logout()
-    .then((currentUser)=>{
-      // if user is the logged in/current user
-      if(id === currentUser._id) {
+        console.log('is user');
+        
         this.setState({ currentUser: true })
       }
     })
     .catch((err) => console.log(err));
   }
 
+  componentDidMount() {
+    console.log('enter');
+    this.findUser();
+
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log('PREV PROPS', prevProps.match.params.id)
+    console.log('PROPS', this.props.match.params.id)
+
+    if(prevProps.match.params.id !== this.props.match.params.id) {
+      this.findUser();
+    }
+  }
 
   render() {
     console.log('USER ID', this.props.match.params.id);
 
+    
     const {logout} = this.props;
     // console.log('LOGOUT', logout);
 
     return (
       <div>
+        <TopNav />
         <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
         <div>
           <a href={this.state.user.linkedinUrl} target="_blank">Linkedin</a>
@@ -83,6 +94,7 @@ class ShowAlumni extends Component {
             <button>Go back</button>
           </Link>
         }
+        <BottomNav />
       </div>
     )
   }

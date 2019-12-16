@@ -22,12 +22,23 @@ class ShowEvent extends Component {
     // console.log('EVENT ID', id);
 
     const { user } = this.props;
-    // console.log('USER SAVED EVENTS', user.savedEvents)
-    // console.log(user.savedEvents.includes(id));
+
+    userService.getOne(user._id) 
+    .then((currentUser) => {
+      console.log('current user', currentUser);
+      
+      currentUser.savedEvents.forEach(savedEvent => {
+        if(savedEvent._id === id) {
+          console.log('HELLLOOOOO', user)
+          this.setState({eventIsSaved: true});
+        }
+      })
+    }).catch((err) => {
+      console.log(err);
+      
+    });
     
-    if(user.savedEvents.includes(id)) {
-      this.setState({eventIsSaved: true});
-    } 
+    
 
     eventService.getOne(id)
       .then((event)=>{

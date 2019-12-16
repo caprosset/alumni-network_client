@@ -35,6 +35,8 @@ class SavedEventCard extends Component {
   }
 
   render() {
+    console.log('eventsss',this.state.savedEvents);
+    
     return (
       <div>
         {

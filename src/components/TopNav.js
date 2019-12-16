@@ -1,33 +1,32 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
 
 class TopNav extends Component {
+  state = {
+    userId: null
+  }
+
+  componentDidMount() {
+    const { user, isLoggedin } = this.props;
+    if(isLoggedin){
+      this.setState({ userId: user._id }, () => console.log('STATE', this.state))
+    }
+  }
 
   render() {
+    console.log('PROPS', this.props.user);
     const { user, logout, isLoggedin } = this.props;
+    console.log('USER IDDDDD', user);
     return (
-      <div
-        style={{ borderRadius: '5px', padding: '20px', background: '#686de0' }}>
+      <div>      
         {
           isLoggedin ? (
-          <div>
-            <Link to={`/alumni/${user._id}`}>{user.firstName} {user.lastName}</Link>
-            {/* <button onClick={ () => this.props.history.goBack()}>Go back</button> */}
+          <div style={{ borderRadius: '5px', padding: '20px', background: '#686de0' }}>
+            <Link to={`/alumni/${this.state.userId}`}>{user.firstName} {user.lastName}</Link>
             <button onClick={logout}>Logout</button>
           </div>) 
-          :
-          (<div>
-            <Link to="/login">
-              {' '}
-              <button>Login</button>{' '}
-            </Link>
-            <br />
-            <Link to="/signup">
-              {' '}
-              <button>Signup</button>{' '}
-            </Link>
-          </div>)
+          : null
         }
       </div>
     );

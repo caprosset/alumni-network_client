@@ -30,13 +30,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TopNav />
-        {/* {
-          (this.props.match.path === '/alumni' || this.props.match.path === '/job' || this.props.match.path === '/event')
-          ? <Navbar />
-          : <TopNav />
-        } */}
-        
         <Switch>
           <AnonRoute exact path="/" component={Splash} />
           <AnonRoute exact path="/signup" component={Signup} />

@@ -10,7 +10,7 @@ function EventCard(props) {
             <div>
               <div>
                 <h3>{oneEvent.title}</h3>
-                <p>Date: {oneEvent.company}</p>
+                <p>Date: {oneEvent.date}</p>
                 <p>Location: {oneEvent.city}</p>
               </div>
               <div>
