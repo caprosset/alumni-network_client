@@ -79,29 +79,32 @@ class ShowJob extends Component {
 
   render() {
     const { user } = this.props; 
-    console.log('USER', user)
-    console.log('JOOOOB', this.state.job);
+    const { title, companyName, companyLogo, city, bootcamp, description, jobOfferUrl, _id } = this.state.job;
+    // console.log('USER', user)
+    // console.log('JOOOOB', this.state.job);
+    console.log(this.props);
+    
     return (
       <div>
         <TopNav />
-        <h2>{this.state.job.title}</h2>
-        <h3>{this.state.job.companyName}</h3>
-        <img src={this.state.job.companyLogo} alt="Company logo"/>
+        <h2>{title}</h2>
+        <h3>{companyName}</h3>
+        <img src={companyLogo} alt="Company logo"/>
         <div>
-          <p>Location: {this.state.job.city}</p>
-          <p>Date of publication</p>
-          <p>Recommended for: {this.state.job.bootcamp}</p>
-          <p>Description: {this.state.job.description}</p>
+          <p>Location: {city}</p>
+          <p>Date of publication: {/*createdAt*/}</p>
+          <p>Recommended for: {bootcamp}</p>
+          <p>Description: {description}</p>
         </div>
         <div>
-          <a href={this.state.job.jobOfferUrl} target="_blank">Apply to job offer</a>
+          <a href={jobOfferUrl} target="_blank">Apply to job offer</a>
         </div>
         {
           // if user is admin, display 'Edit' and 'Delete' button; if not, display the 'Save' button
           user.isAdmin
           ? 
             <div>
-              <Link to={`/job/edit/${this.state.job._id}`}>
+              <Link to={`/job/edit/${_id}`}>
                 <button>Edit job</button>
               </Link>
               <button onClick={() => this.delete()}>Delete job</button>
