@@ -1,19 +1,31 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
+import { Button, Container } from "../styles/elements";
+import { ThemeSplash } from '../styles/themes'
+
+
 class Splash extends Component {
   render() {
     return (
-      <div>
-        <h1>Alumni Network</h1>
-        <h2>Keep in touch!</h2>
-        <Link to={'/signup'}>
-          <button>Signup</button>
-        </Link>
-        <Link to={'/login'}>
-          <button>Login</button>
-        </Link>
-      </div>
+      <ThemeSplash>
+        <Container>
+          <div>
+            <div className="splash-titles">
+              <h1>Alumni Network</h1>
+              <h2>Keep in touch!</h2>
+            </div>
+            <div className="splash-buttons">
+              <Link to={'/signup'}>
+                <Button splash>Signup</Button>
+              </Link>
+              <Link to={'/login'}>
+                <Button splash>Login</Button>
+              </Link>
+            </div>
+          </div>
+      </Container>
+    </ThemeSplash>
     )
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { withAuth } from '../lib/AuthProvider';
+import userService from '../lib/user-service';
 
 import SavedEventCard from '../components/SavedEventCard';
 import SavedJobCard from '../components/SavedJobCard';
@@ -9,6 +10,23 @@ import TopNav from '../components/TopNav';
 
 
 class Dashboard extends Component {
+  // state = {
+  //   savedEvents: []
+  // }
+
+  // componentDidMount() {    
+  //   const { userId } = this.props;
+    
+  //   userService.getOne(userId)
+  //   .then((user) => {
+  //     // console.log(user.savedEvents);
+  //     const savedEvents = user.savedEvents
+  //     this.setState({ savedEvents })
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   });
+  // }
+
   render() {
     const { user } = this.props;
     return (
