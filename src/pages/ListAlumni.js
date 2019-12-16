@@ -3,6 +3,7 @@ import userService from '../lib/user-service';
 import { withAuth } from '../lib/AuthProvider';
 
 import Searchbar from '../components/Searchbar';
+import SearchFilters from '../components/SearchFilters';
 import Navbar from '../components/Navbar';
 import AlumniCard from '../components/AlumniCard';
 import BottomNav from '../components/BottomNav';
@@ -24,7 +25,6 @@ class ListAlumni extends Component {
 
   filterAlumni = searchTerm => {
 		console.log('search term', searchTerm);
-
 		// apply lower case to the search term
 		const lowerSearchTerm = searchTerm.toLowerCase();
 		
@@ -38,13 +38,44 @@ class ListAlumni extends Component {
 				return (alumniFirstName.includes(lowerSearchTerm) || alumniLastName.includes(lowerSearchTerm) || alumniCompany.includes(lowerSearchTerm) || alumniRole.includes(lowerSearchTerm));
 		})
 		this.setState({ alumniFiltered: filteredAlumni })
-	}
+  }
+  
+  multiFilter = (name, value) => {
+    let filteredAlumni = [];
+    if(name === 'bootcamp') {
+      if (value === 'all') {
+        filteredAlumni = this.state.listOfAlumni;
+      } else {
+        filteredAlumni = this.state.listOfAlumni.filter( alumni => {
+          return (alumni.bootcamp === value)
+        })
+      }
+    } else if (name === 'city') {
+      if (value === 'all') {
+        filteredAlumni = this.state.listOfAlumni;
+      } else {
+        filteredAlumni = this.state.listOfAlumni.filter( alumni => {
+          return (alumni.campus === value)
+        })
+      }
+    } else if (name === 'cohort') {
+      if (value === 'all') {
+        filteredAlumni = this.state.listOfAlumni;
+      } else {
+        filteredAlumni = this.state.listOfAlumni.filter( alumni => {
+          return (alumni.cohort === value)
+        })
+      }
+    }
+    this.setState({ alumniFiltered: filteredAlumni })
+  }
 
   render() {
-    // console.log(this.state.listOfAlumni);
+    // console.log(this.state.listOfAlumni);    
     return (
       <div>
-        <Searchbar filterByTerm={this.filterAlumni}/>
+        <Searchbar filterByTerm={this.filterAlumni} />
+        <SearchFilters filterByProperty={this.multiFilter} />
         <Navbar />
         <h1>All alumni</h1>
         {
