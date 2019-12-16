@@ -2,33 +2,53 @@ import React, { Component } from 'react';
 import userService from '../lib/user-service';
 import { withAuth } from '../lib/AuthProvider';
 
-import AlumniCard from '../components/AlumniCard';
+import Searchbar from '../components/Searchbar';
 import Navbar from '../components/Navbar';
-import TopNav from '../components/TopNav';
+import AlumniCard from '../components/AlumniCard';
 import BottomNav from '../components/BottomNav';
+
 
 class ListAlumni extends Component {
   state = {
-    listOfAlumni: []
+    listOfAlumni: [],
+    alumniFiltered: [],
   }
 
   componentDidMount() {
     userService.getAll()
       .then((allUsers)=>{
-        this.setState({ listOfAlumni: allUsers })
+        this.setState({ listOfAlumni: allUsers, alumniFiltered: allUsers })
       })
       .catch((err) => console.log(err));
   }
 
+  filterAlumni = searchTerm => {
+		console.log('search term', searchTerm);
+
+		// apply lower case to the search term
+		const lowerSearchTerm = searchTerm.toLowerCase();
+		
+		const filteredAlumni = this.state.listOfAlumni.filter( alumni => {
+				// apply lower case to the alumni name
+        const alumniFirstName = alumni.firstName.toLowerCase();
+        const alumniLastName = alumni.lastName.toLowerCase();
+        const alumniCompany = alumni.currentCompany.toLowerCase();
+        const alumniRole = alumni.currentRole.toLowerCase();
+				// filter only the alumni that include the search term in their name, role or company
+				return (alumniFirstName.includes(lowerSearchTerm) || alumniLastName.includes(lowerSearchTerm) || alumniCompany.includes(lowerSearchTerm) || alumniRole.includes(lowerSearchTerm));
+		})
+		this.setState({ alumniFiltered: filteredAlumni })
+	}
+
   render() {
-    console.log(this.state.listOfAlumni);
+    // console.log(this.state.listOfAlumni);
     return (
       <div>
-        <TopNav />
+        <Searchbar filterByTerm={this.filterAlumni}/>
         <Navbar />
         <h1>All alumni</h1>
         {
-          this.state.listOfAlumni.map( (oneAlumni, index) => {
+          this.state.alumniFiltered.map( (oneAlumni, index) => {
             return <AlumniCard key={index} {...oneAlumni} /> 
           })
 				}
