@@ -85,7 +85,7 @@ class ShowAlumni extends Component {
               <Link to={`/alumni/edit/${this.state.user._id}`}>
                 <button>Edit profile</button>
               </Link>
-              <Link to='/' onClick={logout}>Log out</Link>
+              <button onClick={logout}>Logout</button>
             </div>
           : null
         }
