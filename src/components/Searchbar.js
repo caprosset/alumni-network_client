@@ -1,35 +1,55 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 
 class Searchbar extends Component {
-    state = {
-        search: ''
-    }
+  state = {
+    search: '',
+    filter: 'Bootcamp'
+  }
 
-    handleInput = e => {
-        let { name, value } = e.target;
-        // console.log(name, value);
-        this.setState( { [name]: value });
-        this.props.filterByTerm(value);
-    }
+  handleInput = e => {
+    let { value } = e.target;
+    // console.log(name, value);
+    this.setState( { search: value });
+    this.props.filterByTerm(value);
+  }
 
-    render()
-    {
-        return (
-            <div>
-                <form>
-                    <label></label>
-                    <input 
-                        onChange={this.handleInput} 
-                        type="text" 
-                        name="search" 
-                        value={this.state.search} 
-                    />
-                </form>
-            </div>
-        ) 
-    }    
+  handleFilter = e => {
+    let { value } = e.target;
+    // console.log(name, value);
+    this.setState( { filter: value });
+    this.props.filterByProperty(value);
+  }
+
+  render() {
+    const { filter } = this.state;
+    return (
+      <div>
+        <form>
+            <label></label>
+            <input 
+                onChange={this.handleInput} 
+                type="text" 
+                name="search" 
+                value={this.state.search} 
+            />
+
+          <label>Search by:</label>
+          <select name="filter" value={filter} onChange={this.handleFilter}>
+            <option value="bootcamp">Bootcamp</option>
+            <option value="city">City</option>
+            {
+              this.props.match.path.includes('/alumni')
+              ? <option value="cohort">Cohort</option>
+              : null
+            }
+          </select> 
+        </form>
+      </div>
+    ) 
+  }    
 }
 
 
-export default Searchbar;
+export default withRouter(Searchbar);
