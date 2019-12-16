@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DateTimePicker from 'react-datetime-picker';
 import eventService from '../lib/event-service';
 
 import BottomNav from '../components/BottomNav';
@@ -34,7 +35,8 @@ class EditEvent extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-
+  
+  pickerOnChange = date => this.setState({ date });
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -54,11 +56,10 @@ class EditEvent extends Component {
   };
 
 
-
   render() {
     const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = this.state;
 
-    const { id } = this.props.match.params;
+    // const { id } = this.props.match.params;
     // console.log('JOB ID', id)
 
     return (
@@ -83,11 +84,10 @@ class EditEvent extends Component {
           />
 
           <label>Date:</label>
-          <input
-            type="text"
+          <DateTimePicker
             name="date"
             value={date}
-            onChange={this.handleChange}
+            onChange={this.pickerOnChange}
           />
 
           <label>Address:</label>

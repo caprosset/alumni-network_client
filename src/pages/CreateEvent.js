@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DateTimePicker from 'react-datetime-picker';
 import eventService from '../lib/event-service';
 
 import BottomNav from '../components/BottomNav';
@@ -9,7 +10,7 @@ class CreateEvent extends Component {
   state = {
     title: '',
     description: '',
-    date: '',
+    date: new Date(),
     image: '',
     bootcamp: 'Web Development',
     streetAddress: '',
@@ -23,6 +24,8 @@ class CreateEvent extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
+
+  pickerOnChange = date => this.setState({ date });
 
 
   handleFormSubmit = event => {
@@ -67,11 +70,10 @@ class CreateEvent extends Component {
           />
 
           <label>Date:</label>
-          <input
-            type="text"
+          <DateTimePicker
             name="date"
             value={date}
-            onChange={this.handleChange}
+            onChange={this.pickerOnChange}
           />
 
           <label>Address:</label>

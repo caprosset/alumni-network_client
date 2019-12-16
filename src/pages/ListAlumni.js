@@ -78,9 +78,10 @@ class ListAlumni extends Component {
         <SearchFilters filterByProperty={this.multiFilter} />
         <Navbar />
         <h1>All alumni</h1>
+
         {
-          this.state.alumniFiltered.map( (oneAlumni, index) => {
-            return <AlumniCard key={index} {...oneAlumni} /> 
+          this.state.alumniFiltered.map( oneAlumni => {
+            return <AlumniCard {...oneAlumni} /> 
           })
 				}
         <BottomNav />

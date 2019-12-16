@@ -79,8 +79,8 @@ class ShowEvent extends Component {
 
   render() {
     const { user } = this.props; 
-    console.log('EVENTTTT', this.state.event);
-    console.log('ATTENDNG ALUMNI', this.state.event.attendingAlumni)
+    // console.log('EVENTTTT', this.state.event);
+
     return (
       <div>
         <TopNav />
@@ -88,22 +88,25 @@ class ShowEvent extends Component {
           <img src={this.state.event.image} alt="Event cover image"/>
         </div>
         <h2>{this.state.event.title}</h2>
-        <p>Alumni attending this event</p>
-          <ul>
           {
             this.state.event.attendingAlumni
-            ?
-            this.state.event.attendingAlumni.map(alumni => {
-              return(<Link to={`/alumni/${alumni._id}`}>
-                <li>{alumni.firstName}</li>
-              </Link>)
-            })
+            ? (<div>
+                <p>Alumni attending this event</p>
+                <ul>
+                { this.state.event.attendingAlumni.map(alumni => {
+                  return(<Link to={`/alumni/${alumni._id}`}>
+                    <li key={alumni._id}>{alumni.firstName}</li>
+                  </Link>)
+                  })
+                }
+                </ul>
+              </div>)
             : null
           }
-          </ul>
         <div>
           <p>Location: {this.state.event.city}</p>
           <p>Date: {this.state.event.date}</p>
+
           <p>Recommended for: {this.state.event.bootcamp}</p>
         </div>
         <div>

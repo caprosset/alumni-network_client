@@ -71,8 +71,8 @@ class ListEvents extends Component {
         <Navbar />
         <h1>All events</h1>
         {
-          this.state.eventsFiltered.map( (oneEvent, index) => {
-            return <EventCard key={index} {...oneEvent} /> 
+          this.state.eventsFiltered.map( oneEvent => {
+            return <EventCard {...oneEvent} /> 
           })
 				}
         <BottomNav  />

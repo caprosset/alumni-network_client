@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function EventCard(props) {
   console.log('EVENT PROPS', props);
   return (
-    <div>
+    <div key={props._id}>
       <div>
         <h3>{props.title}</h3>
         <p>Date: {props.date}</p>
