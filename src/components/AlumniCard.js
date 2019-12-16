@@ -4,29 +4,21 @@ import { Link } from 'react-router-dom';
 function AlumniCard(props) {
   return (
     <div>
-      {
-        props.allAlumni.map( oneAlumni => {
-          return (
-            <div>
-              <div>
-                <h3>{oneAlumni.firstName} {oneAlumni.lastName}</h3>
-                <p>{oneAlumni.currentRole}</p>
-                <p>{oneAlumni.currentCity}</p>
-              </div>
-              <div>
-                <p>{oneAlumni.bootcamp}</p>
-                <p>{oneAlumni.campus}</p>
-                <p>{oneAlumni.cohort}</p>
-              </div>
-              <div>
-                <Link to={`/alumni/${oneAlumni._id}`}>
-                  <button>See alumni</button>
-                </Link>
-              </div>
-            </div>
-          )
-        })
-      }
+      <div>
+        <h3>{props.firstName} {props.lastName}</h3>
+        <p>{props.currentRole}</p>
+        <p>{props.currentCity}</p>
+      </div>
+      <div>
+        <p>{props.bootcamp}</p>
+        <p>{props.campus}</p>
+        <p>{props.cohort}</p>
+      </div>
+      <div>
+        <Link to={`/alumni/${props._id}`}>
+          <button>See alumni</button>
+        </Link>
+      </div>
     </div>
   )
 }

@@ -27,7 +27,11 @@ class ListAlumni extends Component {
         <TopNav />
         <Navbar />
         <h1>All alumni</h1>
-        <AlumniCard allAlumni={this.state.listOfAlumni} />
+        {
+          this.state.listOfAlumni.map( (oneAlumni, index) => {
+            return <AlumniCard key={index} {...oneAlumni} /> 
+          })
+				}
         <BottomNav />
       </div>
     );

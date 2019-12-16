@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import userService from '../lib/user-service';
 import jobService from '../lib/job-service';
+
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
 
@@ -23,12 +24,20 @@ class ShowJob extends Component {
     // console.log('JOB ID', id);
 
     const { user } = this.props;
-    // console.log('USER SAVED JOBS', user.savedJob)
-    // console.log(user.savedJobs.includes(id));
-    
-    if(user.savedJobs.includes(id)) {
-      this.setState({jobIsSaved: true});
-    } 
+
+    userService.getOne(user._id) 
+    .then((currentUser) => {
+      console.log('current user', currentUser);
+      
+      currentUser.savedJobs.forEach(savedJob => {
+        if(savedJob._id === id) {
+          // console.log('HELLLOOOOO', user)
+          this.setState({jobIsSaved: true});
+        }
+      })
+    }).catch((err) => {
+      console.log(err);
+    }); 
 
     jobService.getOne(id)
       .then((job)=>{

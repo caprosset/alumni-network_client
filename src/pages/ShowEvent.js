@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { withAuth } from '../lib/AuthProvider';
-import eventService from '../lib/event-service';
-import userService from '../lib/user-service';
 import { Link } from 'react-router-dom';
+
+import userService from '../lib/user-service';
+import eventService from '../lib/event-service';
 
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
@@ -30,17 +31,14 @@ class ShowEvent extends Component {
       
       currentUser.savedEvents.forEach(savedEvent => {
         if(savedEvent._id === id) {
-          console.log('HELLLOOOOO', user)
+          // console.log('HELLLOOOOO', user)
           this.setState({eventIsSaved: true});
         }
       })
     }).catch((err) => {
       console.log(err);
-      
     });
     
-    
-
     eventService.getOne(id)
       .then((event)=>{
         this.setState({ event })

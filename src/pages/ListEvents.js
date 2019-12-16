@@ -24,7 +24,11 @@ class ListEvents extends Component {
       <div>
         <Navbar />
         <h1>All events</h1>
-        <EventCard allEvents={this.state.listOfEvents} />
+        {
+          this.state.listOfEvents.map( (oneEvent, index) => {
+            return <EventCard key={index} {...oneEvent} /> 
+          })
+				}
         <BottomNav  />
       </div>
     );

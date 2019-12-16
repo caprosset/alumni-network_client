@@ -25,7 +25,11 @@ class ListJobs extends Component {
       <div>
         <Navbar />
         <h1>All jobs</h1>
-        <JobCard allJobs={this.state.listOfJobs} />
+        {
+          this.state.listOfJobs.map( (oneJob, index) => {
+            return <JobCard key={index} {...oneJob} /> 
+          })
+				}
         <BottomNav  />
       </div>
     );

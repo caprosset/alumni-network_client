@@ -4,27 +4,19 @@ import { Link } from 'react-router-dom';
 function JobCard(props) {
   return (
     <div>
-      {
-        props.allJobs.map( oneJob => {
-          return (
-            <div>
-              <div>
-                <h3>{oneJob.title}</h3>
-                <p>{oneJob.company}</p>
-                <p>{oneJob.city}</p>
-              </div>
-              <div>
-                <p>{oneJob.bootcamp}</p>
-              </div>
-              <div>
-                <Link to={`/job/${oneJob._id}`}>
-                  <button>See job</button>
-                </Link>
-              </div>
-            </div>
-          )
-        })
-      }
+      <div>
+        <h3>{props.title}</h3>
+        <p>{props.company}</p>
+        <p>{props.city}</p>
+      </div>
+      <div>
+        <p>{props.bootcamp}</p>
+      </div>
+      <div>
+        <Link to={`/job/${props._id}`}>
+          <button>See job</button>
+        </Link>
+      </div>
     </div>
   )
 }
