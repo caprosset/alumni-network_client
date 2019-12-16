@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
 
 class Signup extends Component {
@@ -18,7 +18,7 @@ class Signup extends Component {
     event.preventDefault();
     const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = this.state;
     //  console.log('Signup -> form submit', { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin });
-    this.props.signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin }); // props.signup is Provided by withAuth() and Context API
+    this.props.signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin }) // props.signup is Provided by withAuth() and Context API
   };
 
   handleChange = event => {

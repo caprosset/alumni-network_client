@@ -8,15 +8,10 @@ class BottomNav extends Component {
     return (
       <div>
         <div><Link to='/dashboard'>Dashboard</Link></div>
-        
         <div><Link to='/event'>Events</Link></div>
-        
         <div><Link to='/alumni'>Alumni</Link></div>
-        
         <div><Link to='/job'>Jobs</Link></div>
-        
         <div><Link to={`/alumni/${user._id}`}>Profile</Link></div>
-        
       </div>
     )
   }
