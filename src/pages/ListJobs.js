@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import jobService from '../lib/job-service';
 
 import Searchbar from '../components/Searchbar';
+import SearchFilters from '../components/SearchFilters';
 import Navbar from '../components/Navbar';
 import JobCard from '../components/JobCard';
 import BottomNav from '../components/BottomNav';
@@ -36,13 +37,37 @@ class ListJobs extends Component {
 				return (jobTitle.includes(lowerSearchTerm) || jobCompany.includes(lowerSearchTerm) || jobDescription.includes(lowerSearchTerm));
 		})
 		this.setState({ jobsFiltered: filteredJobs })
-	}
+  }
+  
+  multiFilter = (name, value) => {
+    let filteredJobs = [];
+    if(name === 'bootcamp') {
+      if (value === 'all') {
+        filteredJobs = this.state.listOfJobs;
+      } else {
+        filteredJobs = this.state.listOfJobs.filter( job => {
+          return (job.bootcamp === value)
+        })
+      }
+    } else if (name === 'city') {
+      if (value === 'all') {
+        filteredJobs = this.state.listOfJobs;
+      } else {
+        filteredJobs = this.state.listOfJobs.filter( job => {
+          return (job.city === value)
+        })
+      }
+    } 
+    this.setState({ jobsFiltered: filteredJobs })
+  }
+
 
   render() {
     // console.log(this.state.listOfJobs);
     return (
       <div>
         <Searchbar filterByTerm={this.filterJobs} />
+        <SearchFilters filterByProperty={this.multiFilter} />
         <Navbar />
         <h1>All jobs</h1>
         {

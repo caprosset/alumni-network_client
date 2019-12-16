@@ -6,7 +6,7 @@ class SearchFilters extends Component {
   state = {
     bootcamp: 'all',
     city: 'all',
-    cohort: 'all'
+    cohort: 'all',
   }
 
   handleFilter = e => {
@@ -16,22 +16,22 @@ class SearchFilters extends Component {
     this.props.filterByProperty(name, value);
   }
 
+
   render() {
     const { bootcamp, city, cohort } = this.state;
     return (
       <div>
         <form>
-          <label>Search by bootcamp:</label>
+          <label>Search by:</label>
           <select name="bootcamp" value={bootcamp} onChange={this.handleFilter}>
-            <option value="all">All</option>
+            <option value="all">All bootcamps</option>
             <option value="Web Development">Web Development</option>
             <option value="UX Design">UX Design</option>
             <option value="Data Analytics">Data Analytics</option>
           </select>
 
-          <label>Search by city:</label>
           <select name="city" value={city} onChange={this.handleFilter}>
-            <option value="all">All</option>
+            <option value="all">All cities</option>
             <option value="Barcelona">Barcelona</option>
             <option value="Madrid">Madrid</option>
             <option value="Paris">Paris</option>
@@ -44,22 +44,18 @@ class SearchFilters extends Component {
           </select>
 
           {
-            this.props.match.path.includes('/alumni')
-            ? 
-              (<div>
-                <label>Search by cohort:</label>
-                <select name="cohort" value={cohort} onChange={this.handleFilter}>
-                  <option value="all">All</option>
-                  <option value="oct-19">Oct-19</option>
-                  <option value="jul-19">Jul-19</option>
-                  <option value="apr-19">Apr-19</option>
-                  <option value="jan-19">Jan-19</option>
-                  <option value="oct-18">Oct-18</option>
-                  <option value="jul-18">Jul-18</option>
-                  <option value="apr-18">Apr-18</option>
-                  <option value="jan-18">Jan-18</option>
-                </select>
-              </div>)
+            this.props.match.path.includes('/alumni') ?
+            <select name="cohort" value={cohort} onChange={this.handleFilter}>
+              <option value="all">All cohorts</option>
+              <option value="oct-19">Oct-19</option>
+              <option value="jul-19">Jul-19</option>
+              <option value="apr-19">Apr-19</option>
+              <option value="jan-19">Jan-19</option>
+              <option value="oct-18">Oct-18</option>
+              <option value="jul-18">Jul-18</option>
+              <option value="apr-18">Apr-18</option>
+              <option value="jan-18">Jan-18</option>
+            </select>
             : null
           }
         </form>
