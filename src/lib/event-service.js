@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+const baseUrl = process.env.REACT_APP_API_URL;
+
 class Event {
   constructor() {
     this.event = axios.create({
-      baseURL: 'http://localhost:5000/event',
+      baseURL: `${baseUrl}/event`,
       withCredentials: true,
     });
   }

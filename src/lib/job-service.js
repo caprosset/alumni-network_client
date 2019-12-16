@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+const baseUrl = process.env.REACT_APP_API_URL;
+
 class Job {
   constructor() {
     this.job = axios.create({
-      baseURL: 'http://localhost:5000/job',
+      baseURL: `${baseUrl}/job`,
       withCredentials: true,
     });
   }
