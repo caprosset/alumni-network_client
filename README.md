@@ -152,7 +152,7 @@ User model
   campus: {type: String, enum: [ "Madrid", "Barcelona", "Lisbon", "Amsterdam", "Paris", "Berlin", "Mexico City", "Sao Paulo", "Miami" ], required: true},
   cohort: {type: String, enum: [ "jan-18", "apr-18", "jul-18", "oct-18", "jan-19", "apr-19", "jul-19", "oct-19" ], required: true},
   phone: {type: String},
-  profilePicture: {type: String},
+  image: {type: String},
   currentCity: {type: String},
   currentRole: {type: String},
   linkedinUrl: {type: String},
@@ -192,7 +192,7 @@ JobOffer model
   title: {type: String, required: true},
   description: {type: String, required: true},
   companyName: {type: String, required: true},
-  companyLogo: {type: String},
+  image: {type: String},
   bootcamp: {type: String, enum: [ "Web Development", "UX Design", "Data Analytics" ], required: true},
   city: {type: String, enum: [ "Madrid", "Barcelona", "Lisbon", "Amsterdam", "Paris", "Berlin", "Mexico City", "Sao Paulo", "Miami" ], required: true},
   jobOfferUrl: {type: String, required: true}
@@ -217,14 +217,14 @@ JobOffer model
 | POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
 | GET         | `/user`                     |                              | 200              | 400          | Show all alumni                                         |
 | GET         | `/user/:id`                 | {id}                         | 200                | 400             | Show specific alumni                                     |
-| PUT         | `/user/edit/:id`            | {id,firstName,lastName,phone,profilePicture,currentCity,currentRole,linkedinUrl,githubUrl,mediumUrl}           | 200            | 400          | edit alumni                                              |
+| PUT         | `/user/edit/:id`            | {id,firstName,lastName,phone,image,currentCity,currentRole,linkedinUrl,githubUrl,mediumUrl}           | 200            | 400          | edit alumni                                              |
 | PUT        | `/user/:id/save-job/:jobId`             | {id, jobId} |                |              | save job offer in user dashboard                                                    |
 | PUT        | `/user/:id/remove-job/:jobId`             | {id, jobId} |                |              | remove job offer from user dashboard                                              || PUT        | `/user/:id/save-event/:eventId`             | {id, jobId} |                |              | save event in alumni profile                                                    |
 | PUT        | `/user/:id/remove-event/:jobId`             | {id, jobId} |                |              | remove event offer from user dashboard                                        |
 | GET         | `/job`                    |                              |                | 404          | show jobs offers                                                 |
 | GET         | `/job/:id`                | {id}                         |                |              | show specific job offer                                         |
-| POST        | `/job/create`         | {author,title,description,dateOfPublication,companyName,companyLogo,bootcamp,city,jobOfferUrl}      | 200            | 404          | add job offer                                                   |
-| PUT         | `/job/edit/:id`           | {id,author,title,description,dateOfPublication,companyName,companyLogo,bootcamp,city,jobOfferUrl}                   | 201            | 400          | edit job offer                                                        |
+| POST        | `/job/create`         | {author,title,description,dateOfPublication,companyName,image,bootcamp,city,jobOfferUrl}      | 200            | 404          | add job offer                                                   |
+| PUT         | `/job/edit/:id`           | {id,author,title,description,dateOfPublication,companyName,image,bootcamp,city,jobOfferUrl}                   | 201            | 400          | edit job offer                                                        |
 | DELETE      | `/job/delete/:id`         | {id}                         | 200            | 400          | delete specific job offer                                                      |
 | GET         | `/event`                      | {}                           | 201            | 400          | show events                                                   |
 | GET         | `/event/:id`                  | {id}            |                |              | show specific event                                           |

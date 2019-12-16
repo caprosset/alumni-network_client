@@ -79,7 +79,7 @@ class ShowJob extends Component {
 
   render() {
     const { user } = this.props; 
-    const { title, companyName, companyLogo, city, bootcamp, description, jobOfferUrl, _id } = this.state.job;
+    const { title, companyName, image, city, bootcamp, description, jobOfferUrl, _id } = this.state.job;
     // console.log('USER', user)
     // console.log('JOOOOB', this.state.job);
     console.log(this.props);
@@ -89,7 +89,7 @@ class ShowJob extends Component {
         <TopNav />
         <h2>{title}</h2>
         <h3>{companyName}</h3>
-        <img src={companyLogo} alt="Company logo"/>
+        <img src={image} alt="Company logo" width="250" height="200"/>
         <div>
           <p>Location: {city}</p>
           <p>Date of publication: {/*createdAt*/}</p>

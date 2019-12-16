@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import jobService from '../lib/job-service';
+import cloudinaryService from '../lib/cloudinary-service';
 
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
@@ -10,7 +11,7 @@ class EditJob extends Component {
     title: '',
     description: '',
     companyName: '',
-    companyLogo: '',
+    image: '',
     bootcamp: 'Web Development',
     city: 'Barcelona',
     jobOfferUrl: '',
@@ -23,9 +24,9 @@ class EditJob extends Component {
     jobService.getOne(id)
       .then((job)=>{
         console.log('JOB', job);
-        const { companyLogo, title, companyName, city, bootcamp, description, jobOfferUrl } = job;
+        const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = job;
 
-        this.setState({ companyLogo, title, companyName, city, bootcamp, description, jobOfferUrl })
+        this.setState({ image, title, companyName, city, bootcamp, description, jobOfferUrl })
       })
       .catch((err) => console.log(err));
   }
@@ -35,16 +36,31 @@ class EditJob extends Component {
     this.setState({ [name]: value });
   };
 
+  handleImageChange = event => {
+    console.log('IMAGE', event.target.files[0]);
+
+    const file = event.target.files[0];
+    const imageFile = new FormData();
+
+    imageFile.append('image', file);
+
+    cloudinaryService.imageEdit(imageFile)
+      .then(imageUrl => {
+        console.log("the image ", imageUrl);
+        this.setState({ image: imageUrl, imageReady: true });
+        console.log('The image is the state', this.state.image);
+      });
+  };
 
   handleFormSubmit = event => {
     event.preventDefault();
 
     // get all the values from the state
-    const { companyLogo, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
+    const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
     
     // define user id and updatedUser (body) to pass to the update function
     const { id } = this.props.match.params;
-    const updatedJob = { companyLogo, title, companyName, city, bootcamp, description, jobOfferUrl };
+    const updatedJob = { image, title, companyName, city, bootcamp, description, jobOfferUrl };
 
     jobService.updateOne(id, updatedJob)
     .then(() => {
@@ -56,7 +72,7 @@ class EditJob extends Component {
 
 
   render() {
-    const { companyLogo, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
+    const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
 
     const { id } = this.props.match.params;
     // console.log('JOB ID', id)
@@ -68,10 +84,9 @@ class EditJob extends Component {
         <form onSubmit={this.handleFormSubmit}>
           <label>Company logo:</label>
           <input
-            type="text"
-            name="companyLogo"
-            value={companyLogo}
-            onChange={this.handleChange}
+            type="file"
+            name="image"
+            onChange={this.handleImageChange}
           />
 
           <label>Job title:</label>

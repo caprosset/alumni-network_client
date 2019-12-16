@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import jobService from '../lib/job-service';
+import cloudinaryService from '../lib/cloudinary-service';
 
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
@@ -10,7 +11,7 @@ class CreateJob extends Component {
     title: '',
     description: '',
     companyName: '',
-    companyLogo: '',
+    image: '',
     bootcamp: 'Web Development',
     city: 'Barcelona',
     jobOfferUrl: '',
@@ -23,13 +24,28 @@ class CreateJob extends Component {
     this.setState({ [name]: value });
   };
 
+  handleImageChange = event => {
+    console.log('IMAGE', event.target.files[0]);
+
+    const file = event.target.files[0];
+    const imageFile = new FormData();
+
+    imageFile.append('image', file);
+
+    cloudinaryService.imageUpload(imageFile)
+      .then(imageUrl => {
+        console.log("the image ", imageUrl);
+        this.setState({ image: imageUrl, imageReady: true });
+        console.log('The image is the state', this.state.image);
+      });
+  };
 
   handleFormSubmit = event => {
     event.preventDefault();
     // get all the values from the state
-    const { companyLogo, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
+    const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
 
-    const newJob = { title, description, companyName, companyLogo, bootcamp, city, jobOfferUrl }
+    const newJob = { title, description, companyName, image, bootcamp, city, jobOfferUrl }
 
     jobService
       .create(newJob)
@@ -43,17 +59,16 @@ class CreateJob extends Component {
   };
 
   render() {
-    const { companyLogo, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
+    const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
     return (
       <div>
         <TopNav />
         <form onSubmit={this.handleFormSubmit}>
           <label>Company logo:</label>
           <input
-            type="text"
-            name="companyLogo"
-            value={companyLogo}
-            onChange={this.handleChange}
+            type="file"
+            name="image"
+            onChange={this.handleImageChange}
           />
 
           <label>Job title:</label>

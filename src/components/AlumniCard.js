@@ -5,6 +5,9 @@ function AlumniCard(props) {
   return (
     <div key={props._id}>
         <div>
+          <img src={props.image} alt="profile picture" width="50" height="50"/>
+        </div>
+        <div>
           <h3>{props.firstName} {props.lastName}</h3>
           <p>{props.currentRole}</p>
           <p>{props.currentCity}</p>

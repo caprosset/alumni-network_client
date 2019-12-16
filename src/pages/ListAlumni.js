@@ -7,7 +7,7 @@ import SearchFilters from '../components/SearchFilters';
 import Navbar from '../components/Navbar';
 import AlumniCard from '../components/AlumniCard';
 import BottomNav from '../components/BottomNav';
-
+ 
 
 class ListAlumni extends Component {
   state = {

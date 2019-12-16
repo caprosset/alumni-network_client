@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import eventService from '../lib/event-service';
+import cloudinaryService from '../lib/cloudinary-service';
 
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
@@ -36,6 +37,22 @@ class EditEvent extends Component {
     this.setState({ [name]: value });
   };
   
+  handleImageChange = event => {
+    console.log('IMAGE', event.target.files[0]);
+
+    const file = event.target.files[0];
+    const imageFile = new FormData();
+
+    imageFile.append('image', file);
+
+    cloudinaryService.imageEdit(imageFile)
+      .then(imageUrl => {
+        console.log("the image ", imageUrl);
+        this.setState({ image: imageUrl, imageReady: true });
+        console.log('The image is the state', this.state.image);
+      });
+  };
+
   pickerOnChange = date => this.setState({ date });
 
   handleFormSubmit = event => {
@@ -77,10 +94,9 @@ class EditEvent extends Component {
 
           <label>Image:</label>
           <input
-            type="text"
+            type="file"
             name="image"
-            value={image}
-            onChange={this.handleChange}
+            onChange={this.handleImageChange}
           />
 
           <label>Date:</label>

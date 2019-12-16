@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import userService from '../lib/user-service';
+import cloudinaryService from '../lib/cloudinary-service';
 
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
@@ -11,7 +12,7 @@ class EditAlumni extends Component {
     firstName: '', 
     lastName: '',
     phone: '',
-    profilePicture: '',
+    image: '',
     currentCity: '',
     currentRole: '',
     currentCompany: '',
@@ -27,9 +28,9 @@ class EditAlumni extends Component {
     userService.getOne(id)
       .then((user)=>{
         console.log('USEEEER', user);
-        const { firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = user;
+        const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = user;
 
-        this.setState({ firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin })
+        this.setState({ firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin })
       })
       .catch((err) => console.log(err));
   }
@@ -41,15 +42,32 @@ class EditAlumni extends Component {
   };
 
 
+  handleImageChange = event => {
+    console.log('IMAGEEEE', event.target.files[0]);
+
+    const file = event.target.files[0];
+    const imageFile = new FormData();
+
+    imageFile.append('image', file);
+
+    cloudinaryService.imageEdit(imageFile)
+      .then(imageUrl => {
+        // console.log('the image', imageUrl);
+        this.setState({ image: imageUrl, imageReady: true });
+        // console.log('The image is the state', this.state.image);
+      });
+  };
+
+
   handleFormSubmit = event => {
     event.preventDefault();
 
     // get all the values from the state
-    const { firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
+    const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
     
     // define user id and updatedUser (body) to pass to the update function
     const { id } = this.props.match.params;
-    const updatedUser = {  firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
+    const updatedUser = {  firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
 
     userService.updateOne(id, updatedUser)
     .then(() => {
@@ -61,7 +79,7 @@ class EditAlumni extends Component {
 
 
   render() {
-    const { firstName, lastName, phone, profilePicture, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
+    const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
 
     // const { user } = this.props;
     // console.log('USER ID', user._id)
@@ -73,6 +91,13 @@ class EditAlumni extends Component {
         <TopNav />
         <h1>Edit profile</h1>
         <form onSubmit={this.handleFormSubmit}>
+          <label>Profile picture:</label>
+          <input
+            type="file"
+            name="image"
+            onChange={this.handleImageChange}
+          />
+
           <label>First name:</label>
           <input
             type="text"
@@ -94,14 +119,6 @@ class EditAlumni extends Component {
             type="text"
             name="phone"
             value={phone}
-            onChange={this.handleChange}
-          />
-
-          <label>Profile picture:</label>
-          <input 
-            type="text"
-            name="profilePicture"
-            value={profilePicture}
             onChange={this.handleChange}
           />
 

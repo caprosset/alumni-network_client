@@ -79,21 +79,22 @@ class ShowEvent extends Component {
 
   render() {
     const { user } = this.props; 
+    const{ image, title, attendingAlumni, city, date, bootcamp, description, eventOfferUrl, _id } = this.state.event;
     // console.log('EVENTTTT', this.state.event);
 
     return (
       <div>
         <TopNav />
         <div>
-          <img src={this.state.event.image} alt="Event cover image"/>
+          <img src={image} alt="Event cover image" width="250" height="200"/>
         </div>
-        <h2>{this.state.event.title}</h2>
+        <h2>{title}</h2>
           {
-            this.state.event.attendingAlumni
+            attendingAlumni
             ? (<div>
                 <p>Alumni attending this event</p>
                 <ul>
-                { this.state.event.attendingAlumni.map(alumni => {
+                { attendingAlumni.map(alumni => {
                   return(<Link to={`/alumni/${alumni._id}`}>
                     <li key={alumni._id}>{alumni.firstName}</li>
                   </Link>)
@@ -104,23 +105,23 @@ class ShowEvent extends Component {
             : null
           }
         <div>
-          <p>Location: {this.state.event.city}</p>
-          <p>Date: {this.state.event.date}</p>
+          <p>Location: {city}</p>
+          <p>Date: {date}</p>
 
-          <p>Recommended for: {this.state.event.bootcamp}</p>
+          <p>Recommended for: {bootcamp}</p>
         </div>
         <div>
-          <p>About: {this.state.event.description}</p>
+          <p>About: {description}</p>
         </div>
         <div>
-          <a href={this.state.event.eventOfferUrl} target="_blank">Register to the event</a>
+          <a href={eventOfferUrl} target="_blank">Register to the event</a>
         </div>
         {
           // if user is admin, display 'Edit' and 'Delete' button; if not, display the 'Save' button
           user.isAdmin
           ? 
             <div>
-              <Link to={`/event/edit/${this.state.event._id}`}>
+              <Link to={`/event/edit/${_id}`}>
                 <button>Edit event</button>
               </Link>
               <button onClick={() => this.delete()}>Delete event</button>

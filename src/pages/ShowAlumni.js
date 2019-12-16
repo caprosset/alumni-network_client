@@ -54,35 +54,39 @@ class ShowAlumni extends Component {
   render() {
     console.log('USER ID', this.props.match.params.id);
 
-    
+    const { firstName, lastName, email, phone, image, bootcamp, campus, cohort, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, _id } = this.state.user;
+
     const {logout} = this.props;
+
+    console.log('IMAGE', image)
     // console.log('LOGOUT', logout);
 
     return (
       <div>
         <TopNav />
-        <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
+        <h2>{firstName} {lastName}</h2>
+        <img src={image} alt="Profile picture" width="250" height="200"/>
         <div>
-          <a href={this.state.user.linkedinUrl} target="_blank">Linkedin</a>
-          <a href={this.state.user.githubUrl} target="_blank">Github</a>
-          <a href={this.state.user.mediumUrl} target="_blank">Medium</a>
+          <a href={linkedinUrl} target="_blank">Linkedin</a>
+          <a href={githubUrl} target="_blank">Github</a>
+          <a href={mediumUrl} target="_blank">Medium</a>
         </div>
         <div>
-          <p>Email: {this.state.user.email}</p>
-          <p>Phone: {this.state.user.phone}</p>
-          <p>Bootcamp: {this.state.user.bootcamp}</p>
-          <p>Campus: {this.state.user.campus}</p>
-          <p>Cohort: {this.state.user.cohort}</p>
-          <p>Current city: {this.state.user.currentCity}</p>
-          <p>Current role: {this.state.user.currentRole}</p>
-          <p>Current company: {this.state.user.currentCompany}</p>
+          <p>Email: {email}</p>
+          <p>Phone: {phone}</p>
+          <p>Bootcamp: {bootcamp}</p>
+          <p>Campus: {campus}</p>
+          <p>Cohort: {cohort}</p>
+          <p>Current city: {currentCity}</p>
+          <p>Current role: {currentRole}</p>
+          <p>Current company: {currentCompany}</p>
         </div>
         {
           // if user is on his profile, display 'Edit' button
           this.state.currentUser
           ? 
             <div>
-              <Link to={`/alumni/edit/${this.state.user._id}`}>
+              <Link to={`/alumni/edit/${_id}`}>
                 <button>Edit profile</button>
               </Link>
               <button onClick={logout}>Logout</button>

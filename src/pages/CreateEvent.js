@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import eventService from '../lib/event-service';
+import cloudinaryService from '../lib/cloudinary-service';
+
+import styled from 'styled-components';
 
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`
 
 
 class CreateEvent extends Component {
@@ -15,7 +27,8 @@ class CreateEvent extends Component {
     bootcamp: 'Web Development',
     streetAddress: '',
     city: 'Barcelona',
-    eventUrl: ''
+    eventUrl: '',
+    imageReady: false
   }
 
   handleChange = event => {
@@ -26,6 +39,22 @@ class CreateEvent extends Component {
   };
 
   pickerOnChange = date => this.setState({ date });
+
+  handleImageChange = event => {
+    console.log('IMAGE', event.target.files[0]);
+
+    const file = event.target.files[0];
+    const imageFile = new FormData();
+
+    imageFile.append('image', file);
+
+    cloudinaryService.imageUpload(imageFile)
+      .then(imageUrl => {
+        console.log("the image ", imageUrl);
+        this.setState({ image: imageUrl, imageReady: true });
+        console.log('The image is the state', this.state.image);
+      });
+  };
 
 
   handleFormSubmit = event => {
@@ -63,10 +92,9 @@ class CreateEvent extends Component {
 
           <label>Image:</label>
           <input
-            type="text"
+            type="file"
             name="image"
-            value={image}
-            onChange={this.handleChange}
+            onChange={this.handleImageChange}
           />
 
           <label>Date:</label>
@@ -120,7 +148,7 @@ class CreateEvent extends Component {
             onChange={this.handleChange}
           />
 
-          <input type="submit" value="Create event" />
+          <Button type="submit">Create event</Button>
         </form>
         <BottomNav />
       </div>
