@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import userService from '../lib/user-service';
 
 import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 
 
 class EditAlumni extends Component {
@@ -69,6 +70,7 @@ class EditAlumni extends Component {
 
     return (
       <div>
+        <TopNav />
         <h1>Edit profile</h1>
         <form onSubmit={this.handleFormSubmit}>
           <label>First name:</label>

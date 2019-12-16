@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import jobService from '../lib/job-service';
 
 import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 
 
 class EditJob extends Component {
@@ -62,6 +63,7 @@ class EditJob extends Component {
 
     return (
       <div>
+        <TopNav />
         <h1>Edit job post</h1>
         <form onSubmit={this.handleFormSubmit}>
           <label>Company logo:</label>

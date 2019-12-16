@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import eventService from '../lib/event-service';
 
 import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 
 
 class CreateEvent extends Component {
@@ -47,6 +48,7 @@ class CreateEvent extends Component {
     const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = this.state;
     return (
       <div>
+        <TopNav />
         <form onSubmit={this.handleFormSubmit}>
           <label>Event title:</label>
           <input

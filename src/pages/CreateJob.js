@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import jobService from '../lib/job-service';
 
 import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 
 
 class CreateJob extends Component {
@@ -45,6 +46,7 @@ class CreateJob extends Component {
     const { companyLogo, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
     return (
       <div>
+        <TopNav />
         <form onSubmit={this.handleFormSubmit}>
           <label>Company logo:</label>
           <input

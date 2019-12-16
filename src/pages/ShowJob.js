@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import userService from '../lib/user-service';
 import jobService from '../lib/job-service';
 import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 
 
 class ShowJob extends Component {
@@ -73,6 +74,7 @@ class ShowJob extends Component {
     console.log('JOOOOB', this.state.job);
     return (
       <div>
+        <TopNav />
         <h2>{this.state.job.title}</h2>
         <h3>{this.state.job.companyName}</h3>
         <img src={this.state.job.companyLogo} alt="Company logo"/>

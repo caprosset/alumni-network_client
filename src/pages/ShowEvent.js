@@ -5,6 +5,7 @@ import userService from '../lib/user-service';
 import { Link } from 'react-router-dom';
 
 import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 
 
 class ShowEvent extends Component {
@@ -84,6 +85,7 @@ class ShowEvent extends Component {
 
     return (
       <div>
+        <TopNav />
         <div>
           <img src={this.state.event.image} alt="Event cover image"/>
         </div>

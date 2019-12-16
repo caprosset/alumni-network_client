@@ -89,11 +89,6 @@ class ShowAlumni extends Component {
             </div>
           : null
         }
-        { 
-          <Link to={'/alumni'}>
-            <button>Go back</button>
-          </Link>
-        }
         <BottomNav />
       </div>
     )

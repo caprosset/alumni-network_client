@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import eventService from '../lib/event-service';
 
 import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 
 
 class EditEvent extends Component {
@@ -62,6 +63,7 @@ class EditEvent extends Component {
 
     return (
       <div>
+        <TopNav />
         <h1>Edit event</h1>
         <form onSubmit={this.handleFormSubmit}>
           <label>Event title:</label>

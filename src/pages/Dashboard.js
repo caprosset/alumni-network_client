@@ -5,6 +5,7 @@ import { withAuth } from '../lib/AuthProvider';
 import SavedEventCard from '../components/SavedEventCard';
 import SavedJobCard from '../components/SavedJobCard';
 import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 
 
 class Dashboard extends Component {
@@ -12,6 +13,7 @@ class Dashboard extends Component {
     const { user } = this.props;
     return (
       <div>
+        <TopNav />
         <h1>My dashboard</h1>
         {
           user.isAdmin 
