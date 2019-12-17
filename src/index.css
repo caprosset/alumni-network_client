@@ -27,6 +27,10 @@ body {
   margin-top: 2%;
 }
 
-.auth-link a:hover {
+.auth-link a:hover, .bottom-nav-link a:hover {
   font-weight: bold;
+}
+
+.bottom-nav-link {
+  color: hsl(204, 86%, 53%)
 }

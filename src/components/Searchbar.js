@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-// import { SearchStyle } from '../styles/elements';
 import ironhack from '../img/ironhack.png';
 
 

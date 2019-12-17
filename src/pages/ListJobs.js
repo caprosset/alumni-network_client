@@ -7,9 +7,6 @@ import Navbar from '../components/Navbar';
 import JobCard from '../components/JobCard';
 import BottomNav from '../components/BottomNav';
 
-import { Container } from '../styles/elements';
-import { ThemeResults } from '../styles/themes';
-
 
 class ListJobs extends Component {
   state = {
@@ -68,8 +65,8 @@ class ListJobs extends Component {
   render() {
     // console.log(this.state.listOfJobs);
     return (
-      <Container>
-        <ThemeResults>
+      <div>
+        <div>
           <Searchbar filterByTerm={this.filterJobs} />
           <SearchFilters filterByProperty={this.multiFilter} />
           <Navbar />
@@ -80,8 +77,8 @@ class ListJobs extends Component {
             })
           }
           <BottomNav  />
-        </ThemeResults>
-      </Container>
+        </div>
+      </div>
     );
   }
 }

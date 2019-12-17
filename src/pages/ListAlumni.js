@@ -8,9 +8,6 @@ import Navbar from '../components/Navbar';
 import AlumniCard from '../components/AlumniCard';
 import BottomNav from '../components/BottomNav';
 
-// import { Container } from '../styles/elements';
-// import { ThemeResults } from '../styles/themes';
-
 
 class ListAlumni extends Component {
   state = {

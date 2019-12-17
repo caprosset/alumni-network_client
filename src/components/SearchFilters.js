@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-// import { SearchfiltersStyle } from '../styles/elements';
-
 
 class SearchFilters extends Component {
   state = {
