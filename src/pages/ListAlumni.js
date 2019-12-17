@@ -7,7 +7,10 @@ import SearchFilters from '../components/SearchFilters';
 import Navbar from '../components/Navbar';
 import AlumniCard from '../components/AlumniCard';
 import BottomNav from '../components/BottomNav';
- 
+
+import { Container } from '../styles/elements';
+import { ThemeResults } from '../styles/themes';
+
 
 class ListAlumni extends Component {
   state = {
@@ -73,19 +76,21 @@ class ListAlumni extends Component {
   render() {
     // console.log(this.state.listOfAlumni);    
     return (
-      <div>
-        <Searchbar filterByTerm={this.filterAlumni} />
-        <SearchFilters filterByProperty={this.multiFilter} />
-        <Navbar />
-        <h1>All alumni</h1>
+      <Container>
+        <ThemeResults>
+          <Searchbar filterByTerm={this.filterAlumni} />
+          <SearchFilters filterByProperty={this.multiFilter} />
+          <Navbar />
+          <h2>All alumni</h2>
 
-        {
-          this.state.alumniFiltered.map( (oneAlumni, index) => {
-            return <AlumniCard key={index} {...oneAlumni} /> 
-          })
-				}
-        <BottomNav />
-      </div>
+          {
+            this.state.alumniFiltered.map( (oneAlumni, index) => {
+              return <AlumniCard key={index} {...oneAlumni} /> 
+            })
+          }
+          <BottomNav />
+        </ThemeResults>
+      </Container>
     );
   }
 }

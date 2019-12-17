@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Search } from "../styles/elements";
+
+import { SearchStyle } from '../styles/elements';
+import ironhack from '../img/ironhack.png';
+
 
 class Searchbar extends Component {
   state = {
@@ -17,9 +20,9 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <Search>
+      <SearchStyle>
         <div className="top-logo">
-          <img src='../../public/img/ironhack.png' />
+          <img src={ironhack} />
         </div>
         <form>
           <input 
@@ -30,7 +33,7 @@ class Searchbar extends Component {
             value={this.state.search} 
           />
         </form>
-      </Search>
+      </SearchStyle>
     ) 
   }    
 }

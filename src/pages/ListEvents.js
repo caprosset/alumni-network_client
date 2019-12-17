@@ -7,6 +7,9 @@ import Navbar from '../components/Navbar';
 import EventCard from '../components/EventCard';
 import BottomNav from '../components/BottomNav';
 
+import { Container } from '../styles/elements';
+import { ThemeResults } from '../styles/themes';
+
 
 class ListEvents extends Component {
   state = {
@@ -65,18 +68,20 @@ class ListEvents extends Component {
   render() {
     // console.log(this.state.listOfEvents);
     return (
-      <div>
-        <Searchbar filterByTerm={this.filterEvents} />
-        <SearchFilters filterByProperty={this.multiFilter} />
-        <Navbar />
-        <h1>All events</h1>
-        {
-          this.state.eventsFiltered.map( (oneEvent, index) => {
-            return <EventCard key={index} {...oneEvent} /> 
-          })
-				}
-        <BottomNav  />
-      </div>
+      <Container>
+        <ThemeResults>
+          <Searchbar filterByTerm={this.filterEvents} />
+          <SearchFilters filterByProperty={this.multiFilter} />
+          <Navbar />
+          <h2>All events</h2>
+          {
+            this.state.eventsFiltered.map( (oneEvent, index) => {
+              return <EventCard key={index} {...oneEvent} /> 
+            })
+          }
+          <BottomNav  />
+        </ThemeResults>
+      </Container>
     );
   }
 }

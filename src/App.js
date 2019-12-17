@@ -4,8 +4,6 @@ import { Switch } from 'react-router-dom';
 import Splash from './pages/Splash';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-// import Navbar from './components/Navbar';
-import TopNav from './components/TopNav';
 
 import ListAlumni from './pages/ListAlumni';
 import ShowAlumni from './pages/ShowAlumni';

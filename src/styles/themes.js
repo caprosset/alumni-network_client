@@ -4,10 +4,10 @@ import styled, {css} from 'styled-components'
 
 export const ThemeSplash = styled.div`
   display: flex;
+  font-family: Roboto;
   align-content: center;
   text-align: center;
   flex-direction: column;
-  font-family: Roboto;
   background-color: ${colors.darkBlue};
   padding: 80px;
   h1, h2 {
@@ -26,3 +26,10 @@ export const ThemeSplash = styled.div`
     color: white;
   }
 `;
+
+export const ThemeResults = styled.div`
+  margin-top: 75px;
+  font-family: Roboto;
+  display: flex;
+  flex-direction: column;
+`

@@ -4,6 +4,7 @@ import { withAuth } from '../lib/AuthProvider';
 
 import { Form, Button, Container } from "../styles/elements";
 import { ThemeSplash } from '../styles/themes';
+import ironhack from '../img/ironhack.png';
 
 
 class Signup extends Component {
@@ -36,7 +37,7 @@ class Signup extends Component {
       <ThemeSplash>
         <Container>
           <div>
-            <img src='../../public/img/ironhack.png' alt="Logo Ironhack" width="150"/>
+            <img src={ironhack} alt="Logo Ironhack" width="150"/>
           </div>
           <h1>Sign Up</h1>
           <Form onSubmit={this.handleFormSubmit}>

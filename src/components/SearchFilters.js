@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import { SearchfiltersStyle } from '../styles/elements';
+
 
 class SearchFilters extends Component {
   state = {
@@ -20,46 +22,52 @@ class SearchFilters extends Component {
   render() {
     const { bootcamp, city, cohort } = this.state;
     return (
-      <div>
+      <SearchfiltersStyle>
+        <h3>Filter by:</h3>
         <form>
-          <label>Search by:</label>
-          <select name="bootcamp" value={bootcamp} onChange={this.handleFilter}>
-            <option value="all">All bootcamps</option>
-            <option value="Web Development">Web Development</option>
-            <option value="UX Design">UX Design</option>
-            <option value="Data Analytics">Data Analytics</option>
-          </select>
+          <div> 
+            <select name="bootcamp" value={bootcamp} onChange={this.handleFilter}>
+              <option value="all">All bootcamps</option>
+              <option value="Web Development">Web Development</option>
+              <option value="UX Design">UX Design</option>
+              <option value="Data Analytics">Data Analytics</option>
+            </select>
+          </div>
 
-          <select name="city" value={city} onChange={this.handleFilter}>
-            <option value="all">All cities</option>
-            <option value="Barcelona">Barcelona</option>
-            <option value="Madrid">Madrid</option>
-            <option value="Paris">Paris</option>
-            <option value="Lisbon">Lisbon</option>
-            <option value="Amsterdam">Amsterdam</option>
-            <option value="Berlin">Berlin</option>
-            <option value="Miami">Miami</option>
-            <option value="Mexico City">Mexico City</option>
-            <option value="Sao Paulo">Sao Paulo</option>
-          </select>
+          <div>
+            <select name="city" value={city} onChange={this.handleFilter}>
+              <option value="all">All cities</option>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Paris">Paris</option>
+              <option value="Lisbon">Lisbon</option>
+              <option value="Amsterdam">Amsterdam</option>
+              <option value="Berlin">Berlin</option>
+              <option value="Miami">Miami</option>
+              <option value="Mexico City">Mexico City</option>
+              <option value="Sao Paulo">Sao Paulo</option>
+            </select>
+          </div>
 
           {
             this.props.match.path.includes('/alumni') ?
-            <select name="cohort" value={cohort} onChange={this.handleFilter}>
-              <option value="all">All cohorts</option>
-              <option value="oct-19">Oct-19</option>
-              <option value="jul-19">Jul-19</option>
-              <option value="apr-19">Apr-19</option>
-              <option value="jan-19">Jan-19</option>
-              <option value="oct-18">Oct-18</option>
-              <option value="jul-18">Jul-18</option>
-              <option value="apr-18">Apr-18</option>
-              <option value="jan-18">Jan-18</option>
-            </select>
+            <div>
+              <select name="cohort" value={cohort} onChange={this.handleFilter}>
+                <option value="all">All cohorts</option>
+                <option value="oct-19">Oct-19</option>
+                <option value="jul-19">Jul-19</option>
+                <option value="apr-19">Apr-19</option>
+                <option value="jan-19">Jan-19</option>
+                <option value="oct-18">Oct-18</option>
+                <option value="jul-18">Jul-18</option>
+                <option value="apr-18">Apr-18</option>
+                <option value="jan-18">Jan-18</option>
+              </select>
+            </div>
             : null
           }
         </form>
-      </div>
+      </SearchfiltersStyle>
     ) 
   }    
 }
