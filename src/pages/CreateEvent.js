@@ -38,7 +38,12 @@ class CreateEvent extends Component {
     this.setState({ [name]: value });
   };
 
-  pickerOnChange = date => this.setState({ date });
+  pickerOnChange = date => {
+    console.log('DATE', date);
+    console.log('NEW DATE', new Date())
+
+    this.setState({ date });
+  }
 
   handleImageChange = event => {
     console.log('IMAGE', event.target.files[0]);
@@ -81,7 +86,7 @@ class CreateEvent extends Component {
     return (
       <div>
         <TopNav />
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit}  encType="multipart/form-data">
           <label>Event title:</label>
           <input
             type="text"

@@ -79,7 +79,8 @@ class ShowJob extends Component {
 
   render() {
     const { user } = this.props; 
-    const { title, companyName, image, city, bootcamp, description, jobOfferUrl, _id } = this.state.job;
+    const { title, companyName, image, city, bootcamp, description, jobOfferUrl, _id, created_at } = this.state.job;
+    console.log('this.state.job', this.state.job)
     // console.log('USER', user)
     // console.log('JOOOOB', this.state.job);
     console.log(this.props);
@@ -92,7 +93,7 @@ class ShowJob extends Component {
         <img src={image} alt="Company logo" width="250" height="200"/>
         <div>
           <p>Location: {city}</p>
-          <p>Date of publication: {/*createdAt*/}</p>
+          <p>Date of publication: {created_at}</p>
           <p>Recommended for: {bootcamp}</p>
           <p>Description: {description}</p>
         </div>

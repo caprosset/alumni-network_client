@@ -81,7 +81,7 @@ class EditJob extends Component {
       <div>
         <TopNav />
         <h1>Edit job post</h1>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit}  encType="multipart/form-data">
           <label>Company logo:</label>
           <input
             type="file"

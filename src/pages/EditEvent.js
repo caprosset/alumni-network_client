@@ -53,7 +53,11 @@ class EditEvent extends Component {
       });
   };
 
-  pickerOnChange = date => this.setState({ date });
+  pickerOnChange = date => {
+    console.log('NEW DATE', new Date())
+    console.log('IMAGE TO EDIT', date)
+    this.setState({ date });
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -75,6 +79,9 @@ class EditEvent extends Component {
 
   render() {
     const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = this.state;
+console.log('thedate',date);
+//2019-12-24T19:04:00.000Z
+//Tue Dec 17 2019 11:13:34 GMT+0100 (heure normale d’Europe centrale)
 
     // const { id } = this.props.match.params;
     // console.log('JOB ID', id)
@@ -83,7 +90,7 @@ class EditEvent extends Component {
       <div>
         <TopNav />
         <h1>Edit event</h1>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit}  encType="multipart/form-data">
           <label>Event title:</label>
           <input
             type="text"

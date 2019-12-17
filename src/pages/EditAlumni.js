@@ -19,7 +19,8 @@ class EditAlumni extends Component {
     linkedinUrl: '',
     githubUrl: '',
     mediumUrl: '',
-    isAdmin: ''
+    isAdmin: '',
+    imageReady: false
   }
 
   componentDidMount() {
@@ -50,9 +51,9 @@ class EditAlumni extends Component {
 
     imageFile.append('image', file);
 
-    cloudinaryService.imageEdit(imageFile)
+    cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
-        // console.log('the image', imageUrl);
+        console.log('the image', imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
         // console.log('The image is the state', this.state.image);
       });
@@ -90,7 +91,7 @@ class EditAlumni extends Component {
       <div>
         <TopNav />
         <h1>Edit profile</h1>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
           <label>Profile picture:</label>
           <input
             type="file"

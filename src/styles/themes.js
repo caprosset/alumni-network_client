@@ -8,7 +8,7 @@ export const ThemeSplash = styled.div`
   text-align: center;
   flex-direction: column;
   font-family: Roboto;
-  background-color: #1E2434;
+  background-color: ${colors.darkBlue};
   padding: 80px;
   h1, h2 {
     color: white;

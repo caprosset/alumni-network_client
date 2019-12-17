@@ -13,12 +13,6 @@ class Cloudinary {
     .post('/cloudinary', imageFile) 
     .then( imageUrl => imageUrl.data ) 
   }
-
-  imageEdit (imageFile) {
-    return this.auth
-    .put('/cloudinary', imageFile) 
-    .then( imageUrl => imageUrl.data ) 
-  }
 }
 
   const cloudinaryService = new Cloudinary();

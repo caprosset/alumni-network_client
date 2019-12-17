@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-
+import { Search } from "../styles/elements";
 
 class Searchbar extends Component {
   state = {
@@ -17,17 +17,20 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <div>
+      <Search>
+        <div className="top-logo">
+          <img src='../../public/img/ironhack.png' />
+        </div>
         <form>
-          <label></label>
           <input 
+            placeholder="Search..."
             onChange={this.handleInput} 
             type="text" 
             name="search" 
             value={this.state.search} 
           />
         </form>
-      </div>
+      </Search>
     ) 
   }    
 }

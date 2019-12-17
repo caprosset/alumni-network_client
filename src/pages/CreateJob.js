@@ -63,7 +63,7 @@ class CreateJob extends Component {
     return (
       <div>
         <TopNav />
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit}  encType="multipart/form-data">
           <label>Company logo:</label>
           <input
             type="file"

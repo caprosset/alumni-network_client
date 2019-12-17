@@ -11,7 +11,7 @@ class Splash extends Component {
       <ThemeSplash>
         <Container>
             <div>
-              <img src='../assets/ironhack.png' alt="Logo Ironhack" width="150"/>
+              <img src='../../public/img/ironhack.png' alt="Logo Ironhack" width="150"/>
             </div>
 
             <div className="splash-titles">

@@ -81,6 +81,9 @@ class ShowEvent extends Component {
     const { user } = this.props; 
     const{ image, title, attendingAlumni, city, date, bootcamp, description, eventOfferUrl, _id } = this.state.event;
     // console.log('EVENTTTT', this.state.event);
+    console.log('ATTENDING ALUMNI', attendingAlumni)
+    console.log('this.state.event',this.state.event.attendingAlumni);
+    
 
     return (
       <div>
@@ -90,7 +93,8 @@ class ShowEvent extends Component {
         </div>
         <h2>{title}</h2>
           {
-            attendingAlumni
+            this.state.event.attendingAlumni ?
+            attendingAlumni.length  
             ? (<div>
                 <p>Alumni attending this event</p>
                 <ul>
@@ -103,6 +107,7 @@ class ShowEvent extends Component {
                 </ul>
               </div>)
             : null
+          : null
           }
         <div>
           <p>Location: {city}</p>

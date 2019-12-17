@@ -80,8 +80,8 @@ class ListAlumni extends Component {
         <h1>All alumni</h1>
 
         {
-          this.state.alumniFiltered.map( oneAlumni => {
-            return <AlumniCard {...oneAlumni} /> 
+          this.state.alumniFiltered.map( (oneAlumni, index) => {
+            return <AlumniCard key={index} {...oneAlumni} /> 
           })
 				}
         <BottomNav />
