@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function JobCard(props) {
   return (
-    <div key={props._id}>
+    <div>
       <div>
         <h3>{props.title}</h3>
         <p>{props.company}</p>

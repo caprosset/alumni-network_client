@@ -71,8 +71,8 @@ class ListJobs extends Component {
         <Navbar />
         <h1>All jobs</h1>
         {
-          this.state.jobsFiltered.map( oneJob => {
-            return <JobCard {...oneJob} /> 
+          this.state.jobsFiltered.map( (oneJob, index) => {
+            return <JobCard key={index} {...oneJob} /> 
           })
 				}
         <BottomNav  />

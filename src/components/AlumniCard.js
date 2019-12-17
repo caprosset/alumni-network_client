@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function AlumniCard(props) {
   return (
-    <div key={props._id}>
+    <div>
         <div>
           <img src={props.image} alt="profile picture" width="50" height="50"/>
         </div>
