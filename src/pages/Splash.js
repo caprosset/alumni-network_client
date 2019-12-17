@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 import { Button, Container } from "../styles/elements";
-import { ThemeSplash } from '../styles/themes'
+import { ThemeSplash } from '../styles/themes';
 
 
 class Splash extends Component {
@@ -10,11 +10,15 @@ class Splash extends Component {
     return (
       <ThemeSplash>
         <Container>
-          <div>
+            <div>
+              <img src='../assets/ironhack.png' alt="Logo Ironhack" width="150"/>
+            </div>
+
             <div className="splash-titles">
               <h1>Alumni Network</h1>
-              <h2>Keep in touch!</h2>
+              <h2>Keep in touch !</h2>
             </div>
+            
             <div className="splash-buttons">
               <Link to={'/signup'}>
                 <Button splash>Signup</Button>
@@ -23,7 +27,6 @@ class Splash extends Component {
                 <Button splash>Login</Button>
               </Link>
             </div>
-          </div>
       </Container>
     </ThemeSplash>
     )

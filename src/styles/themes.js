@@ -10,16 +10,19 @@ export const ThemeSplash = styled.div`
   font-family: Roboto;
   background-color: #1E2434;
   padding: 80px;
-  h1, h2{
+  h1, h2 {
     color: white;
     margin-bottom: 20%;
   }
   .splash-titles {
-    margin-bottom: 40%;
+    margin-bottom: 20%;
   }
   .splash-buttons {
     display: flex;
     flex-direction: column;
     align-content: center;
+  }
+  label {
+    color: white;
   }
 `;
