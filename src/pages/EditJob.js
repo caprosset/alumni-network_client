@@ -15,6 +15,7 @@ class EditJob extends Component {
     bootcamp: 'Web Development',
     city: 'Barcelona',
     jobOfferUrl: '',
+    imageReady: false
   }
 
 
@@ -44,7 +45,7 @@ class EditJob extends Component {
 
     imageFile.append('image', file);
 
-    cloudinaryService.imageEdit(imageFile)
+    cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
         console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });

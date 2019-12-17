@@ -86,7 +86,7 @@ class CreateEvent extends Component {
     return (
       <div>
         <TopNav />
-        <form onSubmit={this.handleFormSubmit}  encType="multipart/form-data">
+        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
           <label>Event title:</label>
           <input
             type="text"

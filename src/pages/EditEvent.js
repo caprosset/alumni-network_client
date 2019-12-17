@@ -16,7 +16,8 @@ class EditEvent extends Component {
     bootcamp: 'Web Development',
     streetAddress: '',
     city: 'Barcelona',
-    eventUrl: ''
+    eventUrl: '',
+    imageReady: false
   }
 
   componentDidMount() {
@@ -45,7 +46,7 @@ class EditEvent extends Component {
 
     imageFile.append('image', file);
 
-    cloudinaryService.imageEdit(imageFile)
+    cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
         console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });

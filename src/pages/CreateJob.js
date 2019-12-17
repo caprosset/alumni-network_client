@@ -15,6 +15,7 @@ class CreateJob extends Component {
     bootcamp: 'Web Development',
     city: 'Barcelona',
     jobOfferUrl: '',
+    imageReady: false
   }
 
   handleChange = event => {

@@ -55,7 +55,7 @@ class EditAlumni extends Component {
       .then(imageUrl => {
         console.log('the image', imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        // console.log('The image is the state', this.state.image);
+        console.log('The image is the state', this.state.image, 'the image is ready', this.state.imageReady);
       });
   };
 
@@ -64,17 +64,23 @@ class EditAlumni extends Component {
     event.preventDefault();
 
     // get all the values from the state
-    const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
-    
-    // define user id and updatedUser (body) to pass to the update function
-    const { id } = this.props.match.params;
-    const updatedUser = {  firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
+    const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin, imageReady } = this.state;
 
-    userService.updateOne(id, updatedUser)
-    .then(() => {
-        this.props.history.push(`/alumni/${id}`);
-      })
-    .catch(err => console.log(err));
+    console.log('IMAGE URL', image.length)
+    console.log('imageReady', imageReady)
+
+    // if image field contains a url, update the user (if not, edit is blocked)
+    // if (imageReady) {
+      // define user id and updatedUser (body) to pass to the update function
+      const { id } = this.props.match.params;
+      const updatedUser = {  firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
+
+      userService.updateOne(id, updatedUser)
+      .then(() => {
+          this.props.history.push(`/alumni/${id}`);
+        })
+      .catch(err => console.log(err));
+    // }
   };
 
 
