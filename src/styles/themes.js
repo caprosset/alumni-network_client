@@ -10,6 +10,7 @@ export const ThemeSplash = styled.div`
   flex-direction: column;
   background-color: ${colors.darkBlue};
   padding: 80px;
+  height: 1000px;
   h1, h2 {
     color: white;
     margin-bottom: 20%;
