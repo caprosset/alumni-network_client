@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
 
-import { Form, Button, Container } from "../styles/elements";
-import { ThemeSplash } from '../styles/themes';
 import ironhack from '../img/ironhack.png';
 
 
@@ -28,40 +26,57 @@ class Login extends Component {
     const { email, password } = this.state;
 
     return (
-      <ThemeSplash>
-        <Container>
-          <div>
-            <img src={ironhack} alt="Logo Ironhack" width="150"/>
+      <div className="container">
+        <section className="section anon-pages">
+
+          <div className="column is-flex is-horizontal-center">
+            <figure className="image is-128x128">
+              <img src={ironhack} alt="Ironhack logo" />
+            </figure>
           </div>
-          <h1>Login</h1>
-          <Form onSubmit={this.handleFormSubmit}>
-            <div>
-              <input
-                placeholder="Email"
-                type="text"
-                name="email"
-                value={email}
-                onChange={this.handleChange}
-              />
-            </div>
 
-            <div>
-              <input
-                placeholder="Password"
-                type="password"
-                name="password"
-                value={password}
-                onChange={this.handleChange}
-              />
-            </div>
+          <div className="block has-text-centered">
+            <h1 className="title is-1 has-text-white">Login</h1>
+  
+            <form onSubmit={this.handleFormSubmit}>
+              <div className="field">
+                <label className="label has-text-white">Email *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Email"
+                    type="text"
+                    name="email"
+                    value={email}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
 
-            <Button splash type="submit">Login</Button>
-          </Form>
+              <div className="field">
+                <label className="label has-text-white">Password *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <button type="submit" className="button is-large is-info is-fullwidth" style={{'margin-top': '8%'}}>Login</button>
+            </form>
           
-          <p>Don't have an account yet?</p>
-          <Link to={'/signup'}>Sign up</Link>
-        </Container>
-    </ThemeSplash>
+            <div className="level-item auth-link has-text-white">
+              <p>Don't have an account yet? 
+                <Link className="has-text-info" to={'/signup'}>   Signup</Link>
+              </p>
+            </div>
+          </div>
+
+        </section>
+      </div>
     );  
   }
 }

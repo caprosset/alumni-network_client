@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { SearchfiltersStyle } from '../styles/elements';
+// import { SearchfiltersStyle } from '../styles/elements';
 
 
 class SearchFilters extends Component {
@@ -22,7 +22,7 @@ class SearchFilters extends Component {
   render() {
     const { bootcamp, city, cohort } = this.state;
     return (
-      <SearchfiltersStyle>
+      <div>
         <h3>Filter by:</h3>
         <form>
           <div> 
@@ -67,7 +67,7 @@ class SearchFilters extends Component {
             : null
           }
         </form>
-      </SearchfiltersStyle>
+      </div>
     ) 
   }    
 }

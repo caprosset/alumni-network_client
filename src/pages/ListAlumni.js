@@ -8,8 +8,8 @@ import Navbar from '../components/Navbar';
 import AlumniCard from '../components/AlumniCard';
 import BottomNav from '../components/BottomNav';
 
-import { Container } from '../styles/elements';
-import { ThemeResults } from '../styles/themes';
+// import { Container } from '../styles/elements';
+// import { ThemeResults } from '../styles/themes';
 
 
 class ListAlumni extends Component {
@@ -76,8 +76,8 @@ class ListAlumni extends Component {
   render() {
     // console.log(this.state.listOfAlumni);    
     return (
-      <Container>
-        <ThemeResults>
+      <div>
+        <div>
           <Searchbar filterByTerm={this.filterAlumni} />
           <SearchFilters filterByProperty={this.multiFilter} />
           <Navbar />
@@ -89,8 +89,8 @@ class ListAlumni extends Component {
             })
           }
           <BottomNav />
-        </ThemeResults>
-      </Container>
+        </div>
+      </div>
     );
   }
 }

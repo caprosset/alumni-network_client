@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { NavbarStyle } from '../styles/elements';
+// import { NavbarStyle } from '../styles/elements';
 
 
 class Navbar extends Component {
   render() {
     return (
-      <NavbarStyle>
+      <div>
         <ul>
           <Link to="/alumni">
             <li>Alumni</li>
@@ -19,7 +19,7 @@ class Navbar extends Component {
             <li>Events</li>
           </Link>
         </ul>
-      </NavbarStyle>
+      </div>
     )
   }
 }
