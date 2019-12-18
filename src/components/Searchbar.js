@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import ironhack from '../img/ironhack.png';
 
 
@@ -23,7 +23,7 @@ class Searchbar extends Component {
 
         <div className="navbar-brand is-active">
           <figure className="image is-96x96">
-            <img src={ironhack} alt="Ironhack logo" />
+          <Link to='/alumni'><img src={ironhack} alt="Ironhack logo" /></Link>
           </figure>
         </div>
         
