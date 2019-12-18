@@ -10,6 +10,18 @@ body {
     sans-serif;
 }
 
+.is-horizontal-center {
+  justify-content: center;
+}
+
+.is-vertical-center {
+  align-items: center;
+}
+
+.is-spaced-around {
+  justify-content: space-around;
+}
+
 .anon-pages {
   background-color: #1e2434;
   height: 1100px;  
@@ -17,10 +29,6 @@ body {
 
 .anon-pages label {
   text-align: left;
-}
-
-.is-horizontal-center {
-  justify-content: center;
 }
 
 .auth-link {
@@ -34,3 +42,38 @@ body {
 .bottom-nav-link {
   color: hsl(204, 86%, 53%)
 }
+
+.searchnav {
+  height: 100px;
+}
+
+.filters {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.filters form {
+  margin-bottom: 2%;
+}
+
+.search-filters .field {
+  margin-right: 2%;
+}
+
+.search-filters .select {
+  font-size: 0.8rem;
+}
+
+.results-list {
+  margin-top: 200px;
+}
+
+/* .navdirectory {
+  margin-top: 50px;
+  position: fixed;
+  background-color: #fff;
+} */
+/* .searchfilters, .navdirectory {
+  background-color: #fff;
+  position: fixed;
+} */
+/* color: #32c3ff; */

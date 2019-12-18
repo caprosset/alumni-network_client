@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import ironhack from '../img/ironhack.png';
+// import SearchFilters from './SearchFilters';
+// import Navbar from './Navbar';
 
 
 class Searchbar extends Component {
@@ -19,23 +21,38 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <div>
-        <div className="top-logo">
-          <img src={ironhack} width="50" />
+      <div className="is-flex is-vertical-center is-spaced-around searchnav">
+
+        <div className="navbar-brand is-active">
+          <figure className="image is-96x96">
+            <img src={ironhack} alt="Ironhack logo" />
+          </figure>
         </div>
-        <form>
-          <input 
-            placeholder="Search..."
-            onChange={this.handleInput} 
-            type="text" 
-            name="search" 
-            value={this.state.search} 
-          />
-        </form>
+        
+        <div className="navbar-menu is-active" style={{'box-shadow': 'none', 'margin-right': '5%'}}>
+          <form>
+            <div className="field has-addons">
+              <div className="control">
+                <input className="input" 
+                  placeholder="Search"
+                  type="text"
+                  name="search"
+                  value={this.state.search} 
+                  onChange={this.handleInput} 
+                />
+              </div>
+              <div className="control">
+                <a className="button is-info">Search</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        {/* <SearchFilters />
+        <Navbar /> */}
       </div>
     ) 
   }    
 }
-
 
 export default withRouter(Searchbar);

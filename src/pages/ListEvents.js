@@ -65,19 +65,25 @@ class ListEvents extends Component {
   render() {
     // console.log(this.state.listOfEvents);
     return (
-      <div>
-        <div>
-          <Searchbar filterByTerm={this.filterEvents} />
-          <SearchFilters filterByProperty={this.multiFilter} />
-          <Navbar />
-          <h2>All events</h2>
-          {
-            this.state.eventsFiltered.map( (oneEvent, index) => {
-              return <EventCard key={index} {...oneEvent} /> 
-            })
-          }
+      <div className="container">
+        <section className="section">
+          <div className="top-search-nav navbar is-fixed-top">
+            <Searchbar filterByTerm={this.filterAlumni} />
+            <SearchFilters filterByProperty={this.multiFilter} />
+            <Navbar />
+          </div>
+
+          <div  className="results-list">
+            <h2>All events</h2>
+            {
+              this.state.eventsFiltered.map( (oneEvent, index) => {
+                return <EventCard key={index} {...oneEvent} /> 
+              })
+            }
+          </div>
+
           <BottomNav  />
-        </div>
+        </section>
       </div>
     );
   }

@@ -73,20 +73,26 @@ class ListAlumni extends Component {
   render() {
     // console.log(this.state.listOfAlumni);    
     return (
-      <div>
-        <div>
-          <Searchbar filterByTerm={this.filterAlumni} />
-          <SearchFilters filterByProperty={this.multiFilter} />
-          <Navbar />
-          <h2>All alumni</h2>
+      <div className="container">
+        <section className="section">
+          <div className="top-search-nav navbar is-fixed-top">
+            <Searchbar filterByTerm={this.filterAlumni} />
+            <SearchFilters filterByProperty={this.multiFilter} />
+            <Navbar />
+          </div>
 
-          {
-            this.state.alumniFiltered.map( (oneAlumni, index) => {
-              return <AlumniCard key={index} {...oneAlumni} /> 
-            })
-          }
+          <div className="results-list">
+            <h2>All alumni</h2>
+
+            {
+              this.state.alumniFiltered.map( (oneAlumni, index) => {
+                return <AlumniCard key={index} {...oneAlumni} /> 
+              })
+            }
+          </div>
+
           <BottomNav />
-        </div>
+        </section>
       </div>
     );
   }

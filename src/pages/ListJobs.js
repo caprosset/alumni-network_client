@@ -65,19 +65,25 @@ class ListJobs extends Component {
   render() {
     // console.log(this.state.listOfJobs);
     return (
-      <div>
-        <div>
-          <Searchbar filterByTerm={this.filterJobs} />
-          <SearchFilters filterByProperty={this.multiFilter} />
-          <Navbar />
-          <h2>All jobs</h2>
-          {
-            this.state.jobsFiltered.map( (oneJob, index) => {
-              return <JobCard key={index} {...oneJob} /> 
-            })
-          }
+      <div className="container">
+        <section className="section">
+          <div className="top-search-nav navbar is-fixed-top">
+            <Searchbar filterByTerm={this.filterJobs} />
+            <SearchFilters filterByProperty={this.multiFilter} />
+            <Navbar />
+          </div>
+
+          <div className="results-list">
+            <h2>All jobs</h2>
+            {
+              this.state.jobsFiltered.map( (oneJob, index) => {
+                return <JobCard key={index} {...oneJob} /> 
+              })
+            }
+          </div>
+
           <BottomNav  />
-        </div>
+        </section>
       </div>
     );
   }
