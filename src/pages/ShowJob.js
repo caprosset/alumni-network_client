@@ -106,8 +106,8 @@ class ShowJob extends Component {
                 <div className="is-flex event-info">
                   <div>
                     <p>Location:</p>
-                    <p>Date of publication:</p>
-                    <p>Recommended for:</p>
+                    <p>Created:</p>
+                    <p>For:</p>
                     <p>Job description:</p>
                   </div>
                   <div>

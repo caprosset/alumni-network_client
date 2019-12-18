@@ -75,7 +75,7 @@ class EditJob extends Component {
   render() {
     const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
 
-    const { id } = this.props.match.params;
+    // const { id } = this.props.match.params;
     // console.log('JOB ID', id)
 
     return (
