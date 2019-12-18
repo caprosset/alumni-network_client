@@ -18,7 +18,7 @@ class Splash extends Component {
 
         <div className="block has-text-centered">
           <h1 className="title is-1 has-text-white">Alumni<br /> Network</h1>
-          <h2 className="subtitle is-4 has-text-white" style={{'margin-top': '2%'}}>Keep in touch !</h2>
+          <h4 className="subtitle is-4 has-text-white" style={{'margin-top': '2%'}}>Keep in touch !</h4>
         </div>
 
         <div className="columns" style={{'margin-top': '20%'}}>

@@ -82,7 +82,7 @@ class ListAlumni extends Component {
           </div>
 
           <div className="results-list">
-            <h2 className="title is3">Alumni</h2>
+            <h3 className="title is-3">Alumni</h3>
 
             {
               this.state.alumniFiltered.map( (oneAlumni, index) => {

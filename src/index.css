@@ -72,13 +72,14 @@ body {
   margin-bottom: 100px
 }
 
-.result-card {
+.result-card, .saved-card {
   font-size: 0.6rem;
 }
 
-.result-card .column {
+.result-card .column, .saved-card .column {
   width: 20%;
 }
+
 /* .navdirectory {
   margin-top: 50px;
   position: fixed;

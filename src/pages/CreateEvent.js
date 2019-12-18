@@ -3,19 +3,8 @@ import DateTimePicker from 'react-datetime-picker';
 import eventService from '../lib/event-service';
 import cloudinaryService from '../lib/cloudinary-service';
 
-import styled from 'styled-components';
-
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
-
-const Button = styled.button`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  margin: 0 1em;
-  padding: 0.25em 1em;
-`
 
 
 class CreateEvent extends Component {
@@ -153,7 +142,7 @@ class CreateEvent extends Component {
             onChange={this.handleChange}
           />
 
-          <Button type="submit">Create event</Button>
+          <button type="submit">Create event</button>
         </form>
         <BottomNav />
       </div>

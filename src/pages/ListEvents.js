@@ -74,7 +74,7 @@ class ListEvents extends Component {
           </div>
 
           <div  className="results-list">
-            <h2 className="title is3">Events</h2>
+            <h3 className="title is-3">Events</h3>
             {
               this.state.eventsFiltered.map( (oneEvent, index) => {
                 return <EventCard key={index} {...oneEvent} /> 

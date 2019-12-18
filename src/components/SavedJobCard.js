@@ -1,63 +1,31 @@
 import React, { Component } from 'react';
-import userService from '../lib/user-service';
 import { Link } from 'react-router-dom';
 
 
 class SavedJobCard extends Component {
-  state = {
-    savedJobs: []
-  }
-
-  componentDidMount() {    
-    const { userId } = this.props;
-    
-    userService.getOne(userId)
-    .then((user) => {
-      // console.log(user.savedJobs);
-      const savedJobs = user.savedJobs
-      this.setState({ savedJobs })
-    }).catch((err) => {
-      console.log(err);
-    });
-  }
-
-  unsave = (jobId) => {
-    const { userId } = this.props;
-    console.log('USER ID', userId, 'JOB ID', jobId);
-
-    userService.removeSavedJob(userId, jobId)
-    .then((user) => {
-      // console.log(user.savedJobs);
-      const savedJobs = user.savedJobs
-      this.setState({ savedJobs });
-    })
-    .catch((err) => console.log(err));
-  }
-
   render() {
     return (
       <div>
-        {
-          this.state.savedJobs.map (oneJob => {
-            return (
-              <div>
-                <div>
-                  <p>{oneJob.title}</p>
-                </div>
-                <div>
-                  <p>{oneJob.companyName}</p>
-                </div>
-                <div>
-                  <p>{oneJob.city}</p>
-                </div>
-                <div>
-                  <Link to={`/job/${oneJob._id}`}>See</Link>
-                  <button onClick={() => this.unsave(oneJob._id)}>Unsave job</button>
-                </div>
-              </div>
-            )
-          })
-        }
+        <div className="saved-card columns is-flex is-vertical-center is-horizontal-center">
+
+          <div className="column is-3 is-mobile">
+            <p>
+              <Link to={`/job/${this.props._id}`}>{this.props.title}</Link>
+            </p>
+          </div>
+          
+          <div className="column is-3 is-mobile">
+            <p>{this.props.companyName}</p>
+          </div>
+
+          <div className="column is-3 is-mobile">
+            <p>{this.props.city}</p>
+          </div>
+
+          <div className="column is-3 is-mobile">
+            <button className="button is-small is-outlined" onClick={() => this.props.unsaveJob(this.props._id)}>Unsave</button>
+          </div>
+        </div>
       </div>
     )
   }

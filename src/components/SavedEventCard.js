@@ -1,65 +1,31 @@
 import React, { Component } from 'react';
-import userService from '../lib/user-service';
 import { Link } from 'react-router-dom';
 
 
 class SavedEventCard extends Component {
-  state = {
-    savedEvents: []
-  }
-
-  componentDidMount() {    
-    const { userId } = this.props;
-    
-    userService.getOne(userId)
-    .then((user) => {
-      // console.log(user.savedEvents);
-      const savedEvents = user.savedEvents
-      this.setState({ savedEvents })
-    }).catch((err) => {
-      console.log(err);
-    });
-  }
-
-  unsave = (eventId) => {
-    const { userId } = this.props;
-    console.log('USER ID', userId, 'EVENT ID', eventId);
-
-    userService.removeSavedEvent(userId, eventId)
-    .then((user) => {
-      // console.log(user.savedEvents);
-      const savedEvents = user.savedEvents
-      this.setState({ savedEvents });
-    })
-    .catch((err) => console.log(err));
-  }
-
   render() {
-    console.log('eventsss',this.state.savedEvents);
-    
     return (
       <div>
-        {
-          this.state.savedEvents.map (oneEvent => {
-            return (
-              <div>
-                <div>
-                  <p>{oneEvent.date}</p>
-                </div>
-                <div>
-                  <p>{oneEvent.city}</p>
-                </div>
-                <div>
-                  <p>{oneEvent.title}</p>
-                </div>
-                <div>
-                  <Link to={`/event/${oneEvent._id}`}>See</Link>
-                  <button onClick={() => this.unsave(oneEvent._id)}>Unsave event</button>
-                </div>
-              </div>
-            )
-          })
-        }
+        <div className="saved-card columns is-flex is-vertical-center is-horizontal-center">
+
+          <div className="column is-3 is-mobile">
+            <p>
+              <Link to={`/event/${this.props._id}`}>{this.props.title}</Link>
+            </p>
+          </div>
+
+          <div className="column is-3 is-mobile">
+            <p>{this.props.date}</p>
+          </div>
+
+          <div className="column is-3 is-mobile">
+            <p>{this.props.city}</p>
+          </div>
+
+          <div className="column is-3 is-mobile">
+            <button className="button is-small is-outlined" onClick={() => this.props.unsaveEvent(this.props._id)}>Unsave</button>
+          </div>
+        </div>
       </div>
     )
   }
