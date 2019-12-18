@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DateTimePicker from 'react-datetime-picker';
 import eventService from '../lib/event-service';
 import cloudinaryService from '../lib/cloudinary-service';
 
@@ -54,11 +53,6 @@ class EditEvent extends Component {
       });
   };
 
-  pickerOnChange = date => {
-    console.log('NEW DATE', new Date())
-    console.log('IMAGE TO EDIT', date)
-    this.setState({ date });
-  }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -80,10 +74,7 @@ class EditEvent extends Component {
 
   render() {
     const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = this.state;
-console.log('thedate',date);
-//2019-12-24T19:04:00.000Z
-//Tue Dec 17 2019 11:13:34 GMT+0100 (heure normale d’Europe centrale)
-
+    // console.log('thedate',date);
     // const { id } = this.props.match.params;
     // console.log('JOB ID', id)
 
@@ -124,11 +115,13 @@ console.log('thedate',date);
               <div className="field">
                 <label className="label">Date *</label>
                 <div className="control">
-                  <DateTimePicker
+                  <input 
+                    className="input" 
+                    type="datetime-local"
                     name="date"
-                    value={date}
-                    onChange={this.pickerOnChange}
-                  />
+                    // value={date}
+                    value={(date !== null) ? date.slice(0,16) : date}
+                    onChange={this.handleChange} />
                 </div>
               </div>
 

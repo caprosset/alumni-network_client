@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DateTimePicker from 'react-datetime-picker';
 import eventService from '../lib/event-service';
 import cloudinaryService from '../lib/cloudinary-service';
 
@@ -26,13 +25,6 @@ class CreateEvent extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-
-  pickerOnChange = date => {
-    console.log('DATE', date);
-    console.log('NEW DATE', new Date())
-
-    this.setState({ date });
-  }
 
   handleImageChange = event => {
     console.log('IMAGE', event.target.files[0]);
@@ -109,11 +101,11 @@ class CreateEvent extends Component {
               <div className="field">
                 <label className="label">Date *</label>
                 <div className="control">
-                  <DateTimePicker
-                    name="date"
-                    value={date}
-                    onChange={this.pickerOnChange}
-                  />
+                    <input 
+                      className="input" 
+                      type="datetime-local"
+                      name="date"
+                      onChange={this.handleChange} />
                 </div>
               </div>
 
