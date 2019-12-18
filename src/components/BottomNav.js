@@ -6,7 +6,7 @@ class BottomNav extends Component {
   render() {
     const { user } = this.props;
     return (
-      <nav className="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-fixed-bottom has-background-white" role="navigation" aria-label="main navigation">
         <div className="navbar-menu is-active">
           <div className="field is-grouped">
 

@@ -70,39 +70,76 @@ class ShowAlumni extends Component {
           <TopNav />
 
           <div className="page-body">
-            <div className="block is-flex is-horizontal-center">
-            <figure className="image is-128x128">
-              <img className="is-rounded is-128x128" src={image} alt="Profile picture" />
-            </figure>
+            <div className="is-flex is-horizontal-center ">
+              <figure className="image is-128x128">
+                <img className="is-rounded is-128x128" src={image} alt="Profile picture" />
+              </figure>
+            </div>
+              
+            <div className="has-text-centered alumni-header">
+              <h3 className="title is-3">{firstName} {lastName}</h3>
+
+              <div className="is-flex is-horizontal-center social-icons">
+                <div>
+                  <Link to={linkedinUrl} target="_blank">
+                    <span className="icon is-size-3 has-text-dark">
+                      <i className="fa fa-linkedin" aria-hidden="true"></i>
+                    </span>
+                  </Link>
+                </div>
+
+                <div>
+                  <Link to={githubUrl} target="_blank">
+                    <span className="icon is-size-3 has-text-dark">
+                      <i className="fa fa-github" aria-hidden="true"></i>
+                    </span>
+                  </Link>
+                </div>
+
+                <div>
+                  <Link to={mediumUrl} target="_blank">
+                    <span className="icon is-size-3 has-text-dark">
+                      <i className="fa fa-medium" aria-hidden="true"></i>
+                    </span>
+                  </Link>
+                </div>
+              </div>
             </div>
 
+            <div className="block has-text-left alumni-info">
+              <div className="is-flex">
+                <div>
+                  <p>Email:</p>
+                  <p>Phone:</p>
+                  <p>Bootcamp:</p>
+                  <p>Campus:</p>
+                  <p>Cohort:</p>
+                  <p>Current city:</p>
+                  <p>Current role:</p>
+                  <p>Current company:</p>
+                </div>
+                <div>
+                  <p>{email}</p>
+                  <p>{phone}</p>
+                  <p>{bootcamp}</p>
+                  <p>{campus}</p>
+                  <p>{cohort}</p>
+                  <p>{currentCity}</p> 
+                  <p>{currentRole}</p>
+                  <p>{currentCompany}</p>
+                </div>
+              </div>
+            </div>
 
-            <h2>{firstName} {lastName}</h2>
-            
-            <div>
-              <a href={linkedinUrl} target="_blank">Linkedin</a>
-              <a href={githubUrl} target="_blank">Github</a>
-              <a href={mediumUrl} target="_blank">Medium</a>
-            </div>
-            <div>
-              <p>Email: {email}</p>
-              <p>Phone: {phone}</p>
-              <p>Bootcamp: {bootcamp}</p>
-              <p>Campus: {campus}</p>
-              <p>Cohort: {cohort}</p>
-              <p>Current city: {currentCity}</p>
-              <p>Current role: {currentRole}</p>
-              <p>Current company: {currentCompany}</p>
-            </div>
             {
               // if user is on his profile, display 'Edit' button
               this.state.currentUser
               ? 
-                <div>
+                <div className="buttons alumni-buttons">
                   <Link to={`/alumni/edit/${_id}`}>
-                    <button>Edit profile</button>
+                    <button className="button is-info">Edit profile</button>
                   </Link>
-                  <button onClick={logout}>Logout</button>
+                  <button className="button is-danger" onClick={logout}>Logout</button>
                 </div>
               : null
             }

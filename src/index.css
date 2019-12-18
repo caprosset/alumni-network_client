@@ -8,7 +8,7 @@ html {
 }
 
 body {
-	/* font-family: 'Roboto', arial, sans-serif; */
+  /* font-family: 'Roboto', arial, sans-serif; */  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -118,7 +118,27 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10%;
 }
 
+.alumni-header {
+  margin-top: 10%;
+}
 
+.social-icons {
+  justify-content: space-around;
+}
 
+.alumni-info {
+  font-size: 0.9rem;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+.alumni-info div {
+  justify-content: space-evenly;
+}
+
+.alumni-buttons {
+  justify-content: space-evenly !important;
+}
 
 /* color: #32c3ff; */
