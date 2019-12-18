@@ -86,42 +86,68 @@ class ShowJob extends Component {
     console.log(this.props);
     
     return (
-      <div>
-        <TopNav />
-        <h2>{title}</h2>
-        <h3>{companyName}</h3>
-        <img src={image} alt="Company logo" width="250" height="200"/>
-        <div>
-          <p>Location: {city}</p>
-          <p>Date of publication: {created_at}</p>
-          <p>Recommended for: {bootcamp}</p>
-          <p>Description: {description}</p>
-        </div>
-        <div>
-          <a href={jobOfferUrl} target="_blank">Apply to job offer</a>
-        </div>
-        {
-          // if user is admin, display 'Edit' and 'Delete' button; if not, display the 'Save' button
-          user.isAdmin
-          ? 
-            <div>
-              <Link to={`/job/edit/${_id}`}>
-                <button>Edit job</button>
-              </Link>
-              <button onClick={() => this.delete()}>Delete job</button>
+      <div className="container">
+        <section className="section">
+
+          <TopNav />
+
+          <div className="page-body">
+            <div className="is-flex is-horizontal-center ">
+              <figure className="image is-128x128">
+                <img src={image} alt="Company logo" />
+              </figure>
             </div>
-          :
-            this.state.jobIsSaved 
-            ?
-            <div>
-              <button onClick={() => this.unsave()}>Unsave job</button>
+
+            <div className="job-body has-text-centered">
+              <h3 className="title is-3">{title}</h3>
+              <h6 className="title is-6">{companyName}</h6>
+
+              <div className="block has-text-left">
+                <div className="is-flex event-info">
+                  <div>
+                    <p>Location:</p>
+                    <p>Date of publication:</p>
+                    <p>Recommended for:</p>
+                    <p>Job description:</p>
+                  </div>
+                  <div>
+                    <p>{city}</p>
+                    <p>{created_at}</p>
+                    <p>{bootcamp}</p>
+                    <p>{description}</p>
+                  </div>
+                </div>
+                <button className="button is-link is-outlined is-fullwidth">
+                  <a href={jobOfferUrl} target="_blank">Apply to the job</a>
+                </button>
+              
+                {
+                  // if user is admin, display 'Edit' and 'Delete' button; if not, display the 'Save' button
+                  user.isAdmin
+                  ? 
+                    <div className="buttons bottom-buttons">
+                      <Link to={`/job/edit/${_id}`}>
+                        <button className="button is-info">Edit job</button>
+                      </Link>
+                      <button className="button is-danger" onClick={() => this.delete()}>Delete job</button>
+                    </div>
+                  :
+                    this.state.jobIsSaved 
+                    ?
+                    <div className="buttons bottom-buttons">
+                      <button className="button is-danger is-fullwidth" onClick={() => this.unsave()}>Unsave job</button>
+                    </div>
+                    : 
+                    <div className="buttons bottom-buttons">
+                      <button className="button is-success is-fullwidth" onClick={() => this.save()}>Save job</button>
+                    </div>
+                }
+              </div>
             </div>
-            : 
-            <div>
-              <button onClick={() => this.save()}>Save job</button>
-            </div>
-        }
-        <BottomNav />
+          </div>
+
+          <BottomNav />
+        </section>
       </div>
     )
   }

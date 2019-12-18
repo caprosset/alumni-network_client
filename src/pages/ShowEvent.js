@@ -101,7 +101,7 @@ class ShowEvent extends Component {
             <div className="event-body has-text-centered">
               <h3 className="title is-3">{title}</h3>
 
-              <div className="block has-text-left alumni-info">
+              <div className="block has-text-left">
                 {
                   this.state.event.attendingAlumni 
                   ?
@@ -155,11 +155,11 @@ class ShowEvent extends Component {
                   this.state.eventIsSaved
                   ?
                   <div className="buttons bottom-buttons">
-                    <button className="button is-danger is-outlined is-fullwidth" onClick={() => this.unsave()}>Unsave event</button>
+                    <button className="button is-danger is-fullwidth" onClick={() => this.unsave()}>Unsave event</button>
                   </div>
                   : 
                   <div className="buttons bottom-buttons">
-                    <button className="button is-success is-outlined is-fullwidth" onClick={() => this.save()}>Save event</button>
+                    <button className="button is-success is-fullwidth" onClick={() => this.save()}>Save event</button>
                   </div>
                 }
               </div>
