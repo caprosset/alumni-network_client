@@ -81,27 +81,27 @@ class ShowAlumni extends Component {
 
               <div className="is-flex is-horizontal-center social-icons">
                 <div>
-                  <Link to={linkedinUrl} target="_blank">
+                  <a href={linkedinUrl} target="_blank">
                     <span className="icon is-size-3 has-text-dark">
                       <i className="fa fa-linkedin" aria-hidden="true"></i>
                     </span>
-                  </Link>
+                  </a>
                 </div>
 
                 <div>
-                  <Link to={githubUrl} target="_blank">
+                  <a href={githubUrl} target="_blank">
                     <span className="icon is-size-3 has-text-dark">
                       <i className="fa fa-github" aria-hidden="true"></i>
                     </span>
-                  </Link>
+                  </a>
                 </div>
 
                 <div>
-                  <Link to={mediumUrl} target="_blank">
+                  <a href={mediumUrl} target="_blank">
                     <span className="icon is-size-3 has-text-dark">
                       <i className="fa fa-medium" aria-hidden="true"></i>
                     </span>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
