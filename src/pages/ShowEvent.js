@@ -77,13 +77,32 @@ class ShowEvent extends Component {
     .catch( (err) => console.log(err));
   }
 
+  formatDate = d => {
+    let date = new Date(d);
+    let dd = date.getDate(); 
+    let mm = date.getMonth()+1;
+    let yyyy = date.getFullYear(); 
+    if(dd<10){dd='0'+dd} ;
+    if(mm<10){mm='0'+mm};
+    return d = dd+'/'+mm+'/'+yyyy;
+  } 
+
+  formatHour = d => {
+    let date = new Date(d);
+    let hh = date.getHours();
+    let mm = date.getMinutes();
+    if(hh<10){hh='0'+hh};
+    if(mm<10){mm='0'+mm};
+    return d = hh+':'+mm;
+  }
+
   render() {
     const { user } = this.props; 
     const{ image, title, attendingAlumni, city, date, bootcamp, description, eventOfferUrl, _id } = this.state.event;
     // console.log('EVENTTTT', this.state.event);
-    console.log('ATTENDING ALUMNI', attendingAlumni)
-    console.log('this.state.event',this.state.event.attendingAlumni);
-    
+    // console.log('ATTENDING ALUMNI', attendingAlumni)
+    // console.log('this.state.event',this.state.event.attendingAlumni);
+    console.log('ORIGINAL DATE', date)
 
     return (
       <div className="container">
@@ -126,13 +145,13 @@ class ShowEvent extends Component {
                 <div className="is-flex event-info">
                   <div>
                     <p>Location:</p>
-                    <p>Date:</p>
+                    <p>Date and time:</p>
                     <p>Recommended for:</p>
                     <p>About:</p>
                   </div>
                   <div>
                     <p>{city}</p>
-                    <p>{date}</p>
+                    <p>{this.formatDate(date)} - {this.formatHour(date)}</p>
                     <p>{bootcamp}</p>
                     <p>{description}</p>
                   </div>

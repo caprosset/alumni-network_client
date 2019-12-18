@@ -77,14 +77,25 @@ class ShowJob extends Component {
     .catch( (err) => console.log(err));
   }
 
+  formatDate = d => {
+    let date = new Date(d)
+    var dd = date.getDate(); 
+    var mm = date.getMonth()+1;
+    var yyyy = date.getFullYear(); 
+    if(dd<10){dd='0'+dd} 
+    if(mm<10){mm='0'+mm};
+    return d = dd+'/'+mm+'/'+yyyy
+  } 
+
   render() {
     const { user } = this.props; 
     const { title, companyName, image, city, bootcamp, description, jobOfferUrl, _id, created_at } = this.state.job;
-    console.log('this.state.job', this.state.job)
+    // console.log('this.state.job', this.state.job)
     // console.log('USER', user)
     // console.log('JOOOOB', this.state.job);
-    console.log(this.props);
-    console.log('DATE FORMAT', created_at)
+    // console.log(this.props);
+    // console.log('DATE FORMAT', created_at)
+    // console.log('DATE CONVERTED', this.formatDate(created_at))
     return (
       <div className="container">
         <section className="section">
@@ -112,7 +123,7 @@ class ShowJob extends Component {
                   </div>
                   <div>
                     <p>{city}</p>
-                    <p>{created_at}</p>
+                    <p>{this.formatDate(created_at)}</p>
                     <p>{bootcamp}</p>
                     <p>{description}</p>
                   </div>
