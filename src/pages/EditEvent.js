@@ -88,79 +88,130 @@ console.log('thedate',date);
     // console.log('JOB ID', id)
 
     return (
-      <div>
-        <TopNav />
-        <h1>Edit event</h1>
-        <form onSubmit={this.handleFormSubmit}  encType="multipart/form-data">
-          <label>Event title:</label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={this.handleChange}
-          />
+      <div className="container">
+        <section className="section">
 
-          <label>Image:</label>
-          <input
-            type="file"
-            name="image"
-            onChange={this.handleImageChange}
-          />
+          <TopNav />
 
-          <label>Date:</label>
-          <DateTimePicker
-            name="date"
-            value={date}
-            onChange={this.pickerOnChange}
-          />
+          <div className="page-body">
+            <h3 className="title is-3">Edit event</h3>
+            <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
 
-          <label>Address:</label>
-          <input
-            type="text"
-            name="streetAddress"
-            value={streetAddress}
-            onChange={this.handleChange}
-          />
+              <div className="field">
+                <label className="label">Title of the event *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="What is the title of the event?"
+                    type="text"
+                    name="title"
+                    value={title}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
 
-          <label>City:</label>
-          <select name="city" value={city} onChange={this.handleChange}>
-            <option value="Barcelona">Barcelona</option>
-            <option value="Madrid">Madrid</option>
-            <option value="Paris">Paris</option>
-            <option value="Lisbon">Lisbon</option>
-            <option value="Amsterdam">Amsterdam</option>
-            <option value="Berlin">Berlin</option>
-            <option value="Miami">Miami</option>
-            <option value="Mexico City">Mexico City</option>
-            <option value="Sao Paulo">Sao Paulo</option>
-          </select>
+              <div className="field">
+                <label className="label">Image</label>
+                <div className="control">
+                  <input className="input" 
+                    type="file"
+                    name="image"
+                    onChange={this.handleImageChange}
+                  />
+                </div>
+              </div>
 
-          <label>Recommended for:</label>
-          <select name="bootcamp" value={bootcamp} onChange={this.handleChange}>
-            <option value="Web Development">Web Development</option>
-            <option value="UX Design">UX Design</option>
-            <option value="Data Analytics">Data Analytics</option>
-          </select>
+              <div className="field">
+                <label className="label">Date *</label>
+                <div className="control">
+                  <DateTimePicker
+                    name="date"
+                    value={date}
+                    onChange={this.pickerOnChange}
+                  />
+                </div>
+              </div>
 
-          <label>Event description:</label>
-          <input
-            type="text"
-            name="description"
-            value={description}
-            onChange={this.handleChange}
-          />
+              <div className="field">
+                <label className="label">Address *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Street, number"
+                    type="text"
+                    name="streetAddress"
+                    value={streetAddress}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
 
-          <label>Event url:</label>
-          <input
-            type="text"
-            name="eventUrl"
-            value={eventUrl}
-            onChange={this.handleChange}
-          />
+              <div className="field">
+                <label className="label">City *</label>
+                <div className="control">
+                  <div className="select is-fullwidth">
+                    <select name="city" value={city} onChange={this.handleChange}>
+                      <option value="Barcelona">Barcelona</option>
+                      <option value="Madrid">Madrid</option>
+                      <option value="Paris">Paris</option>
+                      <option value="Lisbon">Lisbon</option>
+                      <option value="Amsterdam">Amsterdam</option>
+                      <option value="Berlin">Berlin</option>
+                      <option value="Miami">Miami</option>
+                      <option value="Mexico City">Mexico City</option>
+                      <option value="Sao Paulo">Sao Paulo</option>
+                    </select> 
+                  </div>
+                </div>
+              </div>
 
-          <input type="submit" value="Save changes" />
-        </form>
-        <BottomNav />
+              <div className="field">
+                <label className="label">Recommended for *</label>
+                <div className="control">
+                  <div className="select is-fullwidth">
+                    <select name="bootcamp" value={bootcamp} onChange={this.handleChange}>
+                      <option value="Web Development">Web Development</option>
+                      <option value="UX Design">UX Design</option>
+                      <option value="Data Analytics">Data Analytics</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Event description *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Description"
+                    type="text"
+                    name="description"
+                    value={description}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Event page URL *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Url of the event"
+                    type="text"
+                    name="eventUrl"
+                    value={eventUrl}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="buttons bottom-buttons">
+                  <button type="submit" className="button is-link is-light">Save changes</button>
+              </div>
+            </form>
+          </div>
+
+          <BottomNav />
+
+        </section>
       </div>
     )
   }
