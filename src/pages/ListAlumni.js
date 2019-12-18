@@ -4,7 +4,7 @@ import { withAuth } from '../lib/AuthProvider';
 
 import Searchbar from '../components/Searchbar';
 import SearchFilters from '../components/SearchFilters';
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 import AlumniCard from '../components/AlumniCard';
 import BottomNav from '../components/BottomNav';
 
@@ -78,7 +78,7 @@ class ListAlumni extends Component {
           <div className="top-search-nav navbar is-fixed-top">
             <Searchbar filterByTerm={this.filterAlumni} />
             <SearchFilters filterByProperty={this.multiFilter} />
-            <Navbar />
+            {/* <Navbar /> */}
           </div>
 
           <div className="results-list">

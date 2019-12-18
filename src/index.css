@@ -52,8 +52,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* PRIVATE NAVS */
 
+.bottom-icons {
+  color:hsl(204, 86%, 53%);
+}
+
 .bottom-nav-link {
-  color: hsl(204, 86%, 53%)
+  color: hsl(0, 0%, 21%);
+  /* padding-top: 20px;
+  border-top: 3px solid hsl(0, 0%, 21%); */
 }
 
 .searchnav {
@@ -98,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 /* PRIVATE PAGES/COMPONENTS */
 
 .results-list {
-  margin-top: 165px;
+  margin-top: 120px;
   margin-bottom: 100px
 }
 

@@ -3,7 +3,7 @@ import eventService from '../lib/event-service';
 
 import Searchbar from '../components/Searchbar';
 import SearchFilters from '../components/SearchFilters';
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 import EventCard from '../components/EventCard';
 import BottomNav from '../components/BottomNav';
 
@@ -70,7 +70,7 @@ class ListEvents extends Component {
           <div className="top-search-nav navbar is-fixed-top">
             <Searchbar filterByTerm={this.filterEvents} />
             <SearchFilters filterByProperty={this.multiFilter} />
-            <Navbar />
+            {/* <Navbar /> */}
           </div>
 
           <div  className="results-list">

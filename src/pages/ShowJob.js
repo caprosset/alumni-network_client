@@ -84,7 +84,7 @@ class ShowJob extends Component {
     // console.log('USER', user)
     // console.log('JOOOOB', this.state.job);
     console.log(this.props);
-    
+    console.log('DATE FORMAT', created_at)
     return (
       <div className="container">
         <section className="section">

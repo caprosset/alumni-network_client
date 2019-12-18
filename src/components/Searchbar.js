@@ -45,9 +45,6 @@ class Searchbar extends Component {
             </div>
           </form>
         </div>
-
-        {/* <SearchFilters />
-        <Navbar /> */}
       </div>
     ) 
   }    
