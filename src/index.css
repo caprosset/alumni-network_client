@@ -112,14 +112,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-body {
   margin-top: 60px;
-  margin-bottom: 50px;
+  margin-bottom: 20%;
 }
 
-.saved-elements-section {
+.saved-elements-section, .event-info {
   margin-bottom: 10%;
 }
 
-.alumni-header, .create-actions {
+.event-body {
+  margin-bottom: 5%;
+}
+
+.alumni-header, .create-actions, .event-body, .event-info {
   margin-top: 10%;
 }
 
@@ -139,8 +143,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bottom-buttons {
+  margin-top: 5%;
   justify-content: space-evenly !important;
 }
 
+.alumni-attending {
+  justify-content: flex-start;
+}
 
 /* color: #32c3ff; */
