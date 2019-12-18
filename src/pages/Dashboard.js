@@ -68,45 +68,52 @@ class Dashboard extends Component {
       <div className="container">
         <section className="section">
           <TopNav />
-          <h3 class="title is-3">My dashboard</h3>
-          {
-            user.isAdmin 
-            ? (<div>
-                <Link to='/job/create'> 
-                  <button>Publish a job offer</button>
-                </Link>
-                <Link to='/event/create'> 
-                  <button>Publish an event</button>
-                </Link>
-              </div>)
-            : (<div>
-                <div>
-                  <h5 className="title is-5">Events you're interested in</h5>
-                  {
-                    this.state.savedEvents.map ( (oneEvent, index) => {
-                      return ( <SavedEventCard 
-                        key={index} 
-                        {...oneEvent}
-                        unsaveEvent={this.unsaveEvent} /> ) 
-                    })
-                  }
-                </div>
-                <div>
-                  <h5 className="title is-5">Jobs saved</h5>
-                  {
-                    this.state.savedJobs.map ( (oneJob, index) => {
-                      return ( <SavedJobCard 
-                        key={index} 
-                        {...oneJob}
-                        unsaveJob={this.unsaveJob} /> ) 
-                    })
-                  }
-                </div>
+
+          <div className="page-body">
+            <h3 class="title is-3">My dashboard</h3>
+            {
+              user.isAdmin 
+              ? (<div>
+                  <Link to='/job/create'> 
+                    <button>Publish a job offer</button>
+                  </Link>
+                  <Link to='/event/create'> 
+                    <button>Publish an event</button>
+                  </Link>
+                </div>)
+              : (<div>
+                  <div className="saved-elements-section">
+                    <h5 className="title is-5">Events you're interested in</h5>
+                    {
+                      this.state.savedEvents.map ( (oneEvent, index) => {
+                        return ( <SavedEventCard 
+                          key={index} 
+                          {...oneEvent}
+                          unsaveEvent={this.unsaveEvent} /> ) 
+                      })
+                    }
+                  </div>
+                  <div className="saved-elements-section">
+                    <h5 className="title is-5">Jobs saved</h5>
+                    {
+                      this.state.savedJobs.map ( (oneJob, index) => {
+                        return ( <SavedJobCard 
+                          key={index} 
+                          {...oneJob}
+                          unsaveJob={this.unsaveJob} /> ) 
+                      })
+                    }
+                  </div>
+                
               </div>)
           }
+          </div>
+
           <BottomNav />
+    
         </section>
       </div>
+    
     )
   }
 }

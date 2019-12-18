@@ -15,7 +15,9 @@ function AlumniCard(props) {
       </div>
 
       <div className="column is-3 is-mobile">
-        <h3>{props.firstName} {props.lastName}</h3>
+        <Link to={`/alumni/${props._id}`}>
+          <p>{props.firstName} {props.lastName}</p>
+        </Link>
         <p>{props.currentRole}</p>
         <p>{props.currentCity}</p>
       </div>

@@ -12,7 +12,9 @@ function JobCard(props) {
       </div>
 
       <div className="column is-3 is-mobile">
-        <h3>{props.title}</h3>
+        <Link to={`/job/${props._id}`}>
+          <p>{props.title}</p>
+        </Link>
         <p>{props.company}</p>
         <p>{props.city}</p>
       </div>

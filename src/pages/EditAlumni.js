@@ -94,102 +94,108 @@ class EditAlumni extends Component {
     // console.log('PROFILE ID', id)
 
     return (
-      <div>
-        <TopNav />
-        <h1>Edit profile</h1>
-        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
-          <label>Profile picture:</label>
-          <input
-            type="file"
-            name="image"
-            onChange={this.handleImageChange}
-          />
+      <div className="container">
+        <section className="section">
+          <TopNav />
 
-          <label>First name:</label>
-          <input
-            type="text"
-            name="firstName"
-            value={firstName}
-            onChange={this.handleChange}
-          />
+          <div className="page-body">
+            <h1>Edit profile</h1>
+            <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
+              <label>Profile picture:</label>
+              <input
+                type="file"
+                name="image"
+                onChange={this.handleImageChange}
+              />
 
-          <label>Last name:</label>
-          <input
-            type="text"
-            name="lastName"
-            value={lastName}
-            onChange={this.handleChange}
-          />
+              <label>First name:</label>
+              <input
+                type="text"
+                name="firstName"
+                value={firstName}
+                onChange={this.handleChange}
+              />
 
-          <label>Phone:</label>
-          <input 
-            type="text"
-            name="phone"
-            value={phone}
-            onChange={this.handleChange}
-          />
+              <label>Last name:</label>
+              <input
+                type="text"
+                name="lastName"
+                value={lastName}
+                onChange={this.handleChange}
+              />
 
-          <label>Current city:</label>
-          <input 
-            type="text"
-            name="currentCity"
-            value={currentCity}
-            onChange={this.handleChange}
-          />
+              <label>Phone:</label>
+              <input 
+                type="text"
+                name="phone"
+                value={phone}
+                onChange={this.handleChange}
+              />
 
-          <label>Current role:</label>
-          <input 
-            type="text"
-            name="currentRole"
-            value={currentRole}
-            onChange={this.handleChange}
-          />
+              <label>Current city:</label>
+              <input 
+                type="text"
+                name="currentCity"
+                value={currentCity}
+                onChange={this.handleChange}
+              />
 
-          <label>Current company:</label>
-          <input 
-            type="text"
-            name="currentCompany"
-            value={currentCompany}
-            onChange={this.handleChange}
-          />
+              <label>Current role:</label>
+              <input 
+                type="text"
+                name="currentRole"
+                value={currentRole}
+                onChange={this.handleChange}
+              />
 
-          <label>LinkedIn Url:</label>
-          <input 
-            type="text"
-            name="linkedinUrl"
-            value={linkedinUrl}
-            onChange={this.handleChange}
-          />
-          
-          <label>Github Url:</label>
-          <input 
-            type="text"
-            name="githubUrl"
-            value={githubUrl}
-            onChange={this.handleChange}
-          />
+              <label>Current company:</label>
+              <input 
+                type="text"
+                name="currentCompany"
+                value={currentCompany}
+                onChange={this.handleChange}
+              />
 
-          <label>Medium Url:</label>
-          <input 
-            type="text"
-            name="mediumUrl"
-            value={mediumUrl}
-            onChange={this.handleChange}
-          />
+              <label>LinkedIn Url:</label>
+              <input 
+                type="text"
+                name="linkedinUrl"
+                value={linkedinUrl}
+                onChange={this.handleChange}
+              />
+              
+              <label>Github Url:</label>
+              <input 
+                type="text"
+                name="githubUrl"
+                value={githubUrl}
+                onChange={this.handleChange}
+              />
 
-          <div style={{display: 'none'}}>
-            <label>Is admin</label>
-            <input disabled
-              type="text"
-              name="isAdmin"
-              value={isAdmin}
-              onChange={this.handleChange}
-            />
+              <label>Medium Url:</label>
+              <input 
+                type="text"
+                name="mediumUrl"
+                value={mediumUrl}
+                onChange={this.handleChange}
+              />
+
+              <div style={{display: 'none'}}>
+                <label>Is admin</label>
+                <input disabled
+                  type="text"
+                  name="isAdmin"
+                  value={isAdmin}
+                  onChange={this.handleChange}
+                />
+              </div>
+
+              <input type="submit" value="Save changes" />
+            </form>
           </div>
 
-          <input type="submit" value="Save changes" />
-        </form>
-        <BottomNav />
+          <BottomNav />
+        </section>
       </div>
     )
   }

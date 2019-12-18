@@ -1,13 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
 html {
   height: 100%;
   overflow: hidden;
+  font-family: 'Roboto', arial, sans-serif;
 }
 
 body {
-	font-family: -apple-system, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+	/* font-family: 'Roboto', arial, sans-serif; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Mono', monospace;
 }
 
 .is-horizontal-center {
@@ -26,6 +31,8 @@ body {
   justify-content: space-around;
 }
 
+/* ANONYMOUS PAGES */
+
 .anon-pages {
   background-color: #1e2434;
   height: 1100px;  
@@ -42,6 +49,8 @@ body {
 .auth-link a:hover, .bottom-nav-link a:hover {
   font-weight: bold;
 }
+
+/* PRIVATE NAVS */
 
 .bottom-nav-link {
   color: hsl(204, 86%, 53%)
@@ -67,6 +76,27 @@ body {
   font-size: 0.8rem;
 }
 
+.topnav {
+  height: 80px;
+  padding: 0 5%;
+}
+
+.topnav a {
+  color: #fff;
+}
+
+.topnav a:hover {
+  cursor: pointer;
+}
+
+.tabs li {
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* PRIVATE PAGES/COMPONENTS */
+
 .results-list {
   margin-top: 165px;
   margin-bottom: 100px
@@ -80,13 +110,15 @@ body {
   width: 20%;
 }
 
-/* .navdirectory {
-  margin-top: 50px;
-  position: fixed;
-  background-color: #fff;
-} */
-/* .searchfilters, .navdirectory {
-  background-color: #fff;
-  position: fixed;
-} */
+.page-body {
+  margin-top: 60px;
+}
+
+.saved-elements-section {
+  margin-bottom: 10%;
+}
+
+
+
+
 /* color: #32c3ff; */

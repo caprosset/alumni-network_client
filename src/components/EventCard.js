@@ -13,7 +13,9 @@ function EventCard(props) {
       </div>
 
       <div className="column is-3 is-mobile">
-        <h3>{props.title}</h3>
+        <Link to={`/event/${props._id}`}>
+          <p>{props.title}</p>
+        </Link>
         <p>{props.date}</p>
         <p>{props.city}</p>
       </div>

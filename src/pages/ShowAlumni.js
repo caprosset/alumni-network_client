@@ -64,38 +64,53 @@ class ShowAlumni extends Component {
     // console.log('LOGOUT', logout);
 
     return (
-      <div>
-        <TopNav />
-        <h2>{firstName} {lastName}</h2>
-        <img src={image} alt="Profile picture" width="250" height="200"/>
-        <div>
-          <a href={linkedinUrl} target="_blank">Linkedin</a>
-          <a href={githubUrl} target="_blank">Github</a>
-          <a href={mediumUrl} target="_blank">Medium</a>
-        </div>
-        <div>
-          <p>Email: {email}</p>
-          <p>Phone: {phone}</p>
-          <p>Bootcamp: {bootcamp}</p>
-          <p>Campus: {campus}</p>
-          <p>Cohort: {cohort}</p>
-          <p>Current city: {currentCity}</p>
-          <p>Current role: {currentRole}</p>
-          <p>Current company: {currentCompany}</p>
-        </div>
-        {
-          // if user is on his profile, display 'Edit' button
-          this.state.currentUser
-          ? 
-            <div>
-              <Link to={`/alumni/edit/${_id}`}>
-                <button>Edit profile</button>
-              </Link>
-              <button onClick={logout}>Logout</button>
+      <div className="container">
+        <section className="section">
+
+          <TopNav />
+
+          <div className="page-body">
+            <div className="block is-flex is-horizontal-center">
+            <figure className="image is-128x128">
+              <img className="is-rounded is-128x128" src={image} alt="Profile picture" />
+            </figure>
             </div>
-          : null
-        }
-        <BottomNav />
+
+
+            <h2>{firstName} {lastName}</h2>
+            
+            <div>
+              <a href={linkedinUrl} target="_blank">Linkedin</a>
+              <a href={githubUrl} target="_blank">Github</a>
+              <a href={mediumUrl} target="_blank">Medium</a>
+            </div>
+            <div>
+              <p>Email: {email}</p>
+              <p>Phone: {phone}</p>
+              <p>Bootcamp: {bootcamp}</p>
+              <p>Campus: {campus}</p>
+              <p>Cohort: {cohort}</p>
+              <p>Current city: {currentCity}</p>
+              <p>Current role: {currentRole}</p>
+              <p>Current company: {currentCompany}</p>
+            </div>
+            {
+              // if user is on his profile, display 'Edit' button
+              this.state.currentUser
+              ? 
+                <div>
+                  <Link to={`/alumni/edit/${_id}`}>
+                    <button>Edit profile</button>
+                  </Link>
+                  <button onClick={logout}>Logout</button>
+                </div>
+              : null
+            }
+          </div>
+
+          <BottomNav />
+
+        </section>
       </div>
     )
   }
