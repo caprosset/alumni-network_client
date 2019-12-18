@@ -68,7 +68,7 @@ class ListEvents extends Component {
       <div className="container">
         <section className="section">
           <div className="top-search-nav navbar is-fixed-top">
-            <Searchbar filterByTerm={this.filterAlumni} />
+            <Searchbar filterByTerm={this.filterEvents} />
             <SearchFilters filterByProperty={this.multiFilter} />
             <Navbar />
           </div>
