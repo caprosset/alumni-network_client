@@ -107,30 +107,47 @@ class ShowAlumni extends Component {
             </div>
 
             <div className="block has-text-left alumni-info">
-              <div className="is-flex">
-                <div>
-                  <p>Email:</p>
-                  <p>Phone:</p>
-                  <p>Bootcamp:</p>
-                  <p>Campus:</p>
-                  <p>Cohort:</p>
-                  <p>Current city:</p>
-                  <p>Current role:</p>
-                  <p>Current company:</p>
-                </div>
-                <div>
+                <div className="block">
+                  <p className="has-text-weight-bold">Email:</p>
                   <p>{email}</p>
+                </div>
+
+                <div className="block">
+                  <p className="has-text-weight-bold">Phone:</p>
                   <p>{phone}</p>
+                </div>
+
+                <div className="block">
+                  <p className="has-text-weight-bold">Bootcamp:</p>
                   <p>{bootcamp}</p>
+                </div>
+
+                <div className="block">
+                  <p className="has-text-weight-bold">Campus:</p>
                   <p>{campus}</p>
+                </div>
+
+                <div className="block">
+                  <p className="has-text-weight-bold">Cohort:</p>
                   <p>{cohort}</p>
-                  <p>{currentCity}</p> 
+                </div>
+
+                <div className="block">
+                  <p className="has-text-weight-bold">Current city:</p>
+                  <p>{currentCity}</p>
+                </div>
+
+                <div className="block">
+                  <p className="has-text-weight-bold">Current role:</p>
                   <p>{currentRole}</p>
+                </div>
+
+                <div className="block">
+                  <p className="has-text-weight-bold">Current company:</p>
                   <p>{currentCompany}</p>
                 </div>
               </div>
-            </div>
-
+            
             {
               // if user is on his profile, display 'Edit' button
               this.state.currentUser

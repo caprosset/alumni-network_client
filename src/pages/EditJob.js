@@ -15,7 +15,7 @@ class EditJob extends Component {
     bootcamp: 'Web Development',
     city: 'Barcelona',
     jobOfferUrl: '',
-    imageReady: false
+    imageReady: true
   }
 
 
@@ -38,6 +38,7 @@ class EditJob extends Component {
   };
 
   handleImageChange = event => {
+    this.setState({ imageReady: false });
     console.log('IMAGE', event.target.files[0]);
 
     const file = event.target.files[0];
@@ -49,7 +50,7 @@ class EditJob extends Component {
       .then(imageUrl => {
         console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        console.log('The image is the state', this.state.image);
+        console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -85,7 +86,7 @@ class EditJob extends Component {
         <TopNav />
 
         <div className="page-body">
-          <h3 className="title is-3">Edit job post</h3>
+          <h3 className="title is-3">Edit job posting</h3>
           <form onSubmit={this.handleFormSubmit}  encType="multipart/form-data">
             
             <div className="field">
@@ -160,13 +161,13 @@ class EditJob extends Component {
             <div className="field">
               <label className="label">Job description *</label>
               <div className="control">
-                <input className="input" 
-                  placeholder="Description"
-                  type="text"
-                  name="description"
-                  value={description}
-                  onChange={this.handleChange}
-                />
+                <textarea className="textarea"
+                    placeholder="Description"
+                    type="text"
+                    name="description"
+                    value={description}
+                    onChange={this.handleChange}
+                ></textarea>
               </div>
             </div>
 
@@ -184,7 +185,7 @@ class EditJob extends Component {
             </div>
 
             <div className="buttons bottom-buttons">
-                <button type="submit" className="button is-link is-light">Edit Job</button>
+                <button type="submit" disabled={!this.state.imageReady} className="button is-link is-light">Edit Job</button>
             </div>
           </form>
         </div>

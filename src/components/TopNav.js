@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+
 
 class TopNav extends Component {
 
   render() {
-    // console.log('PROPSSSSS', this.props);
+    console.log('PROPSSSSS', this.props);
     return (
       <div className="navbar is-fixed-top">
         <div className="topnav is-fullwidth has-background-info is-flex is-vertical-center">

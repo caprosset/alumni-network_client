@@ -7,10 +7,6 @@ html {
   font-family: 'Roboto', arial, sans-serif;
 }
 
-body {
-  /* font-family: 'Roboto', arial, sans-serif; */  
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Mono', monospace;
 }
@@ -35,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .anon-pages {
   background-color: #1e2434;
-  height: 1100px;  
+  height: 1000px;  
 }
 
 .anon-pages label {
@@ -117,6 +113,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-body {
+  width: 80%;
+  margin: 0 auto;
   margin-top: 60px;
   margin-bottom: 20%;
 }
@@ -133,15 +131,19 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 10%;
 }
 
+.event-info div p {
+  margin-bottom: 5%;
+}
+
 .social-icons {
   justify-content: space-around;
 }
 
 .alumni-info {
-  font-size: 0.9rem;
   width: 80%;
+  font-size: 1.1rem;
   margin: 0 auto;
-  margin-top: 5%;
+  margin-top: 8%;
 }
 
 .alumni-info div {

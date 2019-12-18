@@ -15,7 +15,7 @@ class CreateJob extends Component {
     bootcamp: 'Web Development',
     city: 'Barcelona',
     jobOfferUrl: '',
-    imageReady: false
+    imageReady: true
   }
 
   handleChange = event => {
@@ -26,7 +26,8 @@ class CreateJob extends Component {
   };
 
   handleImageChange = event => {
-    console.log('IMAGE', event.target.files[0]);
+    this.setState({ imageReady: false });
+    // console.log('IMAGE', event.target.files[0]);
 
     const file = event.target.files[0];
     const imageFile = new FormData();
@@ -35,9 +36,9 @@ class CreateJob extends Component {
 
     cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
-        console.log("the image ", imageUrl);
+        // console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        console.log('The image is the state', this.state.image);
+        console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -143,13 +144,13 @@ class CreateJob extends Component {
               <div className="field">
                 <label className="label">Job description *</label>
                 <div className="control">
-                  <input className="input" 
+                  <textarea className="textarea"
                     placeholder="Description"
                     type="text"
                     name="description"
                     value={description}
                     onChange={this.handleChange}
-                  />
+                  ></textarea>
                 </div>
               </div>
 
@@ -167,7 +168,7 @@ class CreateJob extends Component {
               </div>
 
               <div className="buttons bottom-buttons">
-                  <button type="submit" className="button is-link is-light">Create Job</button>
+                  <button type="submit" disabled={!this.state.imageReady} className="button is-link is-light">Create Job</button>
               </div>
             </form>
           </div>

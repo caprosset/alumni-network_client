@@ -25,13 +25,12 @@ class ShowJob extends Component {
 
     const { user } = this.props;
 
+    // check if job is saved by user
     userService.getOne(user._id) 
     .then((currentUser) => {
-      console.log('current user', currentUser);
-      
+      // console.log('current user', currentUser);
       currentUser.savedJobs.forEach(savedJob => {
         if(savedJob._id === id) {
-          // console.log('HELLLOOOOO', user)
           this.setState({jobIsSaved: true});
         }
       })
@@ -39,6 +38,7 @@ class ShowJob extends Component {
       console.log(err);
     }); 
 
+    // get the job offer
     jobService.getOne(id)
       .then((job)=>{
         this.setState({ job })
@@ -96,6 +96,7 @@ class ShowJob extends Component {
     // console.log(this.props);
     // console.log('DATE FORMAT', created_at)
     // console.log('DATE CONVERTED', this.formatDate(created_at))
+
     return (
       <div className="container">
         <section className="section">
@@ -104,28 +105,28 @@ class ShowJob extends Component {
 
           <div className="page-body">
             <div className="is-flex is-horizontal-center ">
-              <figure className="image is-128x128">
+              <figure className="image is-96x96">
                 <img src={image} alt="Company logo" />
               </figure>
             </div>
 
             <div className="job-body has-text-centered">
-              <h3 className="title is-3">{title}</h3>
-              <h6 className="title is-6">{companyName}</h6>
+              <h4 className="title is-4">{title}</h4>
+              <h5 className="title is-5">{companyName}</h5>
 
               <div className="block has-text-left">
                 <div className="is-flex event-info">
                   <div>
-                    <p>Location:</p>
-                    <p>Created:</p>
-                    <p>For:</p>
-                    <p>Job description:</p>
+                    <p className="has-text-weight-bold">Location:</p>
+                    <p className="has-text-weight-bold">Posted:</p>
+                    <p className="has-text-weight-bold">For:</p>
+                    <p className="has-text-weight-bold">Description:</p>
                   </div>
                   <div>
-                    <p>{city}</p>
-                    <p>{this.formatDate(created_at)}</p>
-                    <p>{bootcamp}</p>
-                    <p>{description}</p>
+                    <p>&nbsp;&nbsp;&nbsp;{city}</p>
+                    <p>&nbsp;&nbsp;&nbsp;{this.formatDate(created_at)}</p>
+                    <p>&nbsp;&nbsp;&nbsp;{bootcamp}</p>
+                    <p>&nbsp;&nbsp;&nbsp;{description}</p>
                   </div>
                 </div>
                 <button className="button is-link is-outlined is-fullwidth">

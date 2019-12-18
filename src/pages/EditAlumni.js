@@ -20,7 +20,7 @@ class EditAlumni extends Component {
     githubUrl: '',
     mediumUrl: '',
     isAdmin: '',
-    imageReady: false
+    imageReady: true
   }
 
   componentDidMount() {
@@ -44,7 +44,8 @@ class EditAlumni extends Component {
 
 
   handleImageChange = event => {
-    console.log('IMAGEEEE', event.target.files[0]);
+    this.setState({ imageReady: false });
+    // console.log('IMAGEEEE', event.target.files[0]);
 
     const file = event.target.files[0];
     const imageFile = new FormData();
@@ -53,9 +54,9 @@ class EditAlumni extends Component {
 
     cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
-        console.log('the image', imageUrl);
+        // console.log('the image', imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        console.log('The image is the state', this.state.image, 'the image is ready', this.state.imageReady);
+        console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -243,7 +244,7 @@ class EditAlumni extends Component {
               </div>
 
               <div className="buttons bottom-buttons">
-                  <button type="submit" className="button is-link is-light">Save changes</button>
+                  <button type="submit" disabled={!this.state.imageReady} className="button is-link is-light">Save changes</button>
               </div>
  
             </form>

@@ -126,7 +126,7 @@ class ShowEvent extends Component {
                   ?
                     attendingAlumni.length  
                     ? (<div>
-                        <p>Some alumni attending this event:</p>
+                        <p className="has-text-weight-bold">Alumni interested in this event:</p>
                         <ul className="alumni-attending">
                         { attendingAlumni.map( (alumni, index) => {
                             if(index <= 3) {
@@ -140,48 +140,53 @@ class ShowEvent extends Component {
                       </div>)
                     : null
                   : null
-                  }
+                }
+              </div>
 
-                <div className="is-flex event-info">
-                  <div>
-                    <p>Location:</p>
-                    <p>Date and time:</p>
-                    <p>Recommended for:</p>
-                    <p>About:</p>
-                  </div>
-                  <div>
-                    <p>{city}</p>
-                    <p>{this.formatDate(date)} - {this.formatHour(date)}</p>
-                    <p>{bootcamp}</p>
-                    <p>{description}</p>
-                  </div>
+              <div className="event-info">
+                <div className="is-flex">
+                  <p className="has-text-weight-bold">Where:&nbsp;&nbsp;</p>
+                  <p>{city}</p>
+                </div>
+                <div className="is-flex">
+                  <p className="has-text-weight-bold">When:&nbsp;&nbsp;</p>
+                  <p>{this.formatDate(date)} - {this.formatHour(date)}</p>
+                </div>
+                <div className="is-flex">
+                  <p className="has-text-weight-bold">For:&nbsp;&nbsp;</p>
+                  <p>{bootcamp}</p>
+                </div>
+                <div className="is-flex">
+                  <p className="has-text-weight-bold">About:&nbsp;&nbsp;</p>
+                  <p>{description}</p>
                 </div>
                 <button className="button is-link is-outlined is-fullwidth">
                   <a href={eventOfferUrl} target="_blank">Read more about the event</a>
                 </button>
-
-                {
-                // if user is admin, display 'Edit' and 'Delete' button; if not, display the 'Save' button
-                user.isAdmin
-                ? 
-                  <div className="buttons bottom-buttons">
-                    <Link to={`/event/edit/${_id}`}>
-                      <button className="button is-info">Edit event</button>
-                    </Link>
-                    <button className="button is-danger" onClick={() => this.delete()}>Delete event</button>
-                  </div>
-                :
-                  this.state.eventIsSaved
-                  ?
-                  <div className="buttons bottom-buttons">
-                    <button className="button is-danger is-fullwidth" onClick={() => this.unsave()}>Unsave event</button>
-                  </div>
-                  : 
-                  <div className="buttons bottom-buttons">
-                    <button className="button is-success is-fullwidth" onClick={() => this.save()}>Save event</button>
-                  </div>
-                }
               </div>
+
+              {
+              // if user is admin, display 'Edit' and 'Delete' button; if not, display the 'Save' button
+              user.isAdmin
+              ? 
+                <div className="buttons bottom-buttons">
+                  <Link to={`/event/edit/${_id}`}>
+                    <button className="button is-info">Edit event</button>
+                  </Link>
+                  <button className="button is-danger" onClick={() => this.delete()}>Delete event</button>
+                </div>
+              :
+                this.state.eventIsSaved
+                ?
+                <div className="buttons bottom-buttons">
+                  <button className="button is-danger is-fullwidth" onClick={() => this.unsave()}>Unsave event</button>
+                </div>
+                : 
+                <div className="buttons bottom-buttons">
+                  <button className="button is-success is-fullwidth" onClick={() => this.save()}>Save event</button>
+                </div>
+              }
+          
             </div>
           </div>
 

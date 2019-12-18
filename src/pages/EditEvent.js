@@ -16,7 +16,7 @@ class EditEvent extends Component {
     streetAddress: '',
     city: 'Barcelona',
     eventUrl: '',
-    imageReady: false
+    imageReady: true
   }
 
   componentDidMount() {
@@ -38,7 +38,8 @@ class EditEvent extends Component {
   };
   
   handleImageChange = event => {
-    console.log('IMAGE', event.target.files[0]);
+    this.setState({ imageReady: false });
+    // console.log('IMAGE', event.target.files[0]);
 
     const file = event.target.files[0];
     const imageFile = new FormData();
@@ -47,9 +48,9 @@ class EditEvent extends Component {
 
     cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
-        console.log("the image ", imageUrl);
+        // console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        console.log('The image is the state', this.state.image);
+        console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -173,13 +174,13 @@ class EditEvent extends Component {
               <div className="field">
                 <label className="label">Event description *</label>
                 <div className="control">
-                  <input className="input" 
+                  <textarea className="textarea"
                     placeholder="Description"
                     type="text"
                     name="description"
                     value={description}
                     onChange={this.handleChange}
-                  />
+                  ></textarea>
                 </div>
               </div>
 
@@ -197,7 +198,7 @@ class EditEvent extends Component {
               </div>
 
               <div className="buttons bottom-buttons">
-                  <button type="submit" className="button is-link is-light">Save changes</button>
+                  <button type="submit" disabled={!this.state.imageReady} className="button is-link is-light">Save changes</button>
               </div>
             </form>
           </div>
