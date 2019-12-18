@@ -73,12 +73,12 @@ class Dashboard extends Component {
             <h3 class="title is-3">My dashboard</h3>
             {
               user.isAdmin 
-              ? (<div>
+              ? (<div className="buttons bottom-buttons create-actions">
                   <Link to='/job/create'> 
-                    <button>Publish a job offer</button>
+                    <button className="button is-info">Post a job</button>
                   </Link>
                   <Link to='/event/create'> 
-                    <button>Publish an event</button>
+                    <button className="button is-info">Post an event</button>
                   </Link>
                 </div>)
               : (<div>

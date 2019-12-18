@@ -62,71 +62,119 @@ class CreateJob extends Component {
   render() {
     const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
     return (
-      <div>
-        <TopNav />
-        <form onSubmit={this.handleFormSubmit}  encType="multipart/form-data">
-          <label>Company logo:</label>
-          <input
-            type="file"
-            name="image"
-            onChange={this.handleImageChange}
-          />
+      <div className="container">
+        <section className="section">
 
-          <label>Job title:</label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={this.handleChange}
-          />
+          <TopNav />
 
-          <label>Company name:</label>
-          <input
-            type="text"
-            name="companyName"
-            value={companyName}
-            onChange={this.handleChange}
-          />
+          <div className="page-body">
+            <h3 className="title is-3">Post a job</h3>
+            <form onSubmit={this.handleFormSubmit}  encType="multipart/form-data">
+              
+              <div className="field">
+                <label className="label">Company logo</label>
+                <div className="control">
+                  <input className="input" 
+                    type="file"
+                    name="image"
+                    onChange={this.handleImageChange}
+                  />
+                </div>
+              </div>
+              
+              <div className="field">
+                <label className="label">Job title *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="What is the title of the position?"
+                    type="text"
+                    name="title"
+                    value={title}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
 
-          <label>Location:</label>
-          <select name="city" value={city} onChange={this.handleChange}>
-            <option value="Barcelona">Barcelona</option>
-            <option value="Madrid">Madrid</option>
-            <option value="Paris">Paris</option>
-            <option value="Lisbon">Lisbon</option>
-            <option value="Amsterdam">Amsterdam</option>
-            <option value="Berlin">Berlin</option>
-            <option value="Miami">Miami</option>
-            <option value="Mexico City">Mexico City</option>
-            <option value="Sao Paulo">Sao Paulo</option>
-          </select>
+              <div className="field">
+                <label className="label">Company name *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Name of the company"
+                    type="text"
+                    name="companyName"
+                    value={companyName}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
 
-          <label>Recommended for:</label>
-          <select name="bootcamp" value={bootcamp} onChange={this.handleChange}>
-            <option value="Web Development">Web Development</option>
-            <option value="UX Design">UX Design</option>
-            <option value="Data Analytics">Data Analytics</option>
-          </select>
+              <div className="field">
+                <label className="label">Location *</label>
+                <div className="control">
+                  <div className="select is-fullwidth">
+                    <select name="city" value={city} onChange={this.handleChange}>
+                      <option value="Barcelona">Barcelona</option>
+                      <option value="Madrid">Madrid</option>
+                      <option value="Paris">Paris</option>
+                      <option value="Lisbon">Lisbon</option>
+                      <option value="Amsterdam">Amsterdam</option>
+                      <option value="Berlin">Berlin</option>
+                      <option value="Miami">Miami</option>
+                      <option value="Mexico City">Mexico City</option>
+                      <option value="Sao Paulo">Sao Paulo</option>
+                    </select> 
+                  </div>
+                </div>
+              </div>
 
-          <label>Job description:</label>
-          <input
-            type="text"
-            name="description"
-            value={description}
-            onChange={this.handleChange}
-          />
+              <div className="field">
+                <label className="label">Recommended for *</label>
+                <div className="control">
+                  <div className="select is-fullwidth">
+                    <select name="bootcamp" value={bootcamp} onChange={this.handleChange}>
+                      <option value="Web Development">Web Development</option>
+                      <option value="UX Design">UX Design</option>
+                      <option value="Data Analytics">Data Analytics</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
 
-          <label>Job offer url:</label>
-          <input
-            type="text"
-            name="jobOfferUrl"
-            value={jobOfferUrl}
-            onChange={this.handleChange}
-          />
+              <div className="field">
+                <label className="label">Job description *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Description"
+                    type="text"
+                    name="description"
+                    value={description}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
 
-          <input type="submit" value="Create job" />
-        </form>
-        <BottomNav />
+              <div className="field">
+                <label className="label">Job offer URL *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Url of the job offer"
+                    type="text"
+                    name="jobOfferUrl"
+                    value={jobOfferUrl}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="buttons bottom-buttons">
+                  <button type="submit" className="button is-link is-light">Create Job</button>
+              </div>
+            </form>
+          </div>
+
+          <BottomNav />
+
+        </section>
       </div>
     )
   }

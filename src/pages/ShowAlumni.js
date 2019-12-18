@@ -135,7 +135,7 @@ class ShowAlumni extends Component {
               // if user is on his profile, display 'Edit' button
               this.state.currentUser
               ? 
-                <div className="buttons alumni-buttons">
+                <div className="buttons bottom-buttons">
                   <Link to={`/alumni/edit/${_id}`}>
                     <button className="button is-info">Edit profile</button>
                   </Link>

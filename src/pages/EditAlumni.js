@@ -242,7 +242,7 @@ class EditAlumni extends Component {
                 </div>
               </div>
 
-              <div className="buttons alumni-buttons">
+              <div className="buttons bottom-buttons">
                   <button type="submit" className="button is-link is-light">Save changes</button>
               </div>
  
