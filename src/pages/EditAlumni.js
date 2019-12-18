@@ -99,98 +99,153 @@ class EditAlumni extends Component {
           <TopNav />
 
           <div className="page-body">
-            <h1>Edit profile</h1>
+            <h3 className="title is-3">Edit profile</h3>
             <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
-              <label>Profile picture:</label>
-              <input
-                type="file"
-                name="image"
-                onChange={this.handleImageChange}
-              />
 
-              <label>First name:</label>
-              <input
-                type="text"
-                name="firstName"
-                value={firstName}
-                onChange={this.handleChange}
-              />
-
-              <label>Last name:</label>
-              <input
-                type="text"
-                name="lastName"
-                value={lastName}
-                onChange={this.handleChange}
-              />
-
-              <label>Phone:</label>
-              <input 
-                type="text"
-                name="phone"
-                value={phone}
-                onChange={this.handleChange}
-              />
-
-              <label>Current city:</label>
-              <input 
-                type="text"
-                name="currentCity"
-                value={currentCity}
-                onChange={this.handleChange}
-              />
-
-              <label>Current role:</label>
-              <input 
-                type="text"
-                name="currentRole"
-                value={currentRole}
-                onChange={this.handleChange}
-              />
-
-              <label>Current company:</label>
-              <input 
-                type="text"
-                name="currentCompany"
-                value={currentCompany}
-                onChange={this.handleChange}
-              />
-
-              <label>LinkedIn Url:</label>
-              <input 
-                type="text"
-                name="linkedinUrl"
-                value={linkedinUrl}
-                onChange={this.handleChange}
-              />
-              
-              <label>Github Url:</label>
-              <input 
-                type="text"
-                name="githubUrl"
-                value={githubUrl}
-                onChange={this.handleChange}
-              />
-
-              <label>Medium Url:</label>
-              <input 
-                type="text"
-                name="mediumUrl"
-                value={mediumUrl}
-                onChange={this.handleChange}
-              />
-
-              <div style={{display: 'none'}}>
-                <label>Is admin</label>
-                <input disabled
-                  type="text"
-                  name="isAdmin"
-                  value={isAdmin}
-                  onChange={this.handleChange}
-                />
+              <div className="field">
+                <label className="label">Profile picture</label>
+                <div className="control">
+                  <input className="input" 
+                    type="file"
+                    name="image"
+                    onChange={this.handleImageChange}
+                  />
+                </div>
               </div>
 
-              <input type="submit" value="Save changes" />
+              <div className="field">
+                <label className="label">First name *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="First name"
+                    type="text"
+                    name="firstName"
+                    value={firstName}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Last name *</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Last name"
+                    type="text"
+                    name="lastName"
+                    value={lastName}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Phone</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Phone"
+                    type="text"
+                    name="phone"
+                    value={phone}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+    
+              <div className="field">
+                <label className="label">Current city</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Current city"
+                    type="text"
+                    name="currentCity"
+                    value={currentCity}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Current role</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Current role"
+                    type="text"
+                    name="currentRole"
+                    value={currentRole}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Current company</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Current role"
+                    type="text"
+                    name="currentCompany"
+                    value={currentCompany}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Your LinkedIn profile URL</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Linkedin url"
+                    type="text"
+                    name="linkedinUrl"
+                    value={linkedinUrl}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Your Github profile URL</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Github url"
+                    type="text"
+                    name="githubUrl"
+                    value={githubUrl}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Your Medium profile URL</label>
+                <div className="control">
+                  <input className="input" 
+                    placeholder="Medium url"
+                    type="text"
+                    name="mediumUrl"
+                    value={mediumUrl}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="field" style={{'display': 'none'}}>
+                <label className="label has-text-white">Is admin:</label>
+                <div className="control">
+                    <input className="input" 
+                      type="text"
+                      name="isAdmin"
+                      value={isAdmin}
+                      onChange={this.handleChange}
+                    />
+                </div>
+              </div>
+
+              <div className="buttons alumni-buttons">
+                  <button type="submit" className="button is-link is-light">Save changes</button>
+              </div>
+ 
             </form>
           </div>
 

@@ -148,7 +148,7 @@ class Signup extends Component {
               </div>
   
               <div className="field" style={{'display': 'none'}}>
-                <label className="label has-text-white">Cohort:</label>
+                <label className="label has-text-white">Is admin:</label>
                 <div className="control">
                     <input className="input" 
                       type="text"
