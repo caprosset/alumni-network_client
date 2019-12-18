@@ -74,7 +74,7 @@ class ListJobs extends Component {
           </div>
 
           <div className="results-list">
-            <h2>All jobs</h2>
+            <h2 className="title is3">Jobs</h2>
             {
               this.state.jobsFiltered.map( (oneJob, index) => {
                 return <JobCard key={index} {...oneJob} /> 

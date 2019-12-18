@@ -18,6 +18,10 @@ body {
   align-items: center;
 }
 
+.is-vertical-top {
+  align-items: flex-start;
+}
+
 .is-spaced-around {
   justify-content: space-around;
 }
@@ -64,9 +68,17 @@ body {
 }
 
 .results-list {
-  margin-top: 200px;
+  margin-top: 165px;
+  margin-bottom: 100px
 }
 
+.result-card {
+  font-size: 0.6rem;
+}
+
+.result-card .column {
+  width: 20%;
+}
 /* .navdirectory {
   margin-top: 50px;
   position: fixed;

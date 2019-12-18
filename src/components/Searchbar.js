@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import ironhack from '../img/ironhack.png';
-// import SearchFilters from './SearchFilters';
-// import Navbar from './Navbar';
 
 
 class Searchbar extends Component {
@@ -42,7 +40,7 @@ class Searchbar extends Component {
                 />
               </div>
               <div className="control">
-                <a className="button is-info">Search</a>
+                <button className="button is-info">Search</button>
               </div>
             </div>
           </form>

@@ -4,20 +4,30 @@ import { Link } from 'react-router-dom';
 function EventCard(props) {
   console.log('EVENT PROPS', props);
   return (
-    <div>
-      <div>
-        <h3>{props.title}</h3>
-        <p>Date: {props.date}</p>
-        <p>Location: {props.city}</p>
+    <div className="result-card columns is-flex is-vertical-top is-horizontal-center">
+      
+      <div className="column is-3 is-mobile">
+        <figure className="image is-64x64">
+          <img src={props.image} alt="Image event" />
+        </figure>
       </div>
-      <div>
+
+      <div className="column is-3 is-mobile">
+        <h3>{props.title}</h3>
+        <p>{props.date}</p>
+        <p>{props.city}</p>
+      </div>
+
+      <div className="column is-3 is-mobile">
         <p>{props.bootcamp}</p>
       </div>
-      <div>
+
+      <div className="column is-3 is-mobile">
         <Link to={`/event/${props._id}`}>
-          <button>See event</button>
+          <button className="button is-small is-outlined">See event</button>
         </Link>
       </div>
+
     </div>
   )
 }
