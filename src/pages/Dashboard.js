@@ -70,16 +70,20 @@ class Dashboard extends Component {
           <TopNav />
 
           <div className="page-body">
-            <h3 class="title is-3">My dashboard</h3>
+            <h3 className="title is-3">My dashboard</h3>
             {
               user.isAdmin 
-              ? (<div className="buttons bottom-buttons create-actions">
-                  <Link to='/job/create'> 
-                    <button className="button is-info">Post a job</button>
-                  </Link>
-                  <Link to='/event/create'> 
-                    <button className="button is-info">Post an event</button>
-                  </Link>
+              ? (<div className="columns create-actions is-flex">
+                  <div className="column">
+                    <Link to='/job/create'> 
+                      <button className="button is-large is-info is-outlined is-fullwidth">Post a job</button>
+                    </Link>
+                  </div>
+                  <div className="column">
+                    <Link to='/event/create'> 
+                      <button className="button is-large is-info is-outlined is-fullwidth">Post an event</button>
+                    </Link>
+                  </div>
                 </div>)
               : (<div>
                   <div className="saved-elements-section">
@@ -104,9 +108,17 @@ class Dashboard extends Component {
                       })
                     }
                   </div>
-                
+                  <div className="share has-text-centered">
+                    <h6 className="title is-6 has-text-info">Want to share<br /> a job opening at your company<br />or an event with the community?</h6>
+                    <p className="has-text-weight-semibold">Send us an email with all the details!</p>
+                    <div className="send-mail">
+                      <span className="icon is-size-1">
+                        <i className="fa fa-envelope" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                  </div>
               </div>)
-          }
+            }
           </div>
 
           <BottomNav />

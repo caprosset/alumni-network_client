@@ -23,7 +23,7 @@ class Splash extends Component {
 
         <div className="columns" style={{'margin-top': '20%'}}>
           <div className="column">
-          <Link to={'/signup'}>
+            <Link to={'/signup'}>
               <button className="button is-large is-info is-rounded is-fullwidth">Signup</button>
             </Link>
           </div>

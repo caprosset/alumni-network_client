@@ -27,7 +27,7 @@ class Login extends Component {
 
     return (
       <div className="container">
-        <section className="section anon-pages">
+        <section className="section anon-pages login-page">
 
           <div className="column is-flex is-horizontal-center">
             <figure className="image is-128x128">
