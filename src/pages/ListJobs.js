@@ -19,11 +19,13 @@ class ListJobs extends Component {
       .then((allJobs)=>{
         this.setState({ listOfJobs: allJobs, jobsFiltered: allJobs })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      });
   }
 
   filterJobs = searchTerm => {
-		console.log('search term', searchTerm);
+		// console.log('search term', searchTerm);
 
 		// apply lower case to the search term
 		const lowerSearchTerm = searchTerm.toLowerCase();

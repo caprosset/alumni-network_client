@@ -19,11 +19,13 @@ class ListEvents extends Component {
       .then((allEvents)=>{
         this.setState({ listOfEvents: allEvents, eventsFiltered: allEvents })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      })
   }
 
   filterEvents = searchTerm => {
-		console.log('search term', searchTerm);
+		// console.log('search term', searchTerm);
 
 		// apply lower case to the search term
 		const lowerSearchTerm = searchTerm.toLowerCase();

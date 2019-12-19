@@ -35,7 +35,7 @@ class ShowJob extends Component {
         }
       })
     }).catch((err) => {
-      console.log(err);
+      // console.log(err);
     }); 
 
     // get the job offer
@@ -43,38 +43,46 @@ class ShowJob extends Component {
       .then((job)=>{
         this.setState({ job })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      });
   }
 
   save = () => {
     const id = this.props.user._id;
     const jobId = this.props.match.params.id;
-    console.log('USER ID', id, 'JOB ID', jobId);
+    // console.log('USER ID', id, 'JOB ID', jobId);
 
     userService.saveJob(id, jobId)
       .then( () => {
         this.setState({ jobIsSaved: true})
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      });
   }
 
   unsave = () => {
     const id = this.props.user._id;
     const jobId = this.props.match.params.id;
-    console.log('USER ID', id, 'JOB ID', jobId);
+    // console.log('USER ID', id, 'JOB ID', jobId);
 
     userService.removeSavedJob(id, jobId)
     .then( () => {
       this.setState({ jobIsSaved: false})
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      // console.log(err);
+    });
   }
 
   delete = () => {
     const id = this.props.match.params.id;
     jobService.delete(id)
     .then( () => this.props.history.push('/job'))
-    .catch( (err) => console.log(err));
+    .catch( (err) => {
+      // console.log(err);
+    });
   }
 
   formatDate = d => {

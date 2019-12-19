@@ -50,7 +50,9 @@ class AuthProvider extends React.Component {
     authService
       .signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin })
       .then(user => this.setState({ isLoggedin: true, user }))
-      .catch(err => console.log(err));
+      .catch(err => { 
+        // console.log(err);
+      });
   };
 
   login = user => {
@@ -59,7 +61,9 @@ class AuthProvider extends React.Component {
     authService
       .login({ email, password })
       .then(user => this.setState({ isLoggedin: true, user }))
-      .catch(err => console.log(err));
+      .catch(err => { 
+        // console.log(err)
+      });
   };
 
   logout = () => {

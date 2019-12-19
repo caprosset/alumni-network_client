@@ -22,31 +22,35 @@ class ShowAlumni extends Component {
     const id = this.props.match.params.id;
     userService.getOne(id)
       .then((user)=>{
-        this.setState({ user })
+        this.setState({ user });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      })
     
     authService.me()
     .then((currentUser)=>{
       // if user is the logged in/current user
       if(id === currentUser._id) {
-        console.log('is user');
+        // console.log('is user');
         
         this.setState({ currentUser: true })
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      // console.log(err);
+    });
   }
 
   componentDidMount() {
-    console.log('enter');
+    // console.log('enter');
     this.findUser();
 
   }
 
   componentDidUpdate(prevProps) {
-    console.log('PREV PROPS', prevProps.match.params.id)
-    console.log('PROPS', this.props.match.params.id)
+    // console.log('PREV PROPS', prevProps.match.params.id)
+    // console.log('PROPS', this.props.match.params.id)
 
     if(prevProps.match.params.id !== this.props.match.params.id) {
       this.findUser();
@@ -54,13 +58,13 @@ class ShowAlumni extends Component {
   }
 
   render() {
-    console.log('USER ID', this.props.match.params.id);
+    // console.log('USER ID', this.props.match.params.id);
 
     const { firstName, lastName, email, phone, image, bootcamp, campus, cohort, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, _id } = this.state.user;
 
     const {logout} = this.props;
 
-    console.log('IMAGE', image)
+    // console.log('IMAGE', image)
     // console.log('LOGOUT', logout);
 
     return (

@@ -39,7 +39,7 @@ class CreateEvent extends Component {
       .then(imageUrl => {
         // console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        console.log('The image', this.state.image, 'is ready', this.state.imageReady);
+        // console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -50,16 +50,16 @@ class CreateEvent extends Component {
     const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = this.state;
 
     const newEvent = { title, description, image, date, bootcamp, streetAddress, city, eventUrl };
-    console.log('EVENT INSERTED', newEvent);
+    // console.log('EVENT INSERTED', newEvent);
 
     eventService
       .create(newEvent)
       .then(event => {
         this.props.history.push(`/event/${event._id}`);
-        console.log('EVENT CREATED', event);
+        // console.log('EVENT CREATED', event);
       })
       .catch(err => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

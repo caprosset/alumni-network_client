@@ -27,7 +27,7 @@ class ShowEvent extends Component {
 
     userService.getOne(user._id) 
     .then((currentUser) => {
-      console.log('current user', currentUser);
+      // console.log('current user', currentUser);
       
       currentUser.savedEvents.forEach(savedEvent => {
         if(savedEvent._id === id) {
@@ -36,45 +36,53 @@ class ShowEvent extends Component {
         }
       })
     }).catch((err) => {
-      console.log(err);
+      // console.log(err);
     });
     
     eventService.getOne(id)
       .then((event)=>{
         this.setState({ event })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      })
   }
 
   save = () => {
     const id = this.props.user._id;
     const eventId = this.props.match.params.id;
-    console.log('USER ID', id, 'EVENT ID', eventId);
+    // console.log('USER ID', id, 'EVENT ID', eventId);
 
     userService.saveEvent(id, eventId)
       .then( () => {
         this.setState({ eventIsSaved: true})
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      });
   }
 
   unsave = () => {
     const id = this.props.user._id;
     const eventId = this.props.match.params.id;
-    console.log('USER ID', id, 'EVENT ID', eventId);
+    // console.log('USER ID', id, 'EVENT ID', eventId);
 
     userService.removeSavedEvent(id, eventId)
     .then( () => {
       this.setState({ eventIsSaved: false})
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      // console.log(err);
+    });
   }
 
   delete = () => {
     const id = this.props.match.params.id;
     eventService.delete(id)
     .then( () => this.props.history.push('/event'))
-    .catch( (err) => console.log(err));
+    .catch( (err) => {
+      // console.log(err);
+    });
   }
 
   formatDate = d => {
@@ -133,7 +141,7 @@ class ShowEvent extends Component {
                         { attendingAlumni.map( (alumni, index) => {
                             if(index <= 3) {
                               return(<Link to={`/alumni/${alumni._id}`}>
-                                <li key={alumni._id}>{alumni.firstName}</li>
+                                <li key={alumni._id}>{alumni.firstName} {alumni.lastName}</li>
                               </Link>)
                             } 
                           })

@@ -24,12 +24,14 @@ class EditJob extends Component {
 
     jobService.getOne(id)
       .then((job)=>{
-        console.log('JOB', job);
+        // console.log('JOB', job);
         const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = job;
 
         this.setState({ image, title, companyName, city, bootcamp, description, jobOfferUrl })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      })
   }
 
   handleChange = event => {
@@ -39,7 +41,7 @@ class EditJob extends Component {
 
   handleImageChange = event => {
     this.setState({ imageReady: false });
-    console.log('IMAGE', event.target.files[0]);
+    // console.log('IMAGE', event.target.files[0]);
 
     const file = event.target.files[0];
     const imageFile = new FormData();
@@ -48,9 +50,9 @@ class EditJob extends Component {
 
     cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
-        console.log("the image ", imageUrl);
+        // console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        console.log('The image', this.state.image, 'is ready', this.state.imageReady);
+        // console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -68,7 +70,9 @@ class EditJob extends Component {
     .then(() => {
         this.props.history.push(`/job/${id}`);
       })
-    .catch(err => console.log(err));
+    .catch(err => {
+      // console.log(err);
+    })
   };
 
 

@@ -10,9 +10,11 @@ function AlumniCard(props) {
     <div className="result-card columns is-flex is-vertical-top is-horizontal-center">
 
       <div className="column is-3 is-mobile">
-        <figure className="image is-64x64">
-          <img className="is-rounded" src={image} alt="profile picture" />
-        </figure>
+        <Link to={`/alumni/${_id}`}>
+          <figure className="image is-64x64">
+            <img className="is-rounded" src={image} alt="profile picture" />
+          </figure>
+        </Link>
       </div>
 
       <div className="column is-3 is-mobile">

@@ -24,7 +24,7 @@ class ListAlumni extends Component {
   }
 
   filterAlumni = searchTerm => {
-		console.log('search term', searchTerm);
+		// console.log('search term', searchTerm);
 		// apply lower case to the search term
 		const lowerSearchTerm = searchTerm.toLowerCase();
 		

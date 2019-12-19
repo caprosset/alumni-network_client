@@ -19,7 +19,7 @@ class CreateJob extends Component {
   }
 
   handleChange = event => {
-    console.log('HELLO');
+    // console.log('HELLO');
 
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -38,7 +38,7 @@ class CreateJob extends Component {
       .then(imageUrl => {
         // console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        console.log('The image', this.state.image, 'is ready', this.state.imageReady);
+        // console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -56,7 +56,7 @@ class CreateJob extends Component {
         // console.log('JOB CREATED', job);
       })
       .catch(err => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

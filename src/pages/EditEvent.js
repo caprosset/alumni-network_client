@@ -24,12 +24,14 @@ class EditEvent extends Component {
 
     eventService.getOne(id)
       .then((event)=>{
-        console.log('EVENT', event);
+        // console.log('EVENT', event);
         const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = event;
 
         this.setState({ title, description, image, date, bootcamp, streetAddress, city, eventUrl })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      });
   }
 
   handleChange = event => {
@@ -50,7 +52,7 @@ class EditEvent extends Component {
       .then(imageUrl => {
         // console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        console.log('The image', this.state.image, 'is ready', this.state.imageReady);
+        // console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -69,7 +71,9 @@ class EditEvent extends Component {
     .then(() => {
         this.props.history.push(`/event/${id}`);
       })
-    .catch(err => console.log(err));
+    .catch(err => {
+      // console.log(err);
+    });
   };
 
 

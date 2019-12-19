@@ -28,12 +28,14 @@ class EditAlumni extends Component {
 
     userService.getOne(id)
       .then((user)=>{
-        console.log('USEEEER', user);
+        // console.log('USEEEER', user);
         const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = user;
 
         this.setState({ firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      });
   }
 
 
@@ -56,7 +58,7 @@ class EditAlumni extends Component {
       .then(imageUrl => {
         // console.log('the image', imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        console.log('The image', this.state.image, 'is ready', this.state.imageReady);
+        // console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -67,21 +69,20 @@ class EditAlumni extends Component {
     // get all the values from the state
     const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin, imageReady } = this.state;
 
-    console.log('IMAGE URL', image.length)
-    console.log('imageReady', imageReady)
+    // console.log('IMAGE URL', image.length)
+    // console.log('imageReady', imageReady)
 
-    // if image field contains a url, update the user (if not, edit is blocked)
-    // if (imageReady) {
-      // define user id and updatedUser (body) to pass to the update function
-      const { id } = this.props.match.params;
-      const updatedUser = {  firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
+    // define user id and updatedUser (body) to pass to the update function
+    const { id } = this.props.match.params;
+    const updatedUser = {  firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
 
-      userService.updateOne(id, updatedUser)
-      .then(() => {
-          this.props.history.push(`/alumni/${id}`);
-        })
-      .catch(err => console.log(err));
-    // }
+    userService.updateOne(id, updatedUser)
+    .then(() => {
+        this.props.history.push(`/alumni/${id}`);
+      })
+    .catch(err => {
+      // console.log(err)
+    });
   };
 
 
