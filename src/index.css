@@ -123,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20%;
 }
 
-.saved-elements-section, .event-info, .event-body  {
+.saved-elements-section, .event-info, .event-body, .map {
   margin-bottom: 10%;
 }
 
@@ -131,7 +131,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9rem;
 }
 
-.alumni-header, .event-body, .event-info, .send-mail  {
+.alumni-header, .event-body, .event-info, .send-mail, .map  {
   margin-top: 10%;
 }
 
@@ -171,5 +171,6 @@ h1, h2, h3, h4, h5, h6 {
 .share  {
   margin-top: 15%;
 }
+
 
 /* color: #32c3ff; */

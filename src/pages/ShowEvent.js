@@ -98,12 +98,14 @@ class ShowEvent extends Component {
 
   render() {
     const { user } = this.props; 
-    const{ image, title, attendingAlumni, city, date, bootcamp, description, eventOfferUrl, _id } = this.state.event;
+    const{ image, title, attendingAlumni, streetAddress, city, date, bootcamp, description, eventOfferUrl, _id } = this.state.event;
     // console.log('EVENTTTT', this.state.event);
     // console.log('ATTENDING ALUMNI', attendingAlumni)
     // console.log('this.state.event',this.state.event.attendingAlumni);
-    console.log('ORIGINAL DATE', date)
+    // console.log('ORIGINAL DATE', date)
 
+    const MY_API = 'AIzaSyAoouVXsc3aPgNafzpre_TdCWxNz_PQsbI';
+    let url = `https://www.google.com/maps/embed/v1/search?q=${streetAddress},+${city}&key=${MY_API}`;
     return (
       <div className="container">
         <section className="section">
@@ -146,7 +148,7 @@ class ShowEvent extends Component {
               <div className="event-info">
                 <div className="is-flex">
                   <p className="has-text-weight-bold">Where:&nbsp;&nbsp;</p>
-                  <p>{city}</p>
+                  <p>{streetAddress}, {city}</p>
                 </div>
                 <div className="is-flex">
                   <p className="has-text-weight-bold">When:&nbsp;&nbsp;</p>
@@ -159,6 +161,10 @@ class ShowEvent extends Component {
                 <div className="is-flex">
                   <p className="has-text-weight-bold">About:&nbsp;&nbsp;</p>
                   <p>{description}</p>
+                </div>
+                <div className="map">
+                  <iframe frameBorder="0" style={{ width: "100%", height: "400px"}} src={url}>
+                  </iframe>
                 </div>
                 <button className="button is-link is-outlined is-fullwidth">
                   <a href={eventOfferUrl} target="_blank">Read more about the event</a>
