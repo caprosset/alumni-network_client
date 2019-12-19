@@ -81,6 +81,14 @@ class ShowAlumni extends Component {
 
               <div className="is-flex is-horizontal-center social-icons">
                 <div>
+                  <a href={`mailto:${email}`} target="_blank">
+                    <span className="icon is-size-3 has-text-dark">
+                      <i className="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </div>
+
+                <div>
                   <a href={linkedinUrl} target="_blank">
                     <span className="icon is-size-3 has-text-dark">
                       <i className="fa fa-linkedin" aria-hidden="true"></i>
@@ -169,7 +177,7 @@ class ShowAlumni extends Component {
             }
             </div>
           </div>
-          
+
           <BottomNav />
 
         </section>
