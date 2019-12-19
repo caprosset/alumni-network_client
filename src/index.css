@@ -172,5 +172,48 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 15%;
 }
 
+@media screen and (min-width: 768px) {
+  .results-list h3 {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .results-list h3 {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar .navbar-menu { 
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .top-search-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .searchnav .navbar-menu {
+    flex-grow: 0 !important;
+    align-items: center;
+  }
+  .topnav {
+    width: 100%;
+  }
+  .alumni-info {
+    width: 40%;
+    font-size: 1.2rem;
+  }
+
+  .container {
+    max-width: 1500px;
+  }
+  .anon-pages .columns {
+    display: block !important;
+    margin-top: 0% !important;
+    width: 50%;
+    margin: 0 auto;
+  }
+}
 
 /* color: #32c3ff; */
