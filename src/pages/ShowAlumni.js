@@ -88,65 +88,72 @@ class ShowAlumni extends Component {
                   </a>
                 </div>
 
-                <div>
-                  <a href={githubUrl} target="_blank">
-                    <span className="icon is-size-3 has-text-dark">
-                      <i className="fa fa-github" aria-hidden="true"></i>
-                    </span>
-                  </a>
+                { (this.state.user.bootcamp === 'Web Development')
+                  ? <div>
+                    <a href={githubUrl} target="_blank">
+                      <span className="icon is-size-3 has-text-dark">
+                        <i className="fa fa-github" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  </div>
+                  : null
+                }
+                
+                { (this.state.user.bootcamp === 'UX Design')
+                ? <div>
+                    <div>
+                      <a href={mediumUrl} target="_blank">
+                        <span className="icon is-size-3 has-text-dark">
+                          <i className="fa fa-medium" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </div>
                 </div>
-
-                <div>
-                  <a href={mediumUrl} target="_blank">
-                    <span className="icon is-size-3 has-text-dark">
-                      <i className="fa fa-medium" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </div>
-              </div>
+                : null
+                }
             </div>
 
             <div className="block has-text-left alumni-info">
-                <div className="block">
-                  <p className="has-text-weight-bold">Email:</p>
-                  <p>{email}</p>
-                </div>
-
-                <div className="block">
-                  <p className="has-text-weight-bold">Phone:</p>
-                  <p>{phone}</p>
-                </div>
-
-                <div className="block">
-                  <p className="has-text-weight-bold">Bootcamp:</p>
-                  <p>{bootcamp}</p>
-                </div>
-
-                <div className="block">
-                  <p className="has-text-weight-bold">Campus:</p>
-                  <p>{campus}</p>
-                </div>
-
-                <div className="block">
-                  <p className="has-text-weight-bold">Cohort:</p>
-                  <p>{cohort}</p>
-                </div>
-
-                <div className="block">
-                  <p className="has-text-weight-bold">Current city:</p>
-                  <p>{currentCity}</p>
-                </div>
-
-                <div className="block">
-                  <p className="has-text-weight-bold">Current role:</p>
-                  <p>{currentRole}</p>
-                </div>
-
-                <div className="block">
-                  <p className="has-text-weight-bold">Current company:</p>
-                  <p>{currentCompany}</p>
-                </div>
+              <div className="block">
+                <p className="has-text-weight-bold">Email:</p>
+                <p>{email}</p>
               </div>
+
+              <div className="block">
+                <p className="has-text-weight-bold">Phone:</p>
+                <p>{phone}</p>
+              </div>
+
+              <div className="block">
+                <p className="has-text-weight-bold">Bootcamp:</p>
+                <p>{bootcamp}</p>
+              </div>
+
+              <div className="block">
+                <p className="has-text-weight-bold">Campus:</p>
+                <p>{campus}</p>
+              </div>
+
+              <div className="block">
+                <p className="has-text-weight-bold">Cohort:</p>
+                <p>{cohort}</p>
+              </div>
+
+              <div className="block">
+                <p className="has-text-weight-bold">Current city:</p>
+                <p>{currentCity}</p>
+              </div>
+
+              <div className="block">
+                <p className="has-text-weight-bold">Current role:</p>
+                <p>{currentRole}</p>
+              </div>
+
+              <div className="block">
+                <p className="has-text-weight-bold">Current company:</p>
+                <p>{currentCompany}</p>
+              </div>
+            </div>
             
             {
               // if user is on his profile, display 'Edit' button
@@ -160,8 +167,9 @@ class ShowAlumni extends Component {
                 </div>
               : null
             }
+            </div>
           </div>
-
+          
           <BottomNav />
 
         </section>
