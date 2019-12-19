@@ -12,7 +12,7 @@ class CreateEvent extends Component {
     description: '',
     date: new Date(),
     image: '',
-    bootcamp: 'Web Development',
+    bootcamp: 'All bootcamps',
     streetAddress: '',
     city: 'Barcelona',
     eventUrl: '',
@@ -147,6 +147,7 @@ class CreateEvent extends Component {
                 <div className="control">
                   <div className="select is-fullwidth">
                     <select name="bootcamp" value={bootcamp} onChange={this.handleChange}>
+                      <option value="All bootcamps">All bootcamps</option>
                       <option value="Web Development">Web Development</option>
                       <option value="UX Design">UX Design</option>
                       <option value="Data Analytics">Data Analytics</option>

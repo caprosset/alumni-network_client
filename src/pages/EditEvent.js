@@ -12,7 +12,7 @@ class EditEvent extends Component {
     description: '',
     date: '',
     image: '',
-    bootcamp: 'Web Development',
+    bootcamp: 'All bootcamps',
     streetAddress: '',
     city: 'Barcelona',
     eventUrl: '',
@@ -167,6 +167,7 @@ class EditEvent extends Component {
                 <div className="control">
                   <div className="select is-fullwidth">
                     <select name="bootcamp" value={bootcamp} onChange={this.handleChange}>
+                      <option value="All bootcamps">All bootcamps</option>
                       <option value="Web Development">Web Development</option>
                       <option value="UX Design">UX Design</option>
                       <option value="Data Analytics">Data Analytics</option>

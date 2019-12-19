@@ -12,7 +12,7 @@ class EditJob extends Component {
     description: '',
     companyName: '',
     image: '',
-    bootcamp: 'Web Development',
+    bootcamp: 'All bootcamps',
     city: 'Barcelona',
     jobOfferUrl: '',
     imageReady: true
@@ -154,6 +154,7 @@ class EditJob extends Component {
               <div className="control">
                 <div className="select is-fullwidth">
                   <select name="bootcamp" value={bootcamp} onChange={this.handleChange}>
+                    <option value="All bootcamps">All bootcamps</option>
                     <option value="Web Development">Web Development</option>
                     <option value="UX Design">UX Design</option>
                     <option value="Data Analytics">Data Analytics</option>

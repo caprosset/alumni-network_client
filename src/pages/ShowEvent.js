@@ -106,7 +106,7 @@ class ShowEvent extends Component {
 
   render() {
     const { user } = this.props; 
-    const{ image, title, attendingAlumni, streetAddress, city, date, bootcamp, description, eventOfferUrl, _id } = this.state.event;
+    const{ image, title, attendingAlumni, streetAddress, city, date, bootcamp, description, eventUrl, _id } = this.state.event;
     // console.log('EVENTTTT', this.state.event);
     // console.log('ATTENDING ALUMNI', attendingAlumni)
     // console.log('this.state.event',this.state.event.attendingAlumni);
@@ -175,7 +175,7 @@ class ShowEvent extends Component {
                   </iframe>
                 </div>
                 <button className="button is-link is-outlined is-fullwidth">
-                  <a href={eventOfferUrl} target="_blank">Read more about the event</a>
+                  <a href={eventUrl} target="_blank">Read more about the event</a>
                 </button>
               </div>
 
