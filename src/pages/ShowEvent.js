@@ -112,8 +112,7 @@ class ShowEvent extends Component {
     // console.log('this.state.event',this.state.event.attendingAlumni);
     // console.log('ORIGINAL DATE', date)
 
-    const MY_API = 'AIzaSyAoouVXsc3aPgNafzpre_TdCWxNz_PQsbI';
-    let url = `https://www.google.com/maps/embed/v1/search?q=${streetAddress},+${city}&key=${MY_API}`;
+    let url = `https://www.google.com/maps/embed/v1/search?q=${streetAddress},+${city}&key=${process.env.REACT_APP_GOOGLE_API}`;
     return (
       <div className="container">
         <section className="section">
