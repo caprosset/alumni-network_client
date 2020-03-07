@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Splash from './pages/Splash';
 import Signup from './pages/Signup';
@@ -17,6 +17,7 @@ import ShowEvent from './pages/ShowEvent';
 import CreateEvent from './pages/CreateEvent';
 import EditEvent from './pages/EditEvent';
 import Dashboard from './pages/Dashboard';
+import Error from './pages/Error';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -44,6 +45,8 @@ class App extends Component {
           <PrivateRoute exact path="/event/:id" component={ShowEvent} /> 
           <PrivateRoute exact path="/event/edit/:id" component={EditEvent} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+
+          <Route component={Error} />
         </Switch>
       </div>
     );
