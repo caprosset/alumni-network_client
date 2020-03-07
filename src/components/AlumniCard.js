@@ -12,7 +12,7 @@ function AlumniCard(props) {
       <div className="column is-3 is-mobile">
         <Link to={`/alumni/${_id}`}>
           <figure className="image is-64x64">
-            <img className="is-rounded" src={image} alt="profile picture" />
+            <img className="is-rounded" src={image} alt="user profile" />
           </figure>
         </Link>
       </div>
@@ -35,7 +35,7 @@ function AlumniCard(props) {
         <Link to={`/alumni/${_id}`}>
           <button className="button is-small is-outlined">See</button>
         </Link>
-        <a href={linkedinUrl} target="_blank">
+        <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
           <figure className="image is-48x48">
             <img className="is-rounded" src={linkedin} alt="linkedin icon" />
           </figure>

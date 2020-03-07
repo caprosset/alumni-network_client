@@ -20,8 +20,8 @@ class Signup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = this.state;
-    //  console.log('Signup -> form submit', { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin });
-    this.props.signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin }) // props.signup is Provided by withAuth() and Context API
+
+    this.props.signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin }) 
   };
 
   handleChange = event => {
@@ -159,7 +159,7 @@ class Signup extends Component {
                 </div>
               </div>
   
-              <button type="submit" className="button is-large is-info is-fullwidth" style={{'margin-top': '8%'}}>Signup</button>
+              <button type="submit" className="button is-large is-info is-fullwidth" style={{'marginTop': '8%'}}>Signup</button>
             </form>
 
             <div className="level-item auth-link has-text-white">

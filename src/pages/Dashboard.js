@@ -17,56 +17,46 @@ class Dashboard extends Component {
 
   componentDidMount() {    
     const { user } = this.props;
-    // console.log('USERRRRRR', user)
     
     userService.getOne(user._id)
     .then((user) => {
-      // console.log(user.savedEvents);
       const savedEvents = user.savedEvents;
-      // console.log('SAVED EVVENTSSSS',savedEvents );
-      
+  
       const savedJobs = user.savedJobs;
       this.setState({ savedEvents, savedJobs })
     }).catch((err) => {
-      // console.log(err);
+      console.log(err);
     });
   }
 
   unsaveEvent = (eventId) => {
     const { user } = this.props;
-    // console.log('USER ID', userId, 'EVENT ID', eventId);
 
     userService.removeSavedEvent(user._id, eventId)
     .then((user) => {
-      // console.log(user.savedEvents);
       const savedEvents = user.savedEvents
       this.setState({ savedEvents });
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
     });
   }
 
   unsaveJob = (jobId) => {
     const { user } = this.props;
-    // console.log('USER ID', userId, 'JOB ID', jobId);
 
     userService.removeSavedJob(user._id, jobId)
     .then((user) => {
-      // console.log(user.savedJobs);
       const savedJobs = user.savedJobs
       this.setState({ savedJobs });
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
     });
   }
   
 
   render() {
-    // console.log('this.state.savedEvents', this.state.savedEvents);
-    // console.log('this.state.savedJobs', this.state.savedJobs);
-
     const { user } = this.props;
     return (
       <div className="container">

@@ -65,7 +65,7 @@ class Login extends Component {
                 </div>
               </div>
 
-              <button type="submit" className="button is-large is-info is-fullwidth" style={{'margin-top': '8%'}}>Login</button>
+              <button type="submit" className="button is-large is-info is-fullwidth" style={{'marginTop': '8%'}}>Login</button>
             </form>
           
             <div className="level-item auth-link has-text-white">

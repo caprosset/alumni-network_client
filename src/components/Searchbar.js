@@ -11,7 +11,6 @@ class Searchbar extends Component {
 
   handleInput = e => {
     let { value } = e.target;
-    // console.log(name, value);
     this.setState( { search: value });
     this.props.filterByTerm(value);
   }
@@ -27,7 +26,7 @@ class Searchbar extends Component {
           </figure>
         </div>
         
-        <div className="navbar-menu is-active" style={{'box-shadow': 'none', 'margin-right': '5%'}}>
+        <div className="navbar-menu is-active" style={{'box-shadow': 'none', 'marginRight': '5%'}}>
           <form>
             <div className="field has-addons">
               <div className="control">

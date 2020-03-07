@@ -20,13 +20,11 @@ class ListJobs extends Component {
         this.setState({ listOfJobs: allJobs, jobsFiltered: allJobs })
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }
 
   filterJobs = searchTerm => {
-		// console.log('search term', searchTerm);
-
 		// apply lower case to the search term
 		const lowerSearchTerm = searchTerm.toLowerCase();
 		
@@ -65,7 +63,6 @@ class ListJobs extends Component {
 
 
   render() {
-    // console.log(this.state.listOfJobs);
     return (
       <div className="container">
         <section className="section">
@@ -84,7 +81,7 @@ class ListJobs extends Component {
             }
           </div>
 
-          <BottomNav  />
+          <BottomNav />
         </section>
       </div>
     );

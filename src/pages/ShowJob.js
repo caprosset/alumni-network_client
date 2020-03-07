@@ -21,21 +21,19 @@ class ShowJob extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    // console.log('JOB ID', id);
 
     const { user } = this.props;
 
     // check if job is saved by user
     userService.getOne(user._id) 
     .then((currentUser) => {
-      // console.log('current user', currentUser);
       currentUser.savedJobs.forEach(savedJob => {
         if(savedJob._id === id) {
           this.setState({jobIsSaved: true});
         }
       })
     }).catch((err) => {
-      // console.log(err);
+      console.log(err);
     }); 
 
     // get the job offer
@@ -44,35 +42,33 @@ class ShowJob extends Component {
         this.setState({ job })
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }
 
   save = () => {
     const id = this.props.user._id;
     const jobId = this.props.match.params.id;
-    // console.log('USER ID', id, 'JOB ID', jobId);
 
     userService.saveJob(id, jobId)
       .then( () => {
         this.setState({ jobIsSaved: true})
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }
 
   unsave = () => {
     const id = this.props.user._id;
     const jobId = this.props.match.params.id;
-    // console.log('USER ID', id, 'JOB ID', jobId);
 
     userService.removeSavedJob(id, jobId)
     .then( () => {
       this.setState({ jobIsSaved: false})
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
     });
   }
 
@@ -81,7 +77,7 @@ class ShowJob extends Component {
     jobService.delete(id)
     .then( () => this.props.history.push('/job'))
     .catch( (err) => {
-      // console.log(err);
+      console.log(err);
     });
   }
 
@@ -98,12 +94,6 @@ class ShowJob extends Component {
   render() {
     const { user } = this.props; 
     const { title, companyName, image, city, bootcamp, description, jobOfferUrl, _id, created_at } = this.state.job;
-    // console.log('this.state.job', this.state.job)
-    // console.log('USER', user)
-    // console.log('JOOOOB', this.state.job);
-    // console.log(this.props);
-    // console.log('DATE FORMAT', created_at)
-    // console.log('DATE CONVERTED', this.formatDate(created_at))
 
     return (
       <div className="container">
@@ -138,7 +128,7 @@ class ShowJob extends Component {
                   </div>
                 </div>
                 <button className="button is-link is-outlined is-fullwidth">
-                  <a href={jobOfferUrl} target="_blank">Apply to the job</a>
+                  <a href={jobOfferUrl} target="_blank" rel="noopener noreferrer">Apply to the job</a>
                 </button>
               
                 {

@@ -21,22 +21,18 @@ class ShowEvent extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    // console.log('EVENT ID', id);
 
     const { user } = this.props;
 
     userService.getOne(user._id) 
-    .then((currentUser) => {
-      // console.log('current user', currentUser);
-      
+    .then((currentUser) => {      
       currentUser.savedEvents.forEach(savedEvent => {
         if(savedEvent._id === id) {
-          // console.log('HELLLOOOOO', user)
           this.setState({eventIsSaved: true});
         }
       })
     }).catch((err) => {
-      // console.log(err);
+      console.log(err);
     });
     
     eventService.getOne(id)
@@ -44,35 +40,33 @@ class ShowEvent extends Component {
         this.setState({ event })
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       })
   }
 
   save = () => {
     const id = this.props.user._id;
     const eventId = this.props.match.params.id;
-    // console.log('USER ID', id, 'EVENT ID', eventId);
 
     userService.saveEvent(id, eventId)
       .then( () => {
         this.setState({ eventIsSaved: true})
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }
 
   unsave = () => {
     const id = this.props.user._id;
     const eventId = this.props.match.params.id;
-    // console.log('USER ID', id, 'EVENT ID', eventId);
 
     userService.removeSavedEvent(id, eventId)
     .then( () => {
       this.setState({ eventIsSaved: false})
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
     });
   }
 
@@ -81,7 +75,7 @@ class ShowEvent extends Component {
     eventService.delete(id)
     .then( () => this.props.history.push('/event'))
     .catch( (err) => {
-      // console.log(err);
+      console.log(err);
     });
   }
 
@@ -107,10 +101,6 @@ class ShowEvent extends Component {
   render() {
     const { user } = this.props; 
     const{ image, title, attendingAlumni, streetAddress, city, date, bootcamp, description, eventUrl, _id } = this.state.event;
-    // console.log('EVENTTTT', this.state.event);
-    // console.log('ATTENDING ALUMNI', attendingAlumni)
-    // console.log('this.state.event',this.state.event.attendingAlumni);
-    // console.log('ORIGINAL DATE', date)
 
     let url = `https://www.google.com/maps/embed/v1/search?q=${streetAddress},+${city}&key=${process.env.REACT_APP_GOOGLE_API}`;
     return (
@@ -122,7 +112,7 @@ class ShowEvent extends Component {
           <div className="page-body">
             <div className="is-flex is-horizontal-center ">
               <figure className="image is-fullwidth">
-                <img src={image} alt="Event cover image" />
+                <img src={image} alt="Event cover" />
               </figure>
             </div>
 
@@ -170,11 +160,11 @@ class ShowEvent extends Component {
                   <p>{description}</p>
                 </div>
                 <div className="map">
-                  <iframe frameBorder="0" style={{ width: "100%", height: "400px"}} src={url}>
+                  <iframe title="map" frameBorder="0" style={{ width: "100%", height: "400px"}} src={url}>
                   </iframe>
                 </div>
                 <button className="button is-link is-outlined is-fullwidth">
-                  <a href={eventUrl} target="_blank">Read more about the event</a>
+                  <a href={eventUrl} target="_blank" rel="noopener noreferrer">Read more about the event</a>
                 </button>
               </div>
 
@@ -210,7 +200,6 @@ class ShowEvent extends Component {
     )
   }
 }
-
 
 
 export default withAuth(ShowEvent);

@@ -20,15 +20,12 @@ class CreateEvent extends Component {
   }
 
   handleChange = event => {
-    // console.log('HELLO');
-
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
   handleImageChange = event => {
     this.setState({ imageReady: false });
-    // console.log('IMAGE', event.target.files[0]);
 
     const file = event.target.files[0];
     const imageFile = new FormData();
@@ -37,34 +34,28 @@ class CreateEvent extends Component {
 
     cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
-        // console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        // console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
 
   handleFormSubmit = event => {
     event.preventDefault();
-    // get all the values from the state
     const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = this.state;
-
     const newEvent = { title, description, image, date, bootcamp, streetAddress, city, eventUrl };
-    // console.log('EVENT INSERTED', newEvent);
 
     eventService
       .create(newEvent)
       .then(event => {
         this.props.history.push(`/event/${event._id}`);
-        // console.log('EVENT CREATED', event);
       })
       .catch(err => {
-        // console.log(err);
+        console.log(err);
       });
   };
 
   render() {
-    const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = this.state;
+    const { title, description, bootcamp, streetAddress, city, eventUrl } = this.state;
     return (
       <div className="container">
         <section className="section">

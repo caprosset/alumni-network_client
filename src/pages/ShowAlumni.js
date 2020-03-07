@@ -25,47 +25,34 @@ class ShowAlumni extends Component {
         this.setState({ user });
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       })
     
     authService.me()
     .then((currentUser)=>{
       // if user is the logged in/current user
       if(id === currentUser._id) {
-        // console.log('is user');
-        
         this.setState({ currentUser: true })
       }
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
     });
   }
 
   componentDidMount() {
-    // console.log('enter');
     this.findUser();
-
   }
 
   componentDidUpdate(prevProps) {
-    // console.log('PREV PROPS', prevProps.match.params.id)
-    // console.log('PROPS', this.props.match.params.id)
-
     if(prevProps.match.params.id !== this.props.match.params.id) {
       this.findUser();
     }
   }
 
   render() {
-    // console.log('USER ID', this.props.match.params.id);
-
     const { firstName, lastName, email, phone, image, bootcamp, campus, cohort, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, _id } = this.state.user;
-
     const {logout} = this.props;
-
-    // console.log('IMAGE', image)
-    // console.log('LOGOUT', logout);
 
     return (
       <div className="container">
@@ -76,7 +63,7 @@ class ShowAlumni extends Component {
           <div className="page-body">
             <div className="is-flex is-horizontal-center ">
               <figure className="image is-128x128">
-                <img className="is-rounded is-128x128" src={image} alt="Profile picture" />
+                <img className="is-rounded is-128x128" src={image} alt="Profile img" />
               </figure>
             </div>
               
@@ -85,7 +72,7 @@ class ShowAlumni extends Component {
 
               <div className="is-flex is-horizontal-center social-icons">
                 <div>
-                  <a href={`mailto:${email}`} target="_blank">
+                  <a href={`mailto:${email}`} target="_blank" rel="noopener noreferrer">
                     <span className="icon is-size-3 has-text-dark">
                       <i className="fa fa-envelope" aria-hidden="true"></i>
                     </span>
@@ -93,7 +80,7 @@ class ShowAlumni extends Component {
                 </div>
 
                 <div>
-                  <a href={linkedinUrl} target="_blank">
+                  <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
                     <span className="icon is-size-3 has-text-dark">
                       <i className="fa fa-linkedin" aria-hidden="true"></i>
                     </span>
@@ -102,7 +89,7 @@ class ShowAlumni extends Component {
 
                 { (this.state.user.bootcamp === 'Web Development')
                   ? <div>
-                    <a href={githubUrl} target="_blank">
+                    <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                       <span className="icon is-size-3 has-text-dark">
                         <i className="fa fa-github" aria-hidden="true"></i>
                       </span>
@@ -114,7 +101,7 @@ class ShowAlumni extends Component {
                 { (this.state.user.bootcamp === 'UX Design')
                 ? <div>
                     <div>
-                      <a href={mediumUrl} target="_blank">
+                      <a href={mediumUrl} target="_blank" rel="noopener noreferrer">
                         <span className="icon is-size-3 has-text-dark">
                           <i className="fa fa-medium" aria-hidden="true"></i>
                         </span>

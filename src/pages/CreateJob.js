@@ -19,15 +19,12 @@ class CreateJob extends Component {
   }
 
   handleChange = event => {
-    // console.log('HELLO');
-
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
   handleImageChange = event => {
     this.setState({ imageReady: false });
-    // console.log('IMAGE', event.target.files[0]);
 
     const file = event.target.files[0];
     const imageFile = new FormData();
@@ -36,32 +33,28 @@ class CreateJob extends Component {
 
     cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
-        // console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        // console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    // get all the values from the state
-    const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
 
+    const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
     const newJob = { title, description, companyName, image, bootcamp, city, jobOfferUrl }
 
     jobService
       .create(newJob)
       .then(job => {
         this.props.history.push(`/job/${job._id}`);
-        // console.log('JOB CREATED', job);
       })
       .catch(err => {
-        // console.log(err);
+        console.log(err);
       });
   };
 
   render() {
-    const { image, title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
+    const { title, companyName, city, bootcamp, description, jobOfferUrl } = this.state;
     return (
       <div className="container">
         <section className="section">

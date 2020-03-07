@@ -24,7 +24,6 @@ class ListAlumni extends Component {
   }
 
   filterAlumni = searchTerm => {
-		// console.log('search term', searchTerm);
 		// apply lower case to the search term
 		const lowerSearchTerm = searchTerm.toLowerCase();
 		
@@ -71,7 +70,6 @@ class ListAlumni extends Component {
   }
 
   render() {
-    // console.log(this.state.listOfAlumni);    
     return (
       <div className="container">
         <section className="section">

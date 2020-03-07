@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 class TopNav extends Component {
 
   render() {
-    // console.log('PROPSSSSS', this.props);
     return (
       <div className="navbar is-fixed-top">
         <div className="topnav is-fullwidth has-background-info is-flex is-vertical-center">

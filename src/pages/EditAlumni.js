@@ -28,13 +28,12 @@ class EditAlumni extends Component {
 
     userService.getOne(id)
       .then((user)=>{
-        // console.log('USEEEER', user);
         const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = user;
 
         this.setState({ firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin })
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }
 
@@ -47,7 +46,6 @@ class EditAlumni extends Component {
 
   handleImageChange = event => {
     this.setState({ imageReady: false });
-    // console.log('IMAGEEEE', event.target.files[0]);
 
     const file = event.target.files[0];
     const imageFile = new FormData();
@@ -56,9 +54,7 @@ class EditAlumni extends Component {
 
     cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
-        // console.log('the image', imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        // console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
 
@@ -66,13 +62,8 @@ class EditAlumni extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    // get all the values from the state
-    const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin, imageReady } = this.state;
+    const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
 
-    // console.log('IMAGE URL', image.length)
-    // console.log('imageReady', imageReady)
-
-    // define user id and updatedUser (body) to pass to the update function
     const { id } = this.props.match.params;
     const updatedUser = {  firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
 
@@ -81,19 +72,14 @@ class EditAlumni extends Component {
         this.props.history.push(`/alumni/${id}`);
       })
     .catch(err => {
-      // console.log(err)
+      console.log(err)
     });
   };
 
 
 
   render() {
-    const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
-
-    // const { user } = this.props;
-    // console.log('USER ID', user._id)
-    // const { id } = this.props.match.params;
-    // console.log('PROFILE ID', id)
+    const { firstName, lastName, phone, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
 
     return (
       <div className="container">
@@ -184,7 +170,7 @@ class EditAlumni extends Component {
                 <label className="label">Current company</label>
                 <div className="control">
                   <input className="input" 
-                    placeholder="Current role"
+                    placeholder="Current company"
                     type="text"
                     name="currentCompany"
                     value={currentCompany}

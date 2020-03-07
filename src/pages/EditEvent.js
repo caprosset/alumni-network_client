@@ -24,13 +24,12 @@ class EditEvent extends Component {
 
     eventService.getOne(id)
       .then((event)=>{
-        // console.log('EVENT', event);
         const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = event;
 
         this.setState({ title, description, image, date, bootcamp, streetAddress, city, eventUrl })
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }
 
@@ -41,7 +40,6 @@ class EditEvent extends Component {
   
   handleImageChange = event => {
     this.setState({ imageReady: false });
-    // console.log('IMAGE', event.target.files[0]);
 
     const file = event.target.files[0];
     const imageFile = new FormData();
@@ -50,20 +48,15 @@ class EditEvent extends Component {
 
     cloudinaryService.imageUpload(imageFile)
       .then(imageUrl => {
-        // console.log("the image ", imageUrl);
         this.setState({ image: imageUrl, imageReady: true });
-        // console.log('The image', this.state.image, 'is ready', this.state.imageReady);
       });
   };
-
 
   handleFormSubmit = event => {
     event.preventDefault();
 
-    // get all the values from the state
     const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = this.state;
     
-    // define user id and updatedUser (body) to pass to the update function
     const { id } = this.props.match.params;
     const updatedEvent = { title, description, image, date, bootcamp, streetAddress, city, eventUrl };
 
@@ -72,16 +65,12 @@ class EditEvent extends Component {
         this.props.history.push(`/event/${id}`);
       })
     .catch(err => {
-      // console.log(err);
+      console.log(err);
     });
   };
 
-
   render() {
-    const { title, description, image, date, bootcamp, streetAddress, city, eventUrl } = this.state;
-    // console.log('thedate',date);
-    // const { id } = this.props.match.params;
-    // console.log('JOB ID', id)
+    const { title, description, date, bootcamp, streetAddress, city, eventUrl } = this.state;
 
     return (
       <div className="container">

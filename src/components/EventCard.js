@@ -15,14 +15,14 @@ class EventCard extends Component {
   } 
   
   render() {
-    // console.log('EVENT PROPS', this.props);
     const { image, _id, title, date, city, bootcamp } = this.props;
+    
     return (
       <div className="result-card columns is-flex is-vertical-top is-horizontal-center">
         
         <div className="column is-3 is-mobile">
           <figure className="image is-64x64">
-            <img src={image} alt="Image event" />
+            <img src={image} alt="Event img" />
           </figure>
         </div>
 
