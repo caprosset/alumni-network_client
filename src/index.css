@@ -206,13 +206,20 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .container {
-    max-width: 1500px;
+    min-width: 1200px;
   }
   .anon-pages .columns {
     display: block !important;
     margin-top: 0% !important;
     width: 50%;
     margin: 0 auto;
+  }
+}
+
+
+@media screen and (min-width: 1216px) {
+  .container {
+    min-width: 1300px;
   }
 }
 

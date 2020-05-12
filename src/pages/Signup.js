@@ -41,8 +41,8 @@ class Signup extends Component {
             </figure>
           </div>
   
-          <div className="block has-text-centered">
-            <h1 className="title is-1 has-text-white">Sign Up</h1>
+          <div className="column is-half-desktop is-offset-one-quarter-desktop is-two-thirds-tablet is-offset-2 is-two-thirds-mobile is-offset-2-mobile">
+            <h1 className="title is-1 has-text-centered   has-text-white">Sign Up</h1>
   
             <form onSubmit={this.handleFormSubmit}>
               <div className="field">
