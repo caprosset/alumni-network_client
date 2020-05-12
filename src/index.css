@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .anon-pages {
   background-color: #1e2434;
-  height: 1000px;   
+  height: auto;   
 }
 
 .login-page {
@@ -204,15 +204,8 @@ h1, h2, h3, h4, h5, h6 {
     width: 40%;
     font-size: 1.2rem;
   }
-
   .container {
     min-width: 1200px;
-  }
-  .anon-pages .columns {
-    display: block !important;
-    margin-top: 0% !important;
-    width: 50%;
-    margin: 0 auto;
   }
 }
 

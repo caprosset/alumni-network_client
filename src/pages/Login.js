@@ -37,7 +37,7 @@ class Login extends Component {
             </figure>
           </div>
 
-          <div className="column is-half-desktop is-offset-3-desktop is-two-thirds-tablet is-offset-2 is-two-thirds-mobile is-offset-2-mobile">
+          <div className="column is-half-desktop is-offset-3-desktop is-two-thirds-tablet is-offset-2-tablet is-two-thirds-mobile is-offset-2-mobile">
             <h1 className="title is-1 has-text-centered has-text-white">Login</h1>
   
             <form onSubmit={this.handleFormSubmit}>

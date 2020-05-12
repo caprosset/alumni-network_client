@@ -21,13 +21,13 @@ class Splash extends Component {
           <h4 className="subtitle is-4 has-text-white" style={{'marginTop': '2%'}}>Keep in touch !</h4>
         </div>
 
-        <div className="columns" style={{'marginTop': '20%'}}>
-          <div className="column">
+        <div className="column is-one-third-desktop is-offset-one-third-desktop is-one-third-tablet is-offset-one-third-tablet is-two-thirds-mobile is-offset-2-mobile" >
+          <div>
             <Link to={'/signup'}>
               <button className="button is-large is-info is-rounded is-fullwidth">Signup</button>
             </Link>
           </div>
-          <div className="column">
+          <div style={{'marginTop': '10%'}}>
             <Link to={'/login'}>
               <button className="button is-large is-info is-rounded is-fullwidth">Login</button>
             </Link>
