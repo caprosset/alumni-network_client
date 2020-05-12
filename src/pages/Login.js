@@ -31,7 +31,9 @@ class Login extends Component {
 
           <div className="column is-flex is-horizontal-center">
             <figure className="image is-128x128">
-              <img src={ironhack} alt="Ironhack logo" />
+              <Link to={'/'}>
+                <img src={ironhack} alt="Ironhack logo" />
+              </Link>
             </figure>
           </div>
 
