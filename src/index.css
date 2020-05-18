@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .anon-pages {
   background-color: #1e2434;
-  height: auto;   
+  min-height: 100vh;   
 }
 
 .login-page {

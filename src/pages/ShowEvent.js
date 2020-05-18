@@ -132,7 +132,9 @@ class ShowEvent extends Component {
                               return(<Link to={`/alumni/${alumni._id}`}>
                                 <li key={alumni._id}>{alumni.firstName} {alumni.lastName}</li>
                               </Link>)
-                            } 
+                            } else {
+                              return null;
+                            }
                           })
                         }
                         </ul>

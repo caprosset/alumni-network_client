@@ -26,7 +26,7 @@ class Searchbar extends Component {
           </figure>
         </div>
         
-        <div className="navbar-menu is-active" style={{'box-shadow': 'none', 'marginRight': '5%'}}>
+        <div className="navbar-menu is-active" style={{'boxShadow': 'none', 'marginRight': '5%'}}>
           <form>
             <div className="field has-addons">
               <div className="control">
