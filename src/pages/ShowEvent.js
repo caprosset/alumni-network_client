@@ -129,8 +129,8 @@ class ShowEvent extends Component {
                         <ul className="alumni-attending">
                         { attendingAlumni.map( (alumni, index) => {
                             if(index <= 3) {
-                              return(<Link to={`/alumni/${alumni._id}`}>
-                                <li key={alumni._id}>{alumni.firstName} {alumni.lastName}</li>
+                              return(<Link to={`/alumni/${alumni._id}`} key={alumni._id}>
+                                <li>{alumni.firstName} {alumni.lastName}</li>
                               </Link>)
                             } else {
                               return null;

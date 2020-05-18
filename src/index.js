@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
-import AuthProvider from './lib/AuthProvider';
+import { AuthProvider } from './lib/AuthProvider';
 
 import './index.css';
 import 'bulma/css/bulma.css'

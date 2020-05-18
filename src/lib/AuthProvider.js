@@ -1,5 +1,5 @@
 import React from 'react';
-import authService from './auth-service'; // IMPORT functions that do axios requests to API
+import authService from './auth-service';
 const { Consumer, Provider } = React.createContext();
 
 // HOC to create Consumer
@@ -10,13 +10,13 @@ const withAuth = WrappedComponent => {
         <Consumer>
           {/* <Consumer> component provides callback which receives Providers "value" object */}
           {/* (value) => { <WrappedComponent />}  */}
-          {({ login, signup, user, logout, isLoggedin, isLoading }) => {
+          {({ login, signup, logout, user, isLoggedin, isLoading }) => {
             return (
               <WrappedComponent
                 login={login}
                 signup={signup}
-                user={user}
                 logout={logout}
+                user={user}
                 isLoggedin={isLoggedin}
                 isLoading={isLoading}
                 {...this.props}
@@ -34,12 +34,14 @@ class AuthProvider extends React.Component {
   state = { isLoggedin: false, user: null, isLoading: true };
 
   componentDidMount() {
+    // when App and AuthProvider load for the first time,
+    // make a call to the server '/me' and check if user is authenticated
     authService
       .me()
       .then(user =>
         this.setState({ isLoggedin: true, user: user, isLoading: false }),
       )
-      .catch(err =>
+      .catch( () =>
         this.setState({ isLoggedin: false, user: null, isLoading: false }),
       );
   }
@@ -50,9 +52,7 @@ class AuthProvider extends React.Component {
     authService
       .signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin })
       .then(user => this.setState({ isLoggedin: true, user }))
-      .catch(err => { 
-        // console.log(err);
-      });
+      .catch(err => console.log(err) );
   };
 
   login = user => {
@@ -61,9 +61,7 @@ class AuthProvider extends React.Component {
     authService
       .login({ email, password })
       .then(user => this.setState({ isLoggedin: true, user }))
-      .catch(err => { 
-        // console.log(err)
-      });
+      .catch(err => console.log(err) );
   };
 
   logout = () => {
@@ -85,6 +83,4 @@ class AuthProvider extends React.Component {
   }
 }
 
-export { Consumer, withAuth };
-
-export default AuthProvider;
+export { withAuth, AuthProvider };
