@@ -10,7 +10,7 @@ const withAuth = WrappedComponent => {
         <Consumer>
           {/* <Consumer> component provides callback which receives Providers "value" object */}
           {/* (value) => { <WrappedComponent />}  */}
-          {({ login, signup, logout, user, isLoggedin, isLoading }) => {
+          {({ login, signup, logout, user, isLoggedin, isLoading, errorMessage }) => {
             return (
               <WrappedComponent
                 login={login}
@@ -19,6 +19,7 @@ const withAuth = WrappedComponent => {
                 user={user}
                 isLoggedin={isLoggedin}
                 isLoading={isLoading}
+                errorMessage={errorMessage}
                 {...this.props}
               />
             );
@@ -31,7 +32,12 @@ const withAuth = WrappedComponent => {
 
 // Provider
 class AuthProvider extends React.Component {
-  state = { isLoggedin: false, user: null, isLoading: true };
+  state = { 
+    isLoggedin: false, 
+    user: null, 
+    isLoading: true,
+    errorMessage: null
+  };
 
   componentDidMount() {
     // when App and AuthProvider load for the first time,
@@ -47,36 +53,39 @@ class AuthProvider extends React.Component {
   }
 
   signup = user => {
-    const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = user;
-
     authService
-      .signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin })
-      .then(user => this.setState({ isLoggedin: true, user }))
-      .catch(err => console.log(err) );
+      .signup(user) // { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin }
+      .then(user => this.setState({ isLoggedin: true, isLoading: false, user, errorMessage: null }))
+      .catch(err => {
+        console.log(err);
+        this.setState({errorMessage: "Signup failed"})
+      });
   };
 
   login = user => {
-    const { email, password } = user;
-
     authService
-      .login({ email, password })
-      .then(user => this.setState({ isLoggedin: true, user }))
-      .catch(err => console.log(err) );
+      .login(user) // { email, password }
+      .then(user => this.setState({ isLoggedin: true, isLoading: false, user, errorMessage: null }))
+      .catch(err => {
+        this.setState({errorMessage: "Login failed"})
+      });
   };
 
   logout = () => {
     authService
       .logout()
-      .then(() => this.setState({ isLoggedin: false, user: null }))
-      .catch(err => console.log(err));
+      .then(() => this.setState({ isLoggedin: false, user: null, errorMessage: null }))
+      .catch(err => {
+        this.setState({errorMessage: "Logout failed"})
+      });
   };
 
   render() {
-    const { isLoading, isLoggedin, user } = this.state;
+    const { isLoading, isLoggedin, user, errorMessage } = this.state;
     const { login, logout, signup } = this;
 
     return (
-      <Provider value={{ isLoading, isLoggedin, user, login, logout, signup }}>
+      <Provider value={{ isLoading, isLoggedin, user, errorMessage, login, logout, signup }}>
         {this.props.children}
       </Provider>
     );

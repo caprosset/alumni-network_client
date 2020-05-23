@@ -24,17 +24,19 @@ class ListAlumni extends Component {
   }
 
   filterAlumni = searchTerm => {
-		// apply lower case to the search term
+    // apply lower case to the search term
+    console.log('searchTerm :>> ', searchTerm);
 		const lowerSearchTerm = searchTerm.toLowerCase();
 		
 		const filteredAlumni = this.state.listOfAlumni.filter( alumni => {
-				// apply lower case to the alumni name
-        const alumniFirstName = alumni.firstName.toLowerCase();
-        const alumniLastName = alumni.lastName.toLowerCase();
-        const alumniCompany = alumni.currentCompany.toLowerCase();
-        const alumniRole = alumni.currentRole.toLowerCase();
+        let alumniFirstName = alumni.firstName.toLowerCase(); 
+        let alumniLastName = alumni.lastName.toLowerCase();
+        let alumniCompany, alumniRole;
+        if(alumni.currentCompany) alumniCompany = alumni.currentCompany.toLowerCase(); 
+        if(alumni.currentRole) alumniRole = alumni.currentRole.toLowerCase(); 
+
 				// filter only the alumni that include the search term in their name, role or company
-				return (alumniFirstName.includes(lowerSearchTerm) || alumniLastName.includes(lowerSearchTerm) || alumniCompany.includes(lowerSearchTerm) || alumniRole.includes(lowerSearchTerm));
+				return (alumniFirstName.includes(lowerSearchTerm) || alumniLastName.includes(lowerSearchTerm) || (alumniCompany && alumniCompany.includes(lowerSearchTerm)) || (alumniRole && alumniRole.includes(lowerSearchTerm)));
 		})
 		this.setState({ alumniFiltered: filteredAlumni })
   }
@@ -70,6 +72,8 @@ class ListAlumni extends Component {
   }
 
   render() {
+    const { alumniFiltered } = this.state;
+    
     return (
       <div className="container">
         <section className="section">
@@ -83,7 +87,7 @@ class ListAlumni extends Component {
             <h3 className="title is-3">Alumni</h3>
 
             {
-              this.state.alumniFiltered.map( (oneAlumni, index) => {
+              alumniFiltered.map( (oneAlumni, index) => {
                 return <AlumniCard key={index} {...oneAlumni} /> 
               })
             }
@@ -92,7 +96,7 @@ class ListAlumni extends Component {
           <BottomNav />
         </section>
       </div>
-    );
+    )
   }
 }
 

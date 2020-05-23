@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
 
 function AnonRoute({ component: Component, isLoggedin, isLoading, ...rest }) {
-
   if (isLoading) {
     return <h1>Loading</h1>
   }

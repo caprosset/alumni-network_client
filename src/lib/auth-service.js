@@ -11,25 +11,25 @@ class Auth {
   }
 
   signup(user) {
-    const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = user;
     return this.auth
-      .post('/signup', { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin })
+      .post('/signup', user)
       .then(({ data }) => data);
   }
 
   login(user) {
-    const { email, password } = user;
     return this.auth
-      .post('/login', { email, password })
+      .post('/login', user)
       .then(({ data }) => data);
   }
 
   logout() {
-    return this.auth.post('/logout', {}).then(response => response.data);
+    return this.auth.post('/logout', {})
+      .then(response => response.data);
   }
 
   me() {
-    return this.auth.get('/me').then(response => response.data);
+    return this.auth.get('/me')
+      .then(response => response.data);
   }
 }
 

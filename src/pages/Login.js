@@ -8,7 +8,7 @@ import ironhack from '../img/ironhack.png';
 class Login extends Component {
   state = { 
     email: '', 
-    password: '' 
+    password: '',
   };
 
   handleFormSubmit = event => {
@@ -24,6 +24,7 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { errorMessage } = this.props;  
 
     return (
       <div className="container">
@@ -69,6 +70,10 @@ class Login extends Component {
 
               <button type="submit" className="button is-large is-info is-fullwidth" style={{'marginTop': '8%'}}>Login</button>
             </form>
+
+            <div>
+              { errorMessage ? <p>{errorMessage}</p> : null}
+            </div>
           
             <div className="level-item auth-link has-text-white">
               <p>Don't have an account yet? 

@@ -20,7 +20,7 @@ class User {
 
   getOne(id) {
     return this.user
-      .get(`/${id}`)
+      .get(`/${id}`) 
       .then(({ data }) => data);
   }
 
