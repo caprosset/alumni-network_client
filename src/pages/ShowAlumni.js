@@ -55,6 +55,7 @@ class ShowAlumni extends Component {
     const {logout} = this.props;
 
     let warningInfo = [];
+    if(!phone) warningInfo.push('Please fill in your phone number');
     if(!currentCity) warningInfo.push('Please fill in your city');
     if(!currentRole) warningInfo.push('Please fill in your role');
     if(!currentCompany) warningInfo.push('Please fill in your company');
@@ -121,14 +122,15 @@ class ShowAlumni extends Component {
             <div className="block has-text-left alumni-info">
 
               {// if user is on his profile and info is missing
-                this.state.currentUser && warningInfo !== 'u' ? 
+                this.state.currentUser && warningInfo.length > 0 ? 
                   <div className="notification is-warning">
+                    <p>Some information about you is missing:</p>
                     <ul>
-                      {warningInfo.map(warning => <li>{warning}</li>)}
+                      {warningInfo.map((warning, i) => <li key={i}>{warning}</li>)}
                     </ul>
                   </div>
                   : null
-              }
+              }>
 
               <div className="block">
                 <p className="has-text-weight-bold">Email:</p>

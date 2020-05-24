@@ -24,12 +24,12 @@ class Auth {
 
   logout() {
     return this.auth.post('/logout', {})
-      .then(response => response.data);
+      .then(({ data }) => data);
   }
 
   me() {
     return this.auth.get('/me')
-      .then(response => response.data);
+      .then(({ data }) => data);
   }
 }
 

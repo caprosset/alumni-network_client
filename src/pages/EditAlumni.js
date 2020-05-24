@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import userService from '../lib/user-service';
 import cloudinaryService from '../lib/cloudinary-service';
 
+import { Link } from 'react-router-dom'
 import { withAuth } from '../lib/AuthProvider';
 
 import BottomNav from '../components/BottomNav';
@@ -26,6 +27,8 @@ class EditAlumni extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     userService.getOne(this.props.user._id)
       .then((user)=>{
         const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = user;
@@ -63,16 +66,14 @@ class EditAlumni extends Component {
     event.preventDefault();
 
     const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
+    const updatedUser = { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
 
-    const { id } = this.props.user._id;
-    const updatedUser = {  firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
-
-    userService.updateOne(id, updatedUser)
+    userService.updateOne(updatedUser)
     .then(() => {
-        this.props.history.push(`/alumni/${id}`);
-      })
+      this.props.history.push(`/alumni/${this.props.user._id}`);
+    })
     .catch(err => {
-      console.log(err)
+      console.log(err);
     });
   };
 
@@ -231,9 +232,17 @@ class EditAlumni extends Component {
               </div>
 
               <div className="buttons bottom-buttons">
-                  <button type="submit" disabled={!this.state.imageReady} className="button is-link is-light">Save changes</button>
+                <button type="submit" disabled={!this.state.imageReady} className="button is-link is-light">
+                  Save changes
+                </button>
+
+                <Link to={`/alumni/${this.props.user._id}`}>
+                  <div className="buttons bottom-buttons">
+                      <button className="button is-danger is-light">Cancel</button>
+                  </div>
+                </Link>
               </div>
- 
+
             </form>
           </div>
 
