@@ -8,13 +8,7 @@ import ironhack from '../img/ironhack.png';
 class Login extends Component {
   state = { 
     email: '', 
-    password: '',
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    const { email, password } = this.state;
-    this.props.login({ email, password });
+    password: ''
   };
 
   handleChange = event => {
@@ -22,9 +16,16 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
 
+  handleFormSubmit = event => {
+    event.preventDefault();
+    const { email, password } = this.state;
+
+    this.props.login({ email, password });
+  };
+
   render() {
     const { email, password } = this.state;
-    const { errorMessage } = this.props;  
+    const { loginError } = this.props;  
 
     return (
       <div className="container">
@@ -40,6 +41,12 @@ class Login extends Component {
 
           <div className="column is-half-desktop is-offset-3-desktop is-two-thirds-tablet is-offset-2-tablet is-two-thirds-mobile is-offset-2-mobile">
             <h1 className="title is-1 has-text-centered has-text-white">Login</h1>
+
+            { loginError ? 
+            <div className="notification is-danger has-text-white">
+              <p>{loginError}</p>
+            </div>
+            : null}
   
             <form onSubmit={this.handleFormSubmit}>
               <div className="field">
@@ -70,10 +77,6 @@ class Login extends Component {
 
               <button type="submit" className="button is-large is-info is-fullwidth" style={{'marginTop': '8%'}}>Login</button>
             </form>
-
-            <div>
-              { errorMessage ? <p>{errorMessage}</p> : null}
-            </div>
           
             <div className="level-item auth-link has-text-white">
               <p>Don't have an account yet? 

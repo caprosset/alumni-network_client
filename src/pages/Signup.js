@@ -17,6 +17,11 @@ class Signup extends Component {
     isAdmin: 'false' 
   };
 
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+  
   handleFormSubmit = event => {
     event.preventDefault();
     const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = this.state;
@@ -24,14 +29,11 @@ class Signup extends Component {
     this.props.signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin }) 
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
   render() {
     const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = this.state;
-    return (
+    const { signupError } = this.props;
+    
+    return (  
       <div className="container">
         <section className="section anon-pages">
           
@@ -42,9 +44,15 @@ class Signup extends Component {
               </Link>
             </figure>
           </div>
-  
+
           <div className="column is-half-desktop is-offset-one-quarter-desktop is-two-thirds-tablet is-offset-2-tablet is-two-thirds-mobile is-offset-2-mobile">
-            <h1 className="title is-1 has-text-centered   has-text-white">Sign Up</h1>
+            <h1 className="title is-1 has-text-centered has-text-white">Sign Up</h1>
+
+            { signupError ? 
+            <div className="notification is-danger has-text-white">
+              <p>{signupError}</p> 
+            </div>
+            : null }
   
             <form onSubmit={this.handleFormSubmit}>
               <div className="field">
