@@ -23,6 +23,10 @@ class Login extends Component {
     this.props.login({ email, password });
   };
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const { email, password } = this.state;
     const { loginError } = this.props;  
