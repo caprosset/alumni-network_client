@@ -17,11 +17,15 @@ class Signup extends Component {
     isAdmin: 'false' 
   };
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-  
+
   handleFormSubmit = event => {
     event.preventDefault();
     const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = this.state;
@@ -49,7 +53,7 @@ class Signup extends Component {
             <h1 className="title is-1 has-text-centered has-text-white">Sign Up</h1>
 
             { signupError ? 
-            <div className="notification is-danger has-text-white">
+            <div className="notification is-danger has-text-white" ref={this.myRef}>
               <p>{signupError}</p> 
             </div>
             : null }
