@@ -51,8 +51,14 @@ class ShowAlumni extends Component {
   }
 
   render() {
-    const { firstName, lastName, email, phone, image, bootcamp, campus, cohort, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, _id } = this.state.user;
+    const { firstName, lastName, email, phone, image, bootcamp, campus, cohort, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl } = this.state.user;
     const {logout} = this.props;
+
+    let warningInfo = [];
+    if(!currentCity) warningInfo.push('Please fill in your city');
+    if(!currentRole) warningInfo.push('Please fill in your role');
+    if(!currentCompany) warningInfo.push('Please fill in your company');
+    if(image && image.includes('avatar_k3u8ma.png')) warningInfo.push('Please upload a profile picture');
 
     return (
       <div className="container">
@@ -113,6 +119,17 @@ class ShowAlumni extends Component {
             </div>
 
             <div className="block has-text-left alumni-info">
+
+              {// if user is on his profile and info is missing
+                this.state.currentUser && warningInfo !== 'u' ? 
+                  <div className="notification is-warning">
+                    <ul>
+                      {warningInfo.map(warning => <li>{warning}</li>)}
+                    </ul>
+                  </div>
+                  : null
+              }
+
               <div className="block">
                 <p className="has-text-weight-bold">Email:</p>
                 <p>{email}</p>
@@ -159,7 +176,7 @@ class ShowAlumni extends Component {
               this.state.currentUser
               ? 
                 <div className="buttons bottom-buttons">
-                  <Link to={`/alumni/edit/${_id}`}>
+                  <Link to={`/alumni/edit`}>
                     <button className="button is-info">Edit profile</button>
                   </Link>
                   <button className="button is-danger" onClick={logout}>Logout</button>

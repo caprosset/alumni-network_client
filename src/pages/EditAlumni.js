@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import userService from '../lib/user-service';
 import cloudinaryService from '../lib/cloudinary-service';
 
+import { withAuth } from '../lib/AuthProvider';
+
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
 
@@ -24,9 +26,7 @@ class EditAlumni extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-
-    userService.getOne(id)
+    userService.getOne(this.props.user._id)
       .then((user)=>{
         const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = user;
 
@@ -64,7 +64,7 @@ class EditAlumni extends Component {
 
     const { firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin } = this.state;
 
-    const { id } = this.props.match.params;
+    const { id } = this.props.user._id;
     const updatedUser = {  firstName, lastName, phone, image, currentCity, currentRole, currentCompany, linkedinUrl, githubUrl, mediumUrl, isAdmin };
 
     userService.updateOne(id, updatedUser)
@@ -245,4 +245,4 @@ class EditAlumni extends Component {
 }
 
 
-export default EditAlumni;
+export default withAuth(EditAlumni);

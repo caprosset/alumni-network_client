@@ -34,7 +34,7 @@ class App extends Component {
           <AnonRoute exact path="/login" component={Login} />
 
           <PrivateRoute exact path="/alumni" component={ListAlumni} />
-          <PrivateRoute exact path="/alumni/edit/:id" component={EditAlumni} /> 
+          <PrivateRoute exact path="/alumni/edit" component={EditAlumni} /> 
           <PrivateRoute exact path="/alumni/:id" component={ShowAlumni} /> 
           <PrivateRoute exact path="/job" component={ListJobs} />
           <PrivateRoute exact path="/job/create" component={CreateJob} /> 

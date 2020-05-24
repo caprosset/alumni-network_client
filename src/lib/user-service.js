@@ -24,9 +24,9 @@ class User {
       .then(({ data }) => data);
   }
 
-  updateOne(id, userUpdated) {
+  updateOne(userUpdated) {
     return this.user
-      .put(`/edit/${id}`, userUpdated)
+      .put(`/edit`, userUpdated)
       .then(({ data }) => data);
   }
 
