@@ -7,7 +7,6 @@ import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
 
 
-
 class ShowAlumni extends Component {
   constructor(props){
     super(props);
@@ -128,9 +127,9 @@ class ShowAlumni extends Component {
                     <ul>
                       {warningInfo.map((warning, i) => <li key={i}>{warning}</li>)}
                     </ul>
-                  </div>
+                  </  div>
                   : null
-              }>
+              }
 
               <div className="block">
                 <p className="has-text-weight-bold">Email:</p>
