@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-card {
-  margin-top: 10% !important;
+  margin-top: 5% !important;
 }
 
 .modal-card-body ul li {
@@ -251,5 +251,12 @@ h1, h2, h3, h4, h5, h6 {
     min-width: 1300px;;
   }
 }
+
+@media screen and (min-width: 1408px) {
+  .container {
+    min-width: 2000px;
+  }
+}
+
 
 /* color: #32c3ff; */
