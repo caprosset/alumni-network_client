@@ -33,9 +33,11 @@ class InstructionsModal extends Component {
             </ul>
             &nbsp;
             <p>If you don't want to signup, here are some credentials you can login with: <br />
-            Test user: test / test<br />
-            Test admin: admin / admin <br />
+            Test user: test / 123<br />
+            Test admin: admin / 123 <br />
             </p>
+            &nbsp;
+            <p>For a better experience, please switch to mobile view in your browser.</p>
           </section>
           <footer className="modal-card-foot">
             <button className="button is-success" onClick={this.closeInstructions}>Understood, thanks</button>

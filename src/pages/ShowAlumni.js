@@ -124,7 +124,7 @@ class ShowAlumni extends Component {
                 this.state.currentUser && warningInfo.length > 0 ? 
                   <div className="notification is-warning">
                     <p>Some information about you is missing:</p>
-                    <ul>
+                    <ul id="profile-warning">
                       {warningInfo.map((warning, i) => <li key={i}>{warning}</li>)}
                     </ul>
                   </  div>

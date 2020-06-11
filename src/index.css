@@ -200,6 +200,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 15%;
 }
 
+#profile-warning {
+  list-style-type: disc;
+  margin-left: 8%;
+}
+
 @media screen and (max-width: 768px) {
   .modal-card {
     margin: 0 auto !important;
