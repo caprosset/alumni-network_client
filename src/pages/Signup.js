@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
 
 import ironhack from '../img/ironhack.png';
-
+import InstructionsModal from './../components/InstructionsModal';
 
 class Signup extends Component {
   state = { 
@@ -19,6 +19,11 @@ class Signup extends Component {
 
   componentDidUpdate() {
     window.scrollTo(0, 0);
+  }
+
+  openInstructions = () => {
+    const instructionsModal = document.getElementById('instructions-modal');
+    instructionsModal.style.display = "block";
   }
 
   handleChange = event => {
@@ -51,6 +56,14 @@ class Signup extends Component {
 
           <div className="column is-half-desktop is-offset-one-quarter-desktop is-two-thirds-tablet is-offset-2-tablet is-two-thirds-mobile is-offset-2-mobile">
             <h1 className="title is-1 has-text-centered has-text-white">Sign Up</h1>
+
+            <div className="block has-text-centered">
+              <p className="has-text-white" id="instructions" onClick={this.openInstructions}>
+              <span className="icon"><i className="fa fa-info-circle"></i></span>
+              Instructions</p>
+            </div>
+
+            <InstructionsModal />
 
             { signupError ? 
             <div className="notification is-danger has-text-white" ref={this.myRef}>

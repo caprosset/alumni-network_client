@@ -3,13 +3,18 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
 
 import ironhack from '../img/ironhack.png';
-
+import InstructionsModal from './../components/InstructionsModal';
 
 class Login extends Component {
   state = { 
     email: '', 
     password: ''
   };
+
+  openInstructions = () => {
+    const instructionsModal = document.getElementById('instructions-modal');
+    instructionsModal.style.display = "block";
+  }
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -45,6 +50,14 @@ class Login extends Component {
 
           <div className="column is-half-desktop is-offset-3-desktop is-two-thirds-tablet is-offset-2-tablet is-two-thirds-mobile is-offset-2-mobile">
             <h1 className="title is-1 has-text-centered has-text-white">Login</h1>
+
+            <div className="block has-text-centered">
+              <p className="has-text-white" id="instructions" onClick={this.openInstructions}>
+              <span className="icon"><i className="fa fa-info-circle"></i></span>
+              Instructions</p>
+            </div>
+
+            <InstructionsModal />
 
             { loginError ? 
             <div className="notification is-danger has-text-white">
