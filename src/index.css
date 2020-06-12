@@ -31,7 +31,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .anon-pages {
   background-color: #1e2434;
-  min-height: 100vh;   
+  min-height: 100vh;  
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  align-content: center;
 }
 
 .login-page {
@@ -42,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
 }
 
-#keepintouch, #signup-login, #instructions {
+#site-title, #keepintouch, #signup-login, #instructions {
   margin-top: 2%;
 }
 

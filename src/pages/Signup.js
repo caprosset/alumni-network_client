@@ -46,7 +46,7 @@ class Signup extends Component {
       <div className="container">
         <section className="section anon-pages">
           
-          <div className="column is-flex is-horizontal-center">
+          <div className="is-flex is-horizontal-center">
             <figure className="image is-128x128">
               <Link to={'/'}>
                 <img src={ironhack} alt="Ironhack logo" />
@@ -54,7 +54,7 @@ class Signup extends Component {
             </figure>
           </div>
 
-          <div className="column is-half-desktop is-offset-one-quarter-desktop is-two-thirds-tablet is-offset-2-tablet is-two-thirds-mobile is-offset-2-mobile">
+          <div className="column is-half-desktop is-offset-one-quarter-desktop is-two-thirds-tablet is-offset-2-tablet">
             <h1 className="title is-1 has-text-centered has-text-white">Sign Up</h1>
 
             <div className="block has-text-centered">
