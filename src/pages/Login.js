@@ -8,11 +8,13 @@ import ironhack from '../img/ironhack.png';
 class Login extends Component {
   state = { 
     email: '', 
-    password: ''
+    password: '',
+    checked: false
   };
 
   handleChange = event => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+    if(name === "checked") value = !this.state.checked;
     this.setState({ [name]: value });
   };
 
@@ -28,7 +30,7 @@ class Login extends Component {
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, checked } = this.state;
     const { loginError } = this.props;  
 
     return (
@@ -71,12 +73,27 @@ class Login extends Component {
                 <div className="control">
                   <input className="input" 
                     placeholder="Password"
-                    type="password"
+                    type={checked ? "text" : "password"}
                     name="password"
                     value={password}
                     onChange={this.handleChange}
                   />
                 </div>
+              </div>
+
+              <div className="field">
+                <label className="label has-text-white">
+                  <div className="control">
+                    <input
+                      className="passwordCheckbox"
+                      name="checked"
+                      type="checkbox"
+                      defaultChecked={checked}
+                      onChange={this.handleChange}
+                    />{" "}
+                    Show password
+                  </div>
+                </label>
               </div>
 
               <button type="submit" className="button is-large is-info is-fullwidth" style={{'marginTop': '8%'}}>Login</button>
