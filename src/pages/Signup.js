@@ -11,18 +11,21 @@ class Signup extends Component {
     lastName: '',
     email: '', 
     password: '' ,
+    checked: false,
     bootcamp: 'Web Development',
     campus: 'Barcelona', 
     cohort: 'oct-19',
-    isAdmin: 'false' 
+    isAdmin: 'false'
   };
 
-  componentDidUpdate() {
+  componentDidMount() {
     window.scrollTo(0, 0);
   }
 
   handleChange = event => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+
+    if(name === "checked") value = !this.state.checked;
     this.setState({ [name]: value });
   };
 
@@ -31,10 +34,11 @@ class Signup extends Component {
     const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = this.state;
 
     this.props.signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin })
+    window.scrollTo(0, 0);
   };
 
   render() {
-    const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = this.state;
+    const { firstName, lastName, email, password, checked, bootcamp, campus, cohort, isAdmin } = this.state;
     const { signupError } = this.props;
     
     return (  
@@ -103,12 +107,26 @@ class Signup extends Component {
                 <div className="control">
                   <input className="input" 
                     placeholder="Password"
-                    type="password"
+                    type={checked ? "text" : "password"}
                     name="password"
                     value={password}
                     onChange={this.handleChange}
                   />
                 </div>
+              </div>
+
+              <div className="field">
+                <label className="label has-text-white">
+                  <div className="control">
+                    <input
+                      name="checked"
+                      type="checkbox"
+                      defaultChecked={checked}
+                      onChange={this.handleChange}
+                    />{" "}
+                    Show password
+                  </div>
+                </label>
               </div>
   
               <div className="field">

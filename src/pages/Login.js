@@ -25,7 +25,7 @@ class Login extends Component {
     this.props.login({ email, password });
   };
 
-  componentDidUpdate() {
+  componentDidMount() {
     window.scrollTo(0, 0);
   }
 
@@ -85,7 +85,6 @@ class Login extends Component {
                 <label className="label has-text-white">
                   <div className="control">
                     <input
-                      className="passwordCheckbox"
                       name="checked"
                       type="checkbox"
                       defaultChecked={checked}
