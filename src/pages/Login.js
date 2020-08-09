@@ -9,7 +9,8 @@ class Login extends Component {
   state = { 
     email: '', 
     password: '',
-    checked: false
+    checked: false, 
+    formError: null
   };
 
   handleChange = event => {
@@ -22,7 +23,10 @@ class Login extends Component {
     event.preventDefault();
     const { email, password } = this.state;
 
-    this.props.login({ email, password });
+    if(!email || !password) 
+      this.setState({ formError: "Please complete all the fields "})  
+    else
+      this.props.login({ email, password });
   };
 
   componentDidMount() {
@@ -30,7 +34,7 @@ class Login extends Component {
   }
 
   render() {
-    const { email, password, checked } = this.state;
+    const { email, password, checked, formError } = this.state;
     const { loginError } = this.props;  
 
     return (
@@ -48,9 +52,9 @@ class Login extends Component {
           <div className="column is-half-desktop is-offset-3-desktop is-two-thirds-tablet is-offset-2-tablet is-two-thirds-mobile is-offset-2-mobile">
             <h1 className="title is-1 has-text-centered has-text-white">Login</h1>
 
-            { loginError ? 
+            { formError || loginError ? 
             <div className="notification is-danger has-text-white">
-              <p>{loginError}</p>
+              <p>{formError ? formError : loginError}</p>
             </div>
             : null}
   

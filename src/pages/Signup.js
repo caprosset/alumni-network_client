@@ -15,7 +15,8 @@ class Signup extends Component {
     bootcamp: 'Web Development',
     campus: 'Barcelona', 
     cohort: 'oct-19',
-    isAdmin: 'false'
+    isAdmin: 'false',
+    formError: null
   };
 
   componentDidMount() {
@@ -33,12 +34,16 @@ class Signup extends Component {
     event.preventDefault();
     const { firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin } = this.state;
 
-    this.props.signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin })
+    if(!firstName || !lastName || !email || !password) 
+      this.setState({ formError: "Please complete all the fields "})
+    else
+      this.props.signup({ firstName, lastName, email, password, bootcamp, campus, cohort, isAdmin })
+
     window.scrollTo(0, 0);
   };
 
   render() {
-    const { firstName, lastName, email, password, checked, bootcamp, campus, cohort, isAdmin } = this.state;
+    const { firstName, lastName, email, password, checked, bootcamp, campus, cohort, isAdmin, formError } = this.state;
     const { signupError } = this.props;
     
     return (  
@@ -56,9 +61,9 @@ class Signup extends Component {
           <div className="column is-half-desktop is-offset-one-quarter-desktop is-two-thirds-tablet is-offset-2-tablet is-two-thirds-mobile is-offset-2-mobile">
             <h1 className="title is-1 has-text-centered has-text-white">Sign Up</h1>
 
-            { signupError ? 
+            { formError || signupError ? 
             <div className="notification is-danger has-text-white" ref={this.myRef}>
-              <p>{signupError}</p> 
+              <p>{formError ? formError : signupError}</p> 
             </div>
             : null }
   
