@@ -39,31 +39,26 @@ class ListEvents extends Component {
   }
   
     
-  multiFilter = (name, value) => {
+  multiFilter = (search) => {
     let filteredEvents = [];
-    if(name === 'bootcamp') {
-      if (value === 'all') {
-        filteredEvents = this.state.listOfEvents;
-      } else {
-        filteredEvents = this.state.listOfEvents.filter( event => {
-          return (event.bootcamp === value)
-        })
-      }
-    } else if (name === 'city') {
-      if (value === 'all') {
-        filteredEvents = this.state.listOfEvents;
-      } else {
-        filteredEvents = this.state.listOfEvents.filter( event => {
-          return (event.city === value)
-        })
-      }
-    } 
+
+    filteredEvents = this.state.listOfEvents.filter( event => { 
+      if(search.bootcamp !== 'all' && search.city === 'all') {
+        return (event.bootcamp === search.bootcamp)
+      } else if (search.bootcamp === 'all' && search.city !== 'all') {
+        return (event.city === search.city)
+      } else if (search.bootcamp !== 'all' && search.city !== 'all') {
+        return (event.bootcamp === search.bootcamp && event.city === search.city)
+      } else if (search.bootcamp === 'all' && search.city === 'all') {
+        return true;
+      } 
+    })
+    
     this.setState({ eventsFiltered: filteredEvents })
   }
 
 
   render() {
-    // console.log(this.state.listOfEvents);
     return (
       <div className="container">
         <section className="section">

@@ -56,6 +56,8 @@ class ListAlumni extends Component {
         return (alumni.bootcamp === search.bootcamp && alumni.currentCity === search.city && alumni.cohort === search.cohort)
       } else if (search.bootcamp === 'all' && search.city !== 'all' && search.cohort !== 'all') {
         return (alumni.currentCity === search.city && alumni.cohort === search.cohort)
+      } else if (search.bootcamp === 'all' && search.city === 'all' && search.cohort === 'all') {
+        return true;
       } 
     })
 
