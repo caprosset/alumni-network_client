@@ -6,28 +6,12 @@ class SearchFilters extends Component {
   state = {
     bootcamp: 'all',
     city: 'all',
-    cohort: 'all',
+    cohort: 'all'
   }
 
-  handleBootcampFilter = e => {
+  handleChange = e => {
     let { name, value } = e.target;
-
-    this.setState({ bootcamp: value, city: 'all', cohort: 'all' });
-    this.props.filterByProperty(name, value);
-  }
-
-  handleCityFilter = e => {
-    let { name, value } = e.target;
-
-    this.setState({ city: value, bootcamp: 'all', cohort: 'all' });
-    this.props.filterByProperty(name, value);
-  }
-
-  handleCohortFilter = e => {
-    let { name, value } = e.target;
-
-    this.setState({ cohort: value, bootcamp: 'all', city: 'all' });
-    this.props.filterByProperty(name, value);
+    this.setState({ [name]: value }, () => this.props.filterByProperty(this.state));
   }
 
   render() {
@@ -38,7 +22,7 @@ class SearchFilters extends Component {
           <div className="field field1">
             <p className="control">
               <span className="select">
-                <select name="bootcamp" value={bootcamp} onChange={this.handleBootcampFilter}>
+                <select name="bootcamp" value={bootcamp} onChange={this.handleChange}>
                   <option value="all">All bootcamps</option>
                   <option value="Web Development">Web Development</option>
                   <option value="UX Design">UX Design</option>
@@ -51,7 +35,7 @@ class SearchFilters extends Component {
           <div className="field field2">
             <p className="control">
               <span className="select">
-                <select name="city" value={city} onChange={this.handleCityFilter}>
+                <select name="city" value={city} onChange={this.handleChange}>
                   <option value="all">All cities</option>
                   <option value="Barcelona">Barcelona</option>
                   <option value="Madrid">Madrid</option>
@@ -72,7 +56,7 @@ class SearchFilters extends Component {
               <div className="field field3">
               <p className="control">
                 <span className="select">
-                  <select name="cohort" value={cohort} onChange={this.handleCohortFilter}>
+                  <select name="cohort" value={cohort} onChange={this.handleChange}>
                     <option value="all">All cohorts</option>
                     <option value="oct-19">Oct-19</option>
                     <option value="jul-19">Jul-19</option>

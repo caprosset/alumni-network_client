@@ -25,7 +25,6 @@ class ListAlumni extends Component {
 
   filterAlumni = searchTerm => {
     // apply lower case to the search term
-    console.log('searchTerm :>> ', searchTerm);
 		const lowerSearchTerm = searchTerm.toLowerCase();
 		
 		const filteredAlumni = this.state.listOfAlumni.filter( alumni => {
@@ -41,33 +40,25 @@ class ListAlumni extends Component {
 		this.setState({ alumniFiltered: filteredAlumni })
   }
   
-  multiFilter = (name, value) => {
+  multiFilter = (search) => {
     let filteredAlumni = [];
-    if(name === 'bootcamp') {
-      if (value === 'all') {
-        filteredAlumni = this.state.listOfAlumni;
-      } else {
-        filteredAlumni = this.state.listOfAlumni.filter( alumni => {
-          return (alumni.bootcamp === value)
-        })
-      }
-    } else if (name === 'city') {
-      if (value === 'all') {
-        filteredAlumni = this.state.listOfAlumni;
-      } else {
-        filteredAlumni = this.state.listOfAlumni.filter( alumni => {
-          return (alumni.campus === value)
-        })
-      }
-    } else if (name === 'cohort') {
-      if (value === 'all') {
-        filteredAlumni = this.state.listOfAlumni;
-      } else {
-        filteredAlumni = this.state.listOfAlumni.filter( alumni => {
-          return (alumni.cohort === value)
-        })
-      }
-    }
+  
+    filteredAlumni = this.state.listOfAlumni.filter( alumni => { 
+      if(search.bootcamp !== 'all' && search.city === 'all' && search.cohort === 'all') {
+        return (alumni.bootcamp === search.bootcamp)
+      } else if (search.bootcamp === 'all' && search.city !== 'all' && search.cohort === 'all') {
+        return (alumni.currentCity === search.city)
+      } else if (search.bootcamp === 'all' && search.city === 'all' && search.cohort !== 'all') {
+        return (alumni.cohort === search.cohort)
+      } else if (search.bootcamp !== 'all' && search.city !== 'all' && search.cohort === 'all') {
+        return (alumni.bootcamp === search.bootcamp && alumni.currentCity === search.city)
+      } else if (search.bootcamp !== 'all' && search.city !== 'all' && search.cohort !== 'all') {
+        return (alumni.bootcamp === search.bootcamp && alumni.currentCity === search.city && alumni.cohort === search.cohort)
+      } else if (search.bootcamp === 'all' && search.city !== 'all' && search.cohort !== 'all') {
+        return (alumni.currentCity === search.city && alumni.cohort === search.cohort)
+      } 
+    })
+
     this.setState({ alumniFiltered: filteredAlumni })
   }
 
