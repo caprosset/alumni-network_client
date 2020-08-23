@@ -39,25 +39,21 @@ class ListJobs extends Component {
 		this.setState({ jobsFiltered: filteredJobs })
   }
   
-  multiFilter = (name, value) => {
+  multiFilter = (search) => {
     let filteredJobs = [];
-    if(name === 'bootcamp') {
-      if (value === 'all') {
-        filteredJobs = this.state.listOfJobs;
-      } else {
-        filteredJobs = this.state.listOfJobs.filter( job => {
-          return (job.bootcamp === value)
-        })
-      }
-    } else if (name === 'city') {
-      if (value === 'all') {
-        filteredJobs = this.state.listOfJobs;
-      } else {
-        filteredJobs = this.state.listOfJobs.filter( job => {
-          return (job.city === value)
-        })
-      }
-    } 
+
+    filteredJobs = this.state.listOfJobs.filter( job => { 
+      if(search.bootcamp !== 'all' && search.city === 'all') {
+        return (job.bootcamp === search.bootcamp)
+      } else if (search.bootcamp === 'all' && search.city !== 'all') {
+        return (job.city === search.city)
+      } else if (search.bootcamp !== 'all' && search.city !== 'all') {
+        return (job.bootcamp === search.bootcamp && job.city === search.city)
+      } else if (search.bootcamp === 'all' && search.city === 'all') {
+        return true;
+      } 
+    })
+
     this.setState({ jobsFiltered: filteredJobs })
   }
 
