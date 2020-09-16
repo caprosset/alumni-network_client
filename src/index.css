@@ -31,7 +31,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .anon-pages {
   background-color: #1e2434;
-  min-height: 100vh;   
+  min-height: 100vh;  
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  align-content: center;
 }
 
 .login-page {
@@ -40,6 +44,34 @@ h1, h2, h3, h4, h5, h6 {
 
 .anon-pages label {
   text-align: left;
+}
+
+#site-title, #keepintouch, #signup-login, #instructions {
+  margin-top: 2%;
+}
+
+#instructions {
+  font-size: 1.2rem;
+  padding: 1%;
+}
+
+#instructions:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modal-card {
+  margin-top: 5% !important;
+}
+
+.modal-card-body ul li {
+  list-style-type: disc;
+  margin-left: 5%;
+}
+
+.modal-card-foot {
+  display: flex;
+  justify-content: flex-end !important;
 }
 
 .auth-link {
@@ -172,6 +204,18 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 15%;
 }
 
+#profile-warning {
+  list-style-type: disc;
+  margin-left: 8%;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-card {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .results-list h3 {
     margin-left: 10%;
@@ -182,9 +226,6 @@ h1, h2, h3, h4, h5, h6 {
   .results-list h3 {
     margin-left: 10%;
   }
-}
-
-@media screen and (min-width: 1024px) {
   .navbar .navbar-menu { 
     width: 100%;
     justify-content: space-evenly;
@@ -209,11 +250,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-
 @media screen and (min-width: 1216px) {
   .container {
-    min-width: 1300px;
+    min-width: 1300px;;
   }
 }
+
+@media screen and (min-width: 1408px) {
+  .container {
+    min-width: 2000px;
+  }
+}
+
 
 /* color: #32c3ff; */

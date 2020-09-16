@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
 
 import ironhack from '../img/ironhack.png';
-
+import InstructionsModal from './../components/InstructionsModal';
 
 class Login extends Component {
   state = { 
@@ -12,6 +12,11 @@ class Login extends Component {
     checked: false, 
     formError: null
   };
+
+  openInstructions = () => {
+    const instructionsModal = document.getElementById('instructions-modal');
+    instructionsModal.style.display = "block";
+  }
 
   handleChange = event => {
     let { name, value } = event.target;
@@ -41,7 +46,7 @@ class Login extends Component {
       <div className="container">
         <section className="section anon-pages login-page">
 
-          <div className="column is-flex is-horizontal-center">
+          <div className="is-flex is-horizontal-center">
             <figure className="image is-128x128">
               <Link to={'/'}>
                 <img src={ironhack} alt="Ironhack logo" />
@@ -49,10 +54,18 @@ class Login extends Component {
             </figure>
           </div>
 
-          <div className="column is-half-desktop is-offset-3-desktop is-two-thirds-tablet is-offset-2-tablet is-two-thirds-mobile is-offset-2-mobile">
+          <div className="column is-half-desktop is-offset-3-desktop is-two-thirds-tablet is-offset-2-tablet">
             <h1 className="title is-1 has-text-centered has-text-white">Login</h1>
 
-            { formError || loginError ? 
+            <div className="block has-text-centered">
+              <p className="has-text-white" id="instructions" onClick={this.openInstructions}>
+              <span className="icon"><i className="fa fa-info-circle"></i></span>
+              Instructions</p>
+            </div>
+
+            <InstructionsModal />
+
+            { loginError ? 
             <div className="notification is-danger has-text-white">
               <p>{formError ? formError : loginError}</p>
             </div>
